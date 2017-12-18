@@ -1,4 +1,4 @@
-package Listes;
+package eleve;
 
 public class Eleve {
 	protected int id;

@@ -1,4 +1,4 @@
-package Listes;
+package eleve;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -68,7 +68,7 @@ public class Eleves {
 		
 		try {
 			
-			if (!monFichier.exists()) { //Le fichier ne doit pas existé déjà
+			if (!monFichier.exists()) { //Le fichier ne doit pas existï¿½ dï¿½jï¿½
 				flot = new FileWriter(nomFichier) ;
 				flotFiltre = new PrintWriter(flot) ;
 				
@@ -82,7 +82,7 @@ public class Eleves {
 			else throw new IOException();
 			
 		} catch (IOException e) {
-			System.out.println("Ouverture impossible ou fichier deja  existant.") ;
+			System.out.println("Ouverture impossible ou fichier dejaï¿½ existant.") ;
 		}
 	}
 	
@@ -130,7 +130,7 @@ public class Eleves {
 	
 	
 	public static void main(String args[]){
-		//entrées eleves pour test 
+		//entrï¿½es eleves pour test 
 		Eleve eleve1 = new Eleve (1,"Loembe", 23, "3A","TRS");
 		//System.out.println(eleve1.toString());
 		Eleve eleve2 = new Eleve (2,"Martin", 22, "3A","SIE");
