@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 
 public class Main extends Application {
-	public int potes = 4;
 
   final static Logger log = LogManager.getLogger(Main.class);
 
@@ -26,12 +25,15 @@ public class Main extends Application {
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("main.fxml"));
     Parent root = loader.load();
+    
+    MainController controller = loader.getController();
 
     primaryStage.setOnCloseRequest(event -> {
       log.debug("terminating application.");
       Platform.exit();
     });
-    primaryStage.setScene(new Scene(root, 320, 200));
+    primaryStage.setScene(new Scene(root, 600, 400));
+    primaryStage.setResizable(false);
     primaryStage.show();
   }
 
