@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 
 public class Main extends Application {
+	public int potes = 4;
 
   final static Logger log = LogManager.getLogger(Main.class);
 
