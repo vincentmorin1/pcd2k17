@@ -6,15 +6,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.pcd2k17.MainController">
    <children>
-      <Text layoutX="249.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Authentification UL" />
+      <Text layoutX="239.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Authentification GitLab" />
       <TextField fx:id="identifiant" layoutX="226.0" layoutY="162.0" />
-      <Button fx:id="connexion" layoutX="264.0" layoutY="239.0" mnemonicParsing="false" text="Connexion" />
+      <Button fx:id="connexion" layoutX="264.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleClickOk" text="Connexion" />
       <ImageView fitHeight="92.0" fitWidth="120.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <Text fx:id="identifiant" layoutX="158.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Identifiant" />
-      <Text fx:id="mdp" layoutX="149.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe" />
+      <Text fx:id="id" layoutX="158.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Identifiant" />
+      <Text fx:id="motdepasse" layoutX="149.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe" />
       <TextField fx:id="mdp" layoutX="226.0" layoutY="200.0" />
    </children>
 </Pane>
