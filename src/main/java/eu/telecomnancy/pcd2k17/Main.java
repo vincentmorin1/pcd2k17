@@ -18,13 +18,14 @@ public class Main extends Application {
 
   public static void main(String args[]) throws GitLabApiException {
 	Devoir dev = new Devoir(); 
+	dev.creerDevoir("newProject");
     log.debug("executing main() method.");
     launch(args);
   }
 
   @Override
   public void start(Stage primaryStage) throws Exception {
-    primaryStage.setTitle("JFX Sample Application");
+    primaryStage.setTitle("Telecom Nancy SchoolRoom");
 
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("main.fxml"));
