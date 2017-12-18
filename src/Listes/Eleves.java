@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -13,11 +14,11 @@ import java.util.Scanner;
 public class Eleves {
 	
 
-	private LinkedList<Eleve> listeEleves ;
+	private ArrayList<Eleve> listeEleves ;
 	
 	
 	public Eleves() {
-		this.listeEleves=new LinkedList<Eleve>(); ;
+		this.listeEleves=new ArrayList<Eleve>(); ;
 	}
 	
 	public void ajouter(Eleve eleve) {
@@ -98,6 +99,7 @@ public class Eleves {
 				flot = new FileReader(nomFichier) ;
 				flotFiltre = new BufferedReader(flot) ;
 				String ligne = flotFiltre.readLine() ;
+
 					
 				while (ligne != null) {
 							
@@ -128,23 +130,29 @@ public class Eleves {
 	
 	
 	public static void main(String args[]){
+		//entrées eleves pour test 
 		Eleve eleve1 = new Eleve (1,"Loembe", 23, "3A","TRS");
 		//System.out.println(eleve1.toString());
 		Eleve eleve2 = new Eleve (2,"Martin", 22, "3A","SIE");
 		//System.out.println(eleve2.toString());
 		Eleves liste = new Eleves();
+		
 		//test ajouter
 		//liste.ajouter(eleve1);
 		//liste.ajouter(eleve2);
+		
 		//test save : OK
 		//System.out.println(liste.toString());
 		//liste.save("test.csv");
+		
 		//test extract : OK
 		//Eleves liste2 =liste.extract("loembe", 1);
 		//System.out.println(liste2.toString());
+		
 		//test enleve
 		//liste.enleve("loembe",1);
 		//System.out.println(liste.toString());
+		
 		//test load
 		liste.load("test.csv");
 		System.out.println(liste.toString());
