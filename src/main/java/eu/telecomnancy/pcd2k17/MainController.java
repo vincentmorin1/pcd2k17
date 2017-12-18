@@ -28,6 +28,8 @@ public class MainController{
 	log.debug(mdp.getText());
   }
   
+  
+  
   @FXML
   public void initialize() {
 	  
