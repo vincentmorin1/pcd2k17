@@ -32,8 +32,6 @@ public class Main extends Application {
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("main.fxml"));
     Parent root = loader.load();
-    
-    MainController controller = loader.getController();
 
     primaryStage.setOnCloseRequest(event -> {
       log.debug("terminating application.");
