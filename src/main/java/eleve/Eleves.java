@@ -73,7 +73,7 @@ public class Eleves {
 				flotFiltre = new PrintWriter(flot) ;
 				
 				for (Eleve eleve : this.listeEleves) {
-					flotFiltre.write(eleve.id+" "+eleve.nom+" "+eleve.age+" "+eleve.classe+" "+eleve.appro + newLine) ;
+					flotFiltre.write(eleve.id+" "+eleve.nom+" "+eleve.prenom+" "+eleve.email+" "+eleve.age+" "+eleve.classe+" "+eleve.appro + newLine) ;
 				}
 				
 				flotFiltre.close() ;
@@ -108,11 +108,12 @@ public class Eleves {
 					
 					int id = Integer.parseInt(filtre.next());
 					String nom = filtre.next() ; 
-					int age = Integer.parseInt(filtre.next()); 
-					String classe = filtre.next() ; 
-					String appro = filtre.next() ; 
-						
-					this.ajouter(new Eleve(id,nom,age,classe,appro)) ;
+					String prenom = filtre.next(); 
+					String email = filtre.next() ;  
+					int age =Integer.parseInt(filtre.next());
+					String classe = filtre.next();
+					String appro = filtre.next();
+					this.ajouter(new Eleve(id,nom,prenom,email,age,classe,appro)) ;
 							
 					ligne = flotFiltre.readLine() ;
 				}
@@ -130,23 +131,24 @@ public class Eleves {
 	
 	
 	public static void main(String args[]){
-		//entrï¿½es eleves pour test 
-		Eleve eleve1 = new Eleve (1,"Loembe", 23, "3A","TRS");
+		//entrées eleves pour test 
+		Eleve eleve1 = new Eleve (1,"Loembe","Alex-Kevin", "Alex-Kevin.Loembe@telecomnancy.eu", 23, "3A","TRS");
+
 		//System.out.println(eleve1.toString());
-		Eleve eleve2 = new Eleve (2,"Martin", 22, "3A","SIE");
+		Eleve eleve2 = new Eleve (2,"Martin","Victoria", "Victoria.Martin@telecomnancy.eu", 22, "3A","SIE");
 		//System.out.println(eleve2.toString());
 		Eleves liste = new Eleves();
 		
 		//test ajouter
-		//liste.ajouter(eleve1);
-		//liste.ajouter(eleve2);
+		liste.ajouter(eleve1);
+		liste.ajouter(eleve2);
 		
 		//test save : OK
-		//System.out.println(liste.toString());
-		//liste.save("test.csv");
+		System.out.println(liste.toString());
+		liste.save("test.csv");
 		
 		//test extract : OK
-		//Eleves liste2 =liste.extract("loembe", 1);
+		//Eleves liste2 =liste.extract("Loembe", 1);
 		//System.out.println(liste2.toString());
 		
 		//test enleve
