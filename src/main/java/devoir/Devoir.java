@@ -5,12 +5,13 @@ import org.gitlab4j.api.models.*;
 import Authentification.auth;
 
 
-public class Devoir extends GroupApi{
+public class Devoir{
 	public GroupApi devs;
+	private auth Auth;
 	
-	public Devoir(GitLabApi gitLabApi) throws GitLabApiException {
-		super(gitLabApi);
-		devs = new GroupApi(auth.auth);
+	public Devoir(){
+		Auth = new auth();
+		devs = new GroupApi(Auth.getAuth());
 		// TODO Auto-generated constructor stub
 	}
 	
