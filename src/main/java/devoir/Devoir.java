@@ -1,5 +1,7 @@
 package devoir;
 
+import java.util.List;
+
 import org.gitlab4j.api.*;
 import org.gitlab4j.api.models.*;
 import Authentification.auth;
@@ -8,10 +10,12 @@ import Authentification.auth;
 public class Devoir{
 	public GroupApi devs;
 	private auth Auth;
+	private List<Group> liste ;
 	
-	public Devoir(){
+	public Devoir() throws GitLabApiException{
 		Auth = new auth();
 		devs = new GroupApi(Auth.getAuth());
+		liste = devs.getGroups();
 		// TODO Auto-generated constructor stub
 	}
 	//création d'un nouveau devoir
@@ -19,6 +23,7 @@ public class Devoir{
 	public void creerDevoir(String name, String desc){
 		try {
 			this.devs.addGroup(name, name);
+			liste.add(devs.getGroup(name));
 		} catch (GitLabApiException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Impossible de créer le devoir "+name+ ".");
@@ -30,6 +35,7 @@ public class Devoir{
 		try {
 			todel = devs.getGroup(name);
 			this.devs.deleteGroup(todel);
+			liste = devs.getGroups();
 		} catch (GitLabApiException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Le devoir "+name+" n'existe pas !");
@@ -37,12 +43,15 @@ public class Devoir{
 		
 	}
 	
-	public void ajouterMembre(Integer groupId, Integer userId, Integer accessLevel) throws GitLabApiException {
-		this.devs.addMember(groupId, userId, accessLevel);
+	public Integer getDevoirId(String name) throws GitLabApiException {
+		return devs.getGroup(name).getId();
 	}
 	
-	public void supprMembre(Integer groupId, Integer userId) throws GitLabApiException {
-		this.devs.removeMember(groupId, userId);
+	public Group getDevoir(String name) throws GitLabApiException {
+		return devs.getGroup(name);
 	}
 	
+	public List<Group> getListe(){
+		return liste;
+	}
 }

@@ -17,10 +17,9 @@ public class Main extends Application {
   public static void main(String args[]) throws GitLabApiException {
 	Devoir dev = new Devoir(); 
 	Projet proj = new Projet();
-	dev.supprDevoir("fluf");
-	proj.creerProjet("faaf");
-	proj.creerProjet("faafi");
-	proj.supprProjet("faaf");
+	dev.creerDevoir("zaaf","");
+	proj.creerProjet("zaaf","gra");
+	System.out.println(dev.getDevoirId("zaaf"));
     log.debug("executing main() method.");
     launch(args);
   }
