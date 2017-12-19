@@ -1,3 +1,12 @@
+# Avancées de notre projet :
+début d'interface graphiques (2 fenêtres fonctionnelles, authentificatoin + création devoir) mais problèeùme de conditions sur la connexion plus probleme de creation sur le devoir (ne recupere pas ce qu'on écrit dans la fenêtre)
+création d'une base de données et de ce classes permettant de recupere un fichier csv afin de mettre a jour la base de données existante mais aucun lien vers github pour l'instant => reste à faire la synchronisation base de données -> github via un fichier csv. + importation base de données dans github.
+
+# Notre projet :
+Après compilation, une première fenêtre s'ouvre pour effectuer l'authentification, un premier problème apparait : quel que soit les caractères qu'on entre en token, l'authentification marche. Ensuite, une fenetre de création de devoir s'ouvre ou l'on peut renseigner les champs principaux de renseignements (description, nom, dates de fin et de debut, etc...) et c'est ici que nous avons un deuxième problème : on ne recupere pas ce qui est écrit dans ces champs. Enfin, la base de données créee et les fonctions associées ainsi que l'incorporation d'un fichier csv n'est pour l'instant pas reliée avec le reste des données utilisées et à utiliser.
+
+
+
 # CodingWeek 2017 - Sample project
 
 This project provides a sample application that demonstrates the use of [Gradle](https://gradle.org/) for building a JavaFX application.
