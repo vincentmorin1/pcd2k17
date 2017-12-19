@@ -15,11 +15,9 @@ public class MainController{
 
   final static Logger log = LogManager.getLogger(MainController.class);
 
-
   @FXML
-  TextField identifiant = new TextField();
-  @FXML
-  TextField mdp = new TextField();
+  //public static
+  TextField token = new TextField();
   @FXML
   Button connexion = new Button();
   
@@ -27,8 +25,7 @@ public class MainController{
 
   @FXML
   public void handleClickConnexion(ActionEvent event) throws IOException {
-    log.debug(identifiant.getText());
-	log.debug(mdp.getText());
+    log.debug(token.getText());
 	Stage primaryStage = (Stage) connexion.getScene().getWindow();
 	primaryStage.close();
 	

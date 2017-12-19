@@ -14,7 +14,7 @@ public class Main extends Application {
   final static Logger log = LogManager.getLogger(Main.class);
 
   public static void main(String args[]) throws GitLabApiException {
-	Devoir dev = new Devoir(); 
+	//Devoir dev = new Devoir(); 
 	//dev.creerDevoir("newProject");
     log.debug("executing main() method.");
     launch(args);
