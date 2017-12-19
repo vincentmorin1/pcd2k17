@@ -4,8 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.gitlab4j.api.GitLabApi;
 
-import eu.telecomnancy.pcd2k17.MainController;
-
 public class auth{
 	
 	final static Logger log = LogManager.getLogger(auth.class);

@@ -11,15 +11,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class MainController{
-
-  final static Logger log = LogManager.getLogger(MainController.class);
+public class ConnexionController{
+	
+  final static Logger log = LogManager.getLogger(ConnexionController.class);
 
   @FXML
-  //public static
-  TextField token = new TextField();
+  private TextField token = new TextField();
   @FXML
-  Button connexion = new Button();
+  private Button connexion = new Button();
   
   
 
@@ -31,9 +30,7 @@ public class MainController{
 	
 	Stage stage = new Stage();
 	new creationDevoirView(stage);
-  }
-  
-  
+  }  
   
   @FXML
   public void initialize() {
