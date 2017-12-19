@@ -156,6 +156,23 @@ public class Eleves extends Groupe{
 	}
 	
 	
+	
+	/*ça marche pas
+	 * public Eleves grouppromo(Eleves eleves, String promo,int nbeleves){
+		eleves.extractpromo(promo);
+		for (Eleve eleve : this.listeEleves){
+			for(int i=1;i<eleves.taille();i++){
+				Eleves eleves_i = new Eleves();
+				int nb =(int)(Math.random());
+			
+				if (nb==1){
+					eleves2.ajouter(eleve);
+				}	
+			}	
+		return eleves;}
+	}*/
+
+	
 	public static void main(String args[]){
 		//entrées eleves pour test 
 		//Eleve eleve1 = new Eleve (1,"Loembe","Alex-Kevin", "Alex-Kevin.Loembe@telecomnancy.eu", 23, "3A","TRS");
