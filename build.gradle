@@ -17,4 +17,5 @@ dependencies {
     compile 'org.gitlab4j:gitlab4j-api:4.7.4'
     //compile 'org.gitlab:java-gitlab-api:1.2.8'
     testCompile 'junit:junit:4.12'
+    compile 'org.xerial:sqlite-jdbc:3.21.0'
 }

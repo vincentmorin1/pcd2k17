@@ -120,7 +120,7 @@ public class Eleves extends Groupe{
 				
 		try	{
 					
-			if (((nomFichier.split("\\."))[1]).equals("csv")) { //Si c'est le bon format...
+			if (((nomFichier.split("\\."))[1]).equals("bd")) { //Si c'est le bon format...
 					
 				flot = new FileReader(nomFichier) ;
 				flotFiltre = new BufferedReader(flot) ;
@@ -203,7 +203,7 @@ public class Eleves extends Groupe{
 		//System.out.println(liste.toString());
 		
 		
-		Eleve eleve1 = new Eleve (1,"Loembe","Alex-Kevin", "Alex-Kevin.Loembe@telecomnancy.eu",23,"3A","TRS");
+		/*Eleve eleve1 = new Eleve (1,"Loembe","Alex-Kevin", "Alex-Kevin.Loembe@telecomnancy.eu",23,"3A","TRS");
 		Eleve eleve2 = new Eleve (2,"Martin","Victoria", "Victoria.Martin@telecomnancy.eu",22,"3A","SIE");
 		Eleve eleve3 = new Eleve (3,"Leroux","Paul", "Paul.Leroux@telecomnancy.eu",22,"2A","IAMD");
 		Eleve eleve4 = new Eleve (4,"Roudaut","Tanguy", "Tanguy.Roudaut@telecomnancy.eu",21,"2A","IL");
@@ -234,6 +234,11 @@ public class Eleves extends Groupe{
 		
 		//test extractappro
 		Eleves liste =groupe.extractappro("2A", "SIE");
+		System.out.println(liste.toString());*/
+		
+		//test base de données sql
+		Eleves liste = new Eleves();
+		liste.load("eleves.bd");
 		System.out.println(liste.toString());
 	}
 }
