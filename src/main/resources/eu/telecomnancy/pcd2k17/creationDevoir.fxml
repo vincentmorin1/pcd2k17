@@ -4,7 +4,6 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Rectangle?>
@@ -34,7 +33,6 @@
          </font></Text>
       <TextField fx:id="title" layoutX="275.0" layoutY="68.0" />
       <Button fx:id="connexion" layoutX="264.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleClickOk" text="Connexion" />
-      <ImageView fitHeight="92.0" fitWidth="120.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
       <Text fx:id="titre" fill="#f8f8f8" layoutX="145.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre">
          <font>
             <Font name="Trebuchet MS Bold" size="12.0" />
@@ -48,12 +46,6 @@
             <Font name="Trebuchet MS Bold" size="12.0" />
          </font></Text>
       <DatePicker fx:id="date" layoutX="250.0" layoutY="341.0" />
-      <Pane layoutX="225.0" layoutY="125.0" prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <TextArea fx:id="desc" onMouseDragEntered="#clear" prefHeight="200.0" prefWidth="200.0" />
-            <Text layoutX="14.0" layoutY="44.0" onMouseClicked="#delete" strokeType="OUTSIDE" strokeWidth="0.0" text="du devoir" />
-            <Text layoutX="14.0" layoutY="27.0" onMouseClicked="#delete" onMouseDragEntered="#delete" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez une rapide description " />
-         </children>
-      </Pane>
+      <TextArea fx:id="desc" layoutX="237.0" layoutY="100.0" onMouseDragEntered="#clear" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </Pane>
