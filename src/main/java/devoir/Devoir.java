@@ -14,17 +14,27 @@ public class Devoir{
 		devs = new GroupApi(Auth.getAuth());
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 	//création d'un nouveau devoir
 	
-	public void creerDevoir(String name) throws GitLabApiException {
-		devs.addGroup(name,name);
+	public void creerDevoir(String name, String desc){
+		try {
+			this.devs.addGroup(name, name);
+		} catch (GitLabApiException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Impossible de créer le devoir "+name+ ".");
+		}
 	}
 	
-	public void supprDevoir(String name) throws GitLabApiException {
-		Group todel = devs.getGroup(name);
-		this.devs.deleteGroup(todel);
+	public void supprDevoir(String name) {
+		Group todel;
+		try {
+			todel = devs.getGroup(name);
+			this.devs.deleteGroup(todel);
+		} catch (GitLabApiException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Le devoir "+name+" n'existe pas !");
+		}
+		
 	}
 	
 	public void ajouterMembre(Integer groupId, Integer userId, Integer accessLevel) throws GitLabApiException {
