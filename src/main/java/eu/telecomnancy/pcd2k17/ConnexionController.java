@@ -29,7 +29,7 @@ public class ConnexionController{
 	primaryStage.close();
 	
 	Stage stage = new Stage();
-	new creationDevoirView(stage);
+	new HomeView(stage);
   }  
   
   @FXML

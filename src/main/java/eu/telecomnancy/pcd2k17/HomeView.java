@@ -11,25 +11,25 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class creationDevoirView {
+public class HomeView {
 	
 	final static Logger log = LogManager.getLogger(Main.class);
 	
 	
-	public creationDevoirView (Stage stage) throws IOException {
+	public HomeView (Stage stage) throws IOException {
 		stage = new Stage();
 		
 		stage.setTitle("Telecom Nancy SchoolRoom");
 		
 		FXMLLoader loader = new FXMLLoader();
-	    loader.setLocation(getClass().getResource("creationDevoir.fxml"));
+	    loader.setLocation(getClass().getResource("home.fxml"));
 		Parent root = loader.load();
 		
 		stage.setOnCloseRequest(event -> {
 		 log.debug("terminating application.");
 		 Platform.exit();
 		});
-		stage.setScene(new Scene(root, 600, 400));
+		stage.setScene(new Scene(root, 1100, 1000));
 		stage.setResizable(false);
 		stage.show();
 	}
