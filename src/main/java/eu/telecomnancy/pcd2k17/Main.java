@@ -15,11 +15,11 @@ public class Main extends Application {
   final static Logger log = LogManager.getLogger(Main.class);
 
   public static void main(String args[]) throws GitLabApiException {
-	Devoir dev = new Devoir(); 
+	/*Devoir dev = new Devoir(); 
 	Projet proj = new Projet();
 	dev.creerDevoir("zaaf","");
 	proj.creerProjet("zaaf","gra");
-	System.out.println(dev.getDevoirId("zaaf"));
+	System.out.println(dev.getDevoirId("zaaf") + "/" + proj.getProjetId("zaaf", "gra"));*/
     log.debug("executing main() method.");
     launch(args);
   }

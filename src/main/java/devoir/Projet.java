@@ -52,5 +52,9 @@ public class Projet {
 		} catch (GitLabApiException e1) {}
 	}
 	
+	public Integer getProjetId(String devoirName, String name) throws GitLabApiException {
+		return proj.getProject(devoirName,name).getId();
+	}
+	
 
 }
