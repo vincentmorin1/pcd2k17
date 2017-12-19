@@ -25,9 +25,11 @@ public class Eleve {
 		this.age=age;
 		this.classe=classe;
 		this.appro=appro;
-
 	}
 	
+	public String getappro(){
+		return this.appro;
+	}
 	
 	public String toString(){
 		return "id : "+this.id+ "\nnom : "+this.nom+"\nprenom : "+this.prenom+"\nemail : "+this.email+"\nage : "+this.age+"\nclasse : "+this.classe+"\nappro :"+this.appro ; 
@@ -38,6 +40,7 @@ public class Eleve {
 		System.out.println(eleve.toString());
 		Eleve eleve2 = new Eleve (2,"Martin","Victoria", "Victoria.Martin@telecomnancy.eu");
 		System.out.println(eleve2.toString());
+		System.out.println(eleve.getappro());
 	}
 	
 }
