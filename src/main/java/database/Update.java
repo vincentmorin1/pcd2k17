@@ -23,9 +23,8 @@ public class Update {
 	    }
 	 
 
-	    public void update(int id, String nom, String prenom, String email, int age,String classe, String appro) {
+	    public void update(int id, String nom, String email, int age,String classe, String appro) {
 	        String sql = "UPDATE eleves SET nom = ? , "
-	                + "prenom = ? ,"
 	                + "email = ? ,"
 	                + "age = ? ,"
 	                + "classe = ? ,"
@@ -37,11 +36,10 @@ public class Update {
 	 
 	            // set the corresponding param
 	            pstmt.setString(1, nom);
-	            pstmt.setString(2, prenom);
-	            pstmt.setString(3, email);
-	            pstmt.setInt(4, age);
-	            pstmt.setString(5, classe);
-	            pstmt.setString(6, appro);
+	            pstmt.setString(2, email);
+	            pstmt.setInt(3, age);
+	            pstmt.setString(4, classe);
+	            pstmt.setString(5, appro);
 	            // update 
 	            pstmt.executeUpdate();
 	        } catch (SQLException e) {

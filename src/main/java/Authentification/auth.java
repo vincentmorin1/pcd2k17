@@ -7,9 +7,14 @@ import java.io.StringWriter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.gitlab4j.api.GitLabApi;
+import org.gitlab4j.api.GitLabApiException;
 import org.gitlab4j.api.GroupApi;
+import org.gitlab4j.api.Pager;
 import org.gitlab4j.api.ProjectApi;
 import org.gitlab4j.api.UserApi;
+import org.gitlab4j.api.models.User;
+
+import database.Insert;
 import database.maindatabase;
 
 public class auth extends maindatabase{
@@ -26,6 +31,26 @@ public class auth extends maindatabase{
 	// Pour le test d'après
 		public auth() {
 			this.auth = new GitLabApi("https://gitlab.telecomnancy.univ-lorraine.fr", accessToken);		
+
+			try {
+				createNewDatabase("eleves2.db");
+		        createNewTable();
+				Pager<User> users = this.auth.getUserApi().getUsers(60);
+				while(users.hasNext()){
+					for(User user : users.next()){
+						Integer id = user.getId();
+						String nom = user.getName();
+						Insert app = new Insert();
+				        app.insert(id, nom, "null", 0 ,"null", "null");
+					}
+					
+				}
+				
+		        
+			} catch (GitLabApiException e) {
+				System.out.println("zizi");
+			}
+
 		}
 	private String Readfunction() {
 		    try {
