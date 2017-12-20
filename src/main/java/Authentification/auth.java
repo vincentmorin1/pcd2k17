@@ -4,6 +4,7 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -34,14 +35,18 @@ public class auth extends maindatabase{
 		public auth() {
 			this.auth = new GitLabApi("https://gitlab.telecomnancy.univ-lorraine.fr", accessToken);		
 			try {
-				User currentUser = this.auth.getUserApi().getCurrentUser();
-				Integer id = currentUser.getId();
-				String nom = currentUser.getName();
-				String email = currentUser.getEmail();	
 				createNewDatabase("eleves2.db");
 		        createNewTable();
-		        Insert app = new Insert();
-		        app.insert(id, nom, "null", email, 0 ,"null", "null");
+				List<User> users = this.auth.getUserApi().getUsers();
+				for (User user : users){
+					Integer id = user.getId();
+					String nom = user.getName();
+					String email = user.getEmail();
+					Insert app = new Insert();
+			        app.insert(id, nom, "null", email, 0 ,"null", "null");
+				}
+				
+		        
 			} catch (GitLabApiException e) {
 				System.out.println("zizi");
 			}

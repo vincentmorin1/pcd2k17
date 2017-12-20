@@ -30,17 +30,17 @@ public class maindatabase{
 	    
 	    public static void createNewTable() {
 	        // SQLite connection string
-	    	String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/src/main/java/database/eleves.db";
+	    	String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/src/main/java/database/eleves2.db";
 	        
 	        // SQL statement for creating a new table
 	        String sql = "CREATE TABLE IF NOT EXISTS eleves (\n"
 	                + "	id integer PRIMARY KEY,\n"
 	                + "	nom text NOT NULL,\n"
-	                + "	prenom text NOT NULL,\n"
-	                + "	email text NOT NULL,\n"
+	                + "	prenom text ,\n"
+	                + "	email text ,\n"
 	                + "	age integer, \n"
-	                + "	classe text NOT NULL,\n"
-	                + "	appro text NOT NULL\n"
+	                + "	classe text,\n"
+	                + "	appro text\n"
 	                + ");";
 	        
 	        try (Connection conn = DriverManager.getConnection(url);
@@ -54,7 +54,7 @@ public class maindatabase{
 	 
 
 	    public static void main(String[] args) {
-	        createNewDatabase("eleves.db");
+	        /*createNewDatabase("eleves.db");
 	        createNewTable();
 	        Insert app = new Insert();
 	        app.insert(1,"Loembe","Alex","alex-kevin.loembe@telecomnancy.eu",23,"3A","TRS");
@@ -68,6 +68,6 @@ public class maindatabase{
 	        app.insert(9,"Polizzi","Mathilde","mathilde.polizzi@telecomnancy.eu",22,"3A","SIE");
 	        app.insert(10,"Louis-pol","Kelner","louis-pol.kelner@telecomnancy.eu",22,"3A","SIE");
 	        app.insert(11,"Sofian","Chouder","sofian.chouder@telecomnancy.eu",23,"3A","SIE");
-	        app.insert(12,"Victor","Schwien","Victor.schwien@telecomnancy.eu",20,"1A","null");
+	        app.insert(12,"Victor","Schwien","Victor.schwien@telecomnancy.eu",20,"1A","null");*/
 	}
 }
