@@ -32,7 +32,7 @@ public class auth extends maindatabase{
 	// Pour le test d'après
 		public auth() {
 			this.auth = new GitLabApi("https://gitlab.telecomnancy.univ-lorraine.fr", accessToken);		
-			try {
+			/*try {
 				User currentUser = this.auth.getUserApi().getCurrentUser();
 				Integer id = currentUser.getId();
 				String nom = currentUser.getName();
@@ -43,7 +43,7 @@ public class auth extends maindatabase{
 		        app.insert(id, nom, "null", email, 0 ,"null", "null");
 			} catch (GitLabApiException e) {
 				System.out.println("zizi");
-			}
+			}*/
 		}
 	private String Readfunction() {
 		    try {

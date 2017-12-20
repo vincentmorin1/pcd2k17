@@ -37,6 +37,14 @@ public class Projet {
 		}
 	}
 	
+public void testCo() throws GitLabApiException{
+	List<Project> current;
+	String name = "ahgdznbksvkxz";
+	this.proj.createProject(name);
+	current = proj.getProjects(name);
+	proj.deleteProject(current.get(0));
+}
+	
 	public void supprProjet(String name) {
 		List<Project> current;
 		try {

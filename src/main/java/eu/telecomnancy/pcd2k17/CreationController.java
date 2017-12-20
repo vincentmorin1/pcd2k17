@@ -140,13 +140,13 @@ private MenuItem creation = new MenuItem();
 	  try {
 		dev = new Devoir(new auth());
 		dev.creerDevoir(titre.getText(), "");
+		Stage stage = new Stage();
+		  new ModifView(stage);
 	} catch (GitLabApiException e) {
-		// TODO Auto-generated catch block
 		System.out.println("Impossible de créer le devoir");
+		Stage stage = new Stage();
+		new PbCreationView(stage);
 	}
-
-	  Stage stage = new Stage();
-	  new ModifView(stage);
   }
   
 
