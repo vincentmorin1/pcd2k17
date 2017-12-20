@@ -13,7 +13,7 @@ public class Delete {
 
 	    private Connection connect() {
 	        // SQLite connection string
-	    	String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/src/main/java/database/eleves.db";
+	    	String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/src/main/java/database/eleves2.db";
 	        Connection conn = null;
 	        try {
 	            conn = DriverManager.getConnection(url);
