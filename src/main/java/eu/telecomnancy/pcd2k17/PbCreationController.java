@@ -128,6 +128,8 @@ private MenuItem creation = new MenuItem();
   
   @FXML
   public void handleClickCreer(ActionEvent event) throws IOException{
+	  Stage primaryStage = (Stage) creer.getScene().getWindow();
+		primaryStage.close();
 	  log.debug(liste.getValue());
 	  log.debug(groupe.getValue());
 	  log.debug(titre.getText());
@@ -139,7 +141,7 @@ private MenuItem creation = new MenuItem();
 	  log.debug(aleatoire.getText());
 	  try {
 		dev = new Devoir(new auth());
-		dev.creerDevoir(titre.getText(), "");
+		//dev.creerDevoir(titre.getText(), "");
 		Stage stage = new Stage();
 		  new ModifView(stage);
 	} catch (GitLabApiException e) {

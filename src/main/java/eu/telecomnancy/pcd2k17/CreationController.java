@@ -130,6 +130,8 @@ private MenuItem creation = new MenuItem();
   
   @FXML
   public void handleClickCreer(ActionEvent event) throws IOException{
+	  Stage primaryStage = (Stage) creer.getScene().getWindow();
+		primaryStage.close();
 	  log.debug(liste.getValue());
 	  log.debug(groupe.getValue());
 	  log.debug(titre.getText());
@@ -152,7 +154,7 @@ private MenuItem creation = new MenuItem();
 	} catch (GitLabApiException e) {
 		System.out.println("Impossible de créer le devoir");
 		Stage stage = new Stage();
-		new CreationView(stage);
+		new PbCreationView(stage);
 	}
   }
   
