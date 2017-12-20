@@ -24,23 +24,39 @@ public class Insert{
 	    }
 	 
 
-	    public void insert(int id, String nom,String prenom,String email,int age,String classe,String appro) {
-	        String sql = "INSERT INTO eleves(id,nom,prenom,email,age,classe,appro) VALUES(?,?,?,?,?,?,?)";
-	 
+	    public void insert(int id, String nom,String email,int age,String classe,String appro) {
+	        String sql = "INSERT INTO eleves2(id,nom,email,age,classe,appro) VALUES(?,?,?,?,?,?)";
+	      
 	        try (Connection conn = this.connect();
 	                PreparedStatement pstmt = conn.prepareStatement(sql)) {
 	            pstmt.setInt(1, id);
 	            pstmt.setString(2, nom);
-	            pstmt.setString(3, prenom);
-	            pstmt.setString(4, email);
-	            pstmt.setInt(5, age);
-	            pstmt.setString(6, classe);
-	            pstmt.setString(7, appro);
+	            pstmt.setString(3, email);
+	            pstmt.setInt(4, age);
+	            pstmt.setString(5, classe);
+	            pstmt.setString(6, appro);
 	            pstmt.executeUpdate();
+	            
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
 	        }
 	    }
+	    
+	    public void insertdev(String matiere,String titre,String datedeb,String datefin,String liste,int groupe){
+	    	String sql2 = "INSERT INTO devoir(matiere,titre,datedeb,datefin,liste,groupe) VALUES(?,?,?,?,?,?)";
+	    	
+	    	try(Connection conn = this.connect();
+	    			PreparedStatement pstmt = conn.prepareStatement(sql2)) {
+	    		pstmt.setString(1,matiere);
+	    		pstmt.setString(2,titre);
+	    		pstmt.setString(3,datedeb);
+	    		pstmt.setString(4,datefin);
+	    		pstmt.setString(5,liste);
+	    		pstmt.setInt(6,groupe);
+	    		pstmt.executeUpdate();
+	    	} catch (SQLException e) {
+	    		System.out.println(e.getMessage());
+	    	}
+	    }
 	}
-	
 

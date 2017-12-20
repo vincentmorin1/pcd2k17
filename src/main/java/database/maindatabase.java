@@ -33,20 +33,29 @@ public class maindatabase{
 	    	String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/src/main/java/database/eleves2.db";
 	        
 	        // SQL statement for creating a new table
-	        String sql = "CREATE TABLE IF NOT EXISTS eleves (\n"
-	                + "	id integer PRIMARY KEY,\n"
+	        String sql = "CREATE TABLE IF NOT EXISTS eleves2 (\n"
+	                + "	id integer,\n"
 	                + "	nom text NOT NULL,\n"
-	                + "	prenom text ,\n"
-	                + "	email text ,\n"
+	                + "	email text,\n"
 	                + "	age integer, \n"
 	                + "	classe text,\n"
 	                + "	appro text\n"
 	                + ");";
 	        
+	        String sql2 = "CREATE TABLE IF NOT EXISTS devoir (\n"
+	        		+"Matière text,\n"
+	        		+"Titre text,\n"
+	        		+"Datedébut date,\n"
+	        		+"Datefin date,\n"
+	        		+"Liste text,\n"
+	        		+"Groupe integer,\n"
+	        		+");";
+	        
 	        try (Connection conn = DriverManager.getConnection(url);
 	                Statement stmt = conn.createStatement()) {
 	            // create a new table
 	            stmt.execute(sql);
+	            stmt.execute(sql2);
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
 	        }

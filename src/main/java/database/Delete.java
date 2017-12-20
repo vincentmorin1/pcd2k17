@@ -25,7 +25,7 @@ public class Delete {
 	 
 	
 	    public void delete(int id) {
-	        String sql = "DELETE FROM eleves WHERE id = ?";
+	        String sql = "DELETE FROM eleves2 WHERE id = ?";
 	 
 	        try (Connection conn = this.connect();
 	                PreparedStatement pstmt = conn.prepareStatement(sql)) {

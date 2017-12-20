@@ -13,6 +13,7 @@ import org.gitlab4j.api.GitLabApiException;
 import org.gitlab4j.api.models.User;
 
 import org.gitlab4j.api.GroupApi;
+import org.gitlab4j.api.Pager;
 import org.gitlab4j.api.ProjectApi;
 
 
@@ -36,13 +37,15 @@ public class auth extends maindatabase{
 			try {
 				createNewDatabase("eleves2.db");
 		        createNewTable();
-				List<User> users = this.auth.getUserApi().getUsers();
-				for (User user : users){
-					Integer id = user.getId();
-					String nom = user.getName();
-					String email = user.getEmail();
-					Insert app = new Insert();
-			        app.insert(id, nom, "null", email, 0 ,"null", "null");
+				Pager<User> users = this.auth.getUserApi().getUsers(60);
+				while(users.hasNext()){
+					for(User user : users.next()){
+						Integer id = user.getId();
+						String nom = user.getName();
+						Insert app = new Insert();
+				        app.insert(id, nom, "null", 0 ,"null", "null");
+					}
+					
 				}
 				
 		        
