@@ -1,12 +1,16 @@
 package eu.telecomnancy.pcd2k17;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.gitlab4j.api.GitLabApiException;
 
 import Authentification.auth;
+import database.Insert;
+import database.maindatabase;
 import devoir.Devoir;
 import devoir.Matiere;
 import javafx.collections.FXCollections;
@@ -23,7 +27,7 @@ import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToggleButton;
 
-public class CreationController{
+public class CreationController extends maindatabase{
 	Devoir dev;
 	Matiere mat;
 	
@@ -111,6 +115,7 @@ private MenuItem creation = new MenuItem();
 	  
 	  Stage stage = new Stage();
 	  new CreationView(stage);
+	  
   }
   
   @FXML
@@ -151,7 +156,7 @@ private MenuItem creation = new MenuItem();
 		} catch (GitLabApiException e) {
 			mat.creerMatiere(nomMat);
 		}
-		dev.creerDevoir(devoir, desc.getText(),nomMat);
+		dev.creerDevoir(devoir, desc.getText(),nomMat,debut.toString(),fin.toString(),liste.getValue());
 		//dev.ajouterMembre(devoir, "Schwien", "Victor");
 		Stage stage = new Stage();
 		  new ModifView(stage);
@@ -159,6 +164,8 @@ private MenuItem creation = new MenuItem();
 		Stage stage = new Stage();
 		new PbCreationView(stage);
 	}
+	  
+	  
   }
   
 

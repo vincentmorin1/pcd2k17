@@ -34,7 +34,7 @@ public class maindatabase{
 	        
 	        // SQL statement for creating a new table
 	        String sql = "CREATE TABLE IF NOT EXISTS eleves2 (\n"
-	                + "	id integer,\n"
+	                + "	id integer PRIMARY KEY,\n"
 	                + "	nom text NOT NULL,\n"
 	                + "	email text,\n"
 	                + "	age integer, \n"
@@ -42,23 +42,36 @@ public class maindatabase{
 	                + "	appro text\n"
 	                + ");";
 	        
-	        String sql2 = "CREATE TABLE IF NOT EXISTS devoir (\n"
-	        		+"Matière text,\n"
-	        		+"Titre text,\n"
-	        		+"Datedébut date,\n"
-	        		+"Datefin date,\n"
-	        		+"Liste text,\n"
-	        		+"Groupe integer,\n"
-	        		+");";
+	        
 	        
 	        try (Connection conn = DriverManager.getConnection(url);
 	                Statement stmt = conn.createStatement()) {
 	            // create a new table
 	            stmt.execute(sql);
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+	    }
+	    
+	    public static void createNewTabledev(){
+	    	String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/src/main/java/database/eleves2.db";
+	    	
+	    	String sql2 = "CREATE TABLE IF NOT EXISTS devoir (\n"
+	        		+"matiere text,\n"
+	        		+"titre text,\n"
+	        		+"datedeb text(8),\n"
+	        		+"datefin text(8),\n"
+	        		+"liste text\n"
+	        		+");";
+	    	
+	    	try (Connection conn = DriverManager.getConnection(url);
+	                Statement stmt = conn.createStatement()) {
+	            // create a new table
 	            stmt.execute(sql2);
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
 	        }
+
 	    }
 	 
 

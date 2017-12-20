@@ -5,9 +5,11 @@ import java.util.List;
 import org.gitlab4j.api.*;
 import org.gitlab4j.api.models.*;
 import Authentification.auth;
+import database.Insert;
+import database.maindatabase;
 
 
-public class Devoir{
+public class Devoir extends maindatabase{
 	public GroupApi devs;
 	public UserApi users;
 	public Matiere mat;
@@ -24,8 +26,11 @@ public class Devoir{
 	}
 	//création d'un nouveau devoir
 	
-	public void creerDevoir(String name, String desc, String nomMat) throws GitLabApiException{
+	public void creerDevoir(String name, String desc, String nomMat,String debut,String fin,String liste) throws GitLabApiException{
 			this.devs.addGroup(name, name, desc, Boolean.FALSE, Boolean.TRUE,Visibility.PRIVATE,Boolean.FALSE,Boolean.FALSE,mat.getMatiereId(nomMat),0);
+			createNewTabledev();
+			  Insert app = new Insert();
+			  app.insertdev(nomMat, name,debut,fin,liste);
 	}
 	
 	public void supprDevoir(String name) throws GitLabApiException {
