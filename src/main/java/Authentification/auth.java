@@ -34,22 +34,6 @@ public class auth extends maindatabase{
 	// Pour le test d'après
 		public auth() {
 			this.auth = new GitLabApi("https://gitlab.telecomnancy.univ-lorraine.fr", accessToken);		
-			try {
-				createNewDatabase("eleves2.db");
-		        createNewTable();
-				List<User> users = this.auth.getUserApi().getUsers();
-				for (User user : users){
-					Integer id = user.getId();
-					String nom = user.getName();
-					String email = user.getEmail();
-					Insert app = new Insert();
-			        app.insert(id, nom, "null", email, 0 ,"null", "null");
-				}
-				
-		        
-			} catch (GitLabApiException e) {
-				System.out.println("zizi");
-			}
 		}
 	private String Readfunction() {
 		    try {
