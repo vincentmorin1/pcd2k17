@@ -14,8 +14,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class ConnexionController{
-  final static Logger log = LogManager.getLogger(ConnexionController.class);
+public class PbConnexionController{
+  final static Logger log = LogManager.getLogger(PbConnexionController.class);
 
   @FXML
   private TextField token = new TextField();
@@ -50,11 +50,10 @@ public class ConnexionController{
     	   		Stage stage = new Stage();
     	   		new HomeView(stage);
        } catch(GitLabApiException e) {
-    	   		System.out.println("Pb de connexion");
     	   		Stage stage = new Stage();
     	   		new PbConnexionView(stage);
+    	   		System.out.println("Pb de connexion");
        }
-	
   }  
   
   @FXML
