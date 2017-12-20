@@ -9,6 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitMenuButton;
 
 public class HomeController{
 	
@@ -18,7 +20,13 @@ public class HomeController{
   private Button accueil = new Button();
   
   @FXML
-  private Button devoir = new Button();
+  private SplitMenuButton devoir = new SplitMenuButton();
+  
+  @FXML
+  private MenuItem creation = new MenuItem();
+    
+    @FXML
+    private MenuItem modifier = new MenuItem();
   
   @FXML
   private Button deco = new Button();
@@ -37,22 +45,31 @@ public class HomeController{
   
   @FXML
   public void handleClickQuit(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) accueil.getScene().getWindow();
+	  Stage primaryStage = (Stage) quit.getScene().getWindow();
 	  primaryStage.hide();
   }
   
   @FXML
-  public void handleClickDevoir(ActionEvent event) throws IOException{
-	  Stage primaryStage = (Stage) accueil.getScene().getWindow();
-	  primaryStage.close();
+  public void handleClickCreation(ActionEvent event) throws IOException {
+	  Stage primaryStage = (Stage) devoir.getScene().getWindow();
+	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
-	  new DevoirView(stage);
+	  new CreationView(stage);
+  }
+  
+  @FXML
+  public void handleClickModifier(ActionEvent event) throws IOException {
+	  Stage primaryStage = (Stage) devoir.getScene().getWindow();
+	  primaryStage.hide();
+	  
+	  Stage stage = new Stage();
+	  new ModifView(stage);
   }
   
   @FXML
   public void handleClickDeco(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) accueil.getScene().getWindow();
+	  Stage primaryStage = (Stage) deco.getScene().getWindow();
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();

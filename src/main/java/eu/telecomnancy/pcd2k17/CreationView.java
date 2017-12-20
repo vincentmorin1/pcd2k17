@@ -11,18 +11,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class DevoirView {
+public class CreationView {
 	
 	final static Logger log = LogManager.getLogger(Main.class);
 	
 	
-	public DevoirView (Stage stage) throws IOException {
+	public CreationView (Stage stage) throws IOException {
 		stage = new Stage();
 		
 		stage.setTitle("Telecom Nancy SchoolRoom");
 		
 		FXMLLoader loader = new FXMLLoader();
-	    loader.setLocation(getClass().getResource("devoir.fxml"));
+	    loader.setLocation(getClass().getResource("creation.fxml"));
 		Parent root = loader.load();
 		
 		stage.setOnCloseRequest(event -> {

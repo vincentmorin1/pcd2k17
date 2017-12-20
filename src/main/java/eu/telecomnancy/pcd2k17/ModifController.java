@@ -4,10 +4,7 @@ import java.io.IOException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.gitlab4j.api.GitLabApiException;
 
-import Authentification.auth;
-import devoir.Devoir;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,19 +15,28 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.SplitMenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.ToggleButton;
 
-public class DevoirController{
-	Devoir dev;
+public class ModifController{
 	
-  final static Logger log = LogManager.getLogger(DevoirController.class);
+  final static Logger log = LogManager.getLogger(ModifController.class);
   
   ObservableList<String> list = FXCollections.observableArrayList("1A","2A","3A");
+  ObservableList<String> group = FXCollections.observableArrayList("1","2","3","4","5");
 
   @FXML
   private Button accueil = new Button();
   
   @FXML
-  private Button devoir = new Button();
+  private SplitMenuButton devoir = new SplitMenuButton();
+  
+  @FXML
+  private MenuItem creation = new MenuItem();
+  
+  @FXML
+  private MenuItem modifier = new MenuItem();
   
   @FXML
   private Button deco = new Button();
@@ -57,10 +63,19 @@ public class DevoirController{
   private DatePicker debut = new DatePicker();
   
   @FXML 
-  private DatePicker fin= new DatePicker();
+  private DatePicker fin = new DatePicker();
+  
+  @FXML
+  private ToggleButton aleatoire = new ToggleButton();
+  
+  @FXML
+  private Button modif = new Button();
   
   @FXML 
   private ChoiceBox<String> liste;
+  
+  @FXML
+  private ChoiceBox<String> groupe;
   
   @FXML
   public void handleClickAccueil(ActionEvent event) throws IOException{
@@ -73,22 +88,13 @@ public class DevoirController{
   
   @FXML
   public void handleClickQuit(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) accueil.getScene().getWindow();
+	  Stage primaryStage = (Stage) quit.getScene().getWindow();
 	  primaryStage.hide();
   }
   
   @FXML
-  public void handleClickDevoir(ActionEvent event) throws IOException{
-	  Stage primaryStage = (Stage) accueil.getScene().getWindow();
-	  primaryStage.close();
-	  
-	  Stage stage = new Stage();
-	  new DevoirView(stage);
-  }
-  
-  @FXML
   public void handleClickDeco(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) accueil.getScene().getWindow();
+	  Stage primaryStage = (Stage) deco.getScene().getWindow();
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
@@ -96,29 +102,35 @@ public class DevoirController{
   }
   
   @FXML
-  public void initialize() {
-	  liste.setItems(list);
-}
+  public void handleClickCreation(ActionEvent event) throws IOException {
+	  Stage primaryStage = (Stage) devoir.getScene().getWindow();
+	  primaryStage.hide();
+	  
+	  Stage stage = new Stage();
+	  new CreationView(stage);
+  }
   
   @FXML
-  public void handleClickCreer(ActionEvent event) throws IOException{
-	  log.debug(liste.getValue());
-	  log.debug(titre.getText());
-	  log.debug(matiere.getText());
-	  log.debug(nb.getText());
-	  log.debug(desc.getText());
-	  log.debug(debut.getValue());
-	  log.debug(fin.getValue());
-	  try {
-		dev = new Devoir(new auth());
-		String devoir = titre.getText();
-		dev.creerDevoir(devoir, desc.getText());
-		//dev.ajouterMembre(devoir, "Schwien", "Victor");
-	} catch (GitLabApiException e) {
-		// TODO Auto-generated catch block
-		System.out.println("Impossible de créer le devoir");
-	}
+  public void handleClickModifier(ActionEvent event) throws IOException {
+	  Stage primaryStage = (Stage) devoir.getScene().getWindow();
+	  primaryStage.hide();
+	  
+	  Stage stage = new Stage();
+	  new ModifView(stage);
   }
+  
+  @FXML
+  public void handleClickModif(ActionEvent event) throws IOException {
+	  Stage primaryStage = (Stage) modif.getScene().getWindow();
+	  primaryStage.hide();
+	  
+	  Stage stage = new Stage();
+	  new ModifView(stage);
+  }
+  
+  @FXML
+  public void initialize() {
+}
   
 
 }
