@@ -110,6 +110,50 @@ public class Eleves extends Groupe{
 		return eleves ;
 	}
 	
+	public static ArrayList<Integer> getids(String nomFichier){
+		FileReader flot ;
+		BufferedReader flotFiltre ;
+		Scanner filtre = null ;
+		ArrayList<Integer> listid = new ArrayList();
+				
+		try	{
+					
+			if (((nomFichier.split("\\."))[1]).equals("csv")) { //Si c'est le bon format...
+					
+				flot = new FileReader(nomFichier) ;
+				flotFiltre = new BufferedReader(flot) ;
+				String ligne = flotFiltre.readLine() ;
+				
+					
+				while (ligne != null) {
+							
+					filtre = new Scanner(ligne) ;
+					filtre.useDelimiter("\\s* \\s*") ;
+					
+					int id = Integer.parseInt(filtre.next());
+					filtre.next(); 
+					filtre.next(); 
+					filtre.next();  
+					filtre.next();
+					filtre.next();
+					filtre.next();
+					listid.add(id);		
+					ligne = flotFiltre.readLine() ;
+				}
+					
+				flot.close() ;
+				filtre.close() ;
+				
+			}
+					
+			else throw new IOException();
+
+		} catch (IOException e) {
+			System.out.println("Lecture impossible ou mauvais format.") ;
+		}
+		return listid ;
+	}
+	
 	
 	
 	public void load(String nomFichier) {
@@ -120,7 +164,7 @@ public class Eleves extends Groupe{
 				
 		try	{
 					
-			if (((nomFichier.split("\\."))[1]).equals("bd")) { //Si c'est le bon format...
+			if (((nomFichier.split("\\."))[1]).equals("csv")) { //Si c'est le bon format...
 					
 				flot = new FileReader(nomFichier) ;
 				flotFiltre = new BufferedReader(flot) ;
@@ -157,19 +201,10 @@ public class Eleves extends Groupe{
 	
 	
 	
-	/*ça marche pas
-	 * public Eleves grouppromo(Eleves eleves, String promo,int nbeleves){
+	
+	/* public Eleves grouppromo(Eleves eleves, String promo,int nbeleves){
 		eleves.extractpromo(promo);
-		for (Eleve eleve : this.listeEleves){
-			for(int i=1;i<eleves.taille();i++){
-				Eleves eleves_i = new Eleves();
-				int nb =(int)(Math.random());
-			
-				if (nb==1){
-					eleves2.ajouter(eleve);
-				}	
-			}	
-		return eleves;}
+		
 	}*/
 
 	
@@ -203,7 +238,7 @@ public class Eleves extends Groupe{
 		//System.out.println(liste.toString());
 		
 		
-		/*Eleve eleve1 = new Eleve (1,"Loembe","Alex-Kevin", "Alex-Kevin.Loembe@telecomnancy.eu",23,"3A","TRS");
+		Eleve eleve1 = new Eleve (1,"Loembe","Alex-Kevin", "Alex-Kevin.Loembe@telecomnancy.eu",23,"3A","TRS");
 		Eleve eleve2 = new Eleve (2,"Martin","Victoria", "Victoria.Martin@telecomnancy.eu",22,"3A","SIE");
 		Eleve eleve3 = new Eleve (3,"Leroux","Paul", "Paul.Leroux@telecomnancy.eu",22,"2A","IAMD");
 		Eleve eleve4 = new Eleve (4,"Roudaut","Tanguy", "Tanguy.Roudaut@telecomnancy.eu",21,"2A","IL");
@@ -228,17 +263,22 @@ public class Eleves extends Groupe{
 		groupe.ajouter(eleve10);
 		groupe.ajouter(eleve11);
 		groupe.ajouter(eleve12);
+		//test listid
+		groupe.save("testid.csv");
+		ArrayList<Integer> listid = new ArrayList<Integer>();
+		listid = getids("testid.csv");
+		System.out.println(listid);
 		//test extractpromo
 		//Eleves liste2 = groupe.extractpromo("2A");
 		//System.out.println(liste2.toString());
 		
-		//test extractappro
+		/*test extractappro
 		Eleves liste =groupe.extractappro("2A", "SIE");
 		System.out.println(liste.toString());*/
 		
 		//test base de données sql
-		Eleves liste = new Eleves();
-		liste.load("eleves.bd");
-		System.out.println(liste.toString());
+		/*Eleves liste2 = new Eleves();
+		liste2.load("eleves.bd");
+		System.out.println(liste2.toString());*/
 	}
 }
