@@ -50,7 +50,7 @@ public class auth extends maindatabase{
 			}
 
 		}
-		//coucouc vincent
+		//coucouc vincent : en fait non c'est un prank. kdsnùfvkjz^nbjdtbvdfjslm
 	private String Readfunction() {
 		    try {
 		       BufferedInputStream lecture = new BufferedInputStream(new FileInputStream("token.txt"));
