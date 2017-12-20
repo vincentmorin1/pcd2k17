@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<SplitPane fx:id="home" dividerPositions="0.1912568306010929" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1100.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.pcd2k17.ModifController">
+<SplitPane fx:id="home" dividerPositions="0.20440881763527055" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.pcd2k17.ModifController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="767.0" prefWidth="310.0">
          <children>
@@ -27,7 +27,7 @@
             <Button fx:id="deco" layoutX="43.0" layoutY="283.0" mnemonicParsing="false" onAction="#handleClickDeco" prefHeight="27.0" prefWidth="120.0" text="Se déconnecter" />
             <Button fx:id="quit" layoutX="43.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleClickQuit" prefHeight="27.0" prefWidth="120.0" text="Quitter" />
             <Line endX="65.0" layoutX="120.0" layoutY="105.0" startX="-100.0" strokeWidth="2.0" />
-            <Pane layoutY="919.0" prefHeight="65.0" prefWidth="206.0">
+            <Pane layoutY="619.0" prefHeight="65.0" prefWidth="206.0">
                <children>
                   <ImageView fitHeight="72.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -50,25 +50,25 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="893.0" prefWidth="101.0">
          <children>
-            <Text layoutX="287.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modification devoir">
+            <Text layoutX="266.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modification devoir" textAlignment="CENTER">
                <font>
-                  <Font name="Trebuchet MS" size="36.0" />
+                  <Font name="Trebuchet MS" size="30.0" />
                </font>
             </Text>
-            <Button fx:id="modif" layoutX="397.0" layoutY="908.0" mnemonicParsing="false" onAction="#handleClickModif" text="Modifier">
+            <Button fx:id="modif" layoutX="350.0" layoutY="650.0" mnemonicParsing="false" onAction="#handleClickModif" text="Modifier" textAlignment="CENTER">
                <font>
                   <Font size="17.0" />
                </font></Button>
-            <Line endX="100.0" layoutX="432.0" layoutY="74.0" startX="-100.0" strokeWidth="2.0" />
-            <Line endX="100.0" layoutX="432.0" layoutY="15.0" startX="-100.0" strokeWidth="2.0" />
-            <TreeTableView layoutX="42.0" layoutY="184.0" prefHeight="468.0" prefWidth="801.0">
+            <Line endX="100.0" layoutX="397.0" layoutY="73.0" startX="-100.0" strokeWidth="2.0" />
+            <Line endX="100.0" layoutX="395.0" layoutY="14.0" startX="-100.0" strokeWidth="2.0" />
+            <TreeTableView layoutX="33.0" layoutY="115.0" prefHeight="468.0" prefWidth="729.0">
               <columns>
-                  <TreeTableColumn fx:id="titreCol" prefWidth="150.0" text="Titre" />
-                  <TreeTableColumn fx:id="matiereCol" prefWidth="150.0" text="Matière" />
-                <TreeTableColumn fx:id="debutCol" prefWidth="150.0" text="Date (début)" />
-                <TreeTableColumn fx:id="finCol" prefWidth="150.0" text="Date (fin)" />
-                  <TreeTableColumn fx:id="listeCol" prefWidth="100.0" text="Liste" />
-                  <TreeTableColumn fx:id="groupeCol" prefWidth="100.0" text="Groupe" />
+                  <TreeTableColumn fx:id="titreCol" prefWidth="109.0" text="Titre" />
+                  <TreeTableColumn fx:id="matiereCol" prefWidth="137.0" text="Matière" />
+                <TreeTableColumn fx:id="debutCol" prefWidth="139.0" text="Date (début)" />
+                <TreeTableColumn fx:id="finCol" prefWidth="136.0" text="Date (fin)" />
+                  <TreeTableColumn fx:id="listeCol" prefWidth="86.0" text="Liste" />
+                  <TreeTableColumn fx:id="groupeCol" prefWidth="121.0" text="Groupe" />
               </columns>
             </TreeTableView>
          </children>

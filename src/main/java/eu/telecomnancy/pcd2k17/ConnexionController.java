@@ -51,7 +51,6 @@ public class ConnexionController{
    	   		Stage stage = new Stage();
    	   		new HomeView(stage);
     	   		} catch(GitLabApiException e) {
-   	   		System.out.println("Pb de connexion");
    	   		Stage stage = new Stage();
    	   		new PbConnexionView(stage);
     	   		}

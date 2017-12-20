@@ -13,12 +13,10 @@ public class Devoir extends maindatabase{
 	public GroupApi devs;
 	public UserApi users;
 	public Matiere mat;
-	private List<Group> liste ;
 	private List<User> usersListe;
 	
 	public Devoir(auth lab) throws GitLabApiException{
 		devs = lab.getGroupApi();
-		liste = devs.getGroups();
 		users = lab.getUserApi();
 		usersListe = users.getUsers();
 		mat = new Matiere(lab);
@@ -32,13 +30,16 @@ public class Devoir extends maindatabase{
 			  Insert app = new Insert();
 			  app.insertdev(nomMat, name,debut,fin,liste);
 	}
+
+	public void creerDevoir(String name, String desc, String nomMat) throws GitLabApiException{
+			this.devs.addGroup(name, name, desc, Boolean.FALSE, Boolean.TRUE,Visibility.PUBLIC,Boolean.FALSE,Boolean.FALSE,mat.getMatiereId(nomMat),0);
+
+	}
 	
 	public void supprDevoir(String name) throws GitLabApiException {
 		Group todel;
 			todel = devs.getGroup(name);
 			this.devs.deleteGroup(todel);
-			liste = devs.getGroups();
-
 	}
 	
 	public Integer getDevoirId(String name) throws GitLabApiException {
@@ -49,14 +50,24 @@ public class Devoir extends maindatabase{
 		return devs.getGroup(name);
 	}
 	
-	public List<Group> getListe(){
-		return liste;
-	}
-	
 	public void ajouterMembre(String devoir,String nom,String prenom) throws GitLabApiException {
 
 			Integer userId = users.getUser(prenom+"."+nom+"@telecomnancy.eu").getId();
 			Integer accessLevel = 0;
 			devs.addMember(devs.getGroup(devoir).getId(), userId, accessLevel);
 	}
+	
+	public void modifiernomDevoir(String name, String newname) throws GitLabApiException{
+		this.devs.updateGroup(devs.getGroup(name).getId(), newname, newname, devs.getGroup(name).getDescription(), Boolean.FALSE, Boolean.TRUE,Visibility.PRIVATE,Boolean.FALSE,Boolean.FALSE,devs.getGroup(name).getParentId(),0);
+    }
+	
+	public void modifierdescDevoir(String name, String newdesc) throws GitLabApiException{
+		this.devs.updateGroup(devs.getGroup(name).getId(), name, name, newdesc, Boolean.FALSE, Boolean.TRUE,Visibility.PRIVATE,Boolean.FALSE,Boolean.FALSE,devs.getGroup(name).getParentId(),0);
+    }
+	
+	public void modifiermatiereDevoir(String name, String nomMat) throws GitLabApiException{
+		this.devs.updateGroup(devs.getGroup(name).getId(), name, name, devs.getGroup(name).getDescription(), Boolean.FALSE, Boolean.TRUE,Visibility.PRIVATE,Boolean.FALSE,Boolean.FALSE,mat.getMatiereId(nomMat),0);
+    }
+	
+	
 }
