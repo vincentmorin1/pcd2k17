@@ -1,9 +1,11 @@
 package database;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class Insert{
 	
@@ -42,18 +44,17 @@ public class Insert{
 	        }
 	    }
 	    
-	    public void insertdev(String matiere,String titre,String datedeb,String datefin,String liste,int groupe){
-	    	String sql2 = "INSERT INTO devoir(matiere,titre,datedeb,datefin,liste,groupe) VALUES(?,?,?,?,?,?)";
+	    public void insertdev(String matiere,String titre,String datedeb,String datefin,String liste){
+	    	String sql2 = "INSERT INTO devoir(matiere,titre,datedeb,datefin,liste) VALUES(?,?,?,?,?)";
 	    	
 	    	try(Connection conn = this.connect();
-	    			PreparedStatement pstmt = conn.prepareStatement(sql2)) {
-	    		pstmt.setString(1,matiere);
-	    		pstmt.setString(2,titre);
-	    		pstmt.setString(3,datedeb);
-	    		pstmt.setString(4,datefin);
-	    		pstmt.setString(5,liste);
-	    		pstmt.setInt(6,groupe);
-	    		pstmt.executeUpdate();
+	    			PreparedStatement pstmt2 = conn.prepareStatement(sql2)) {
+	    		pstmt2.setString(1,matiere);
+	    		pstmt2.setString(2,titre);
+	    		pstmt2.setString(3,datedeb);
+	    		pstmt2.setString(4,datefin);
+	    		pstmt2.setString(5,liste);
+	    		pstmt2.executeUpdate();
 	    	} catch (SQLException e) {
 	    		System.out.println(e.getMessage());
 	    	}

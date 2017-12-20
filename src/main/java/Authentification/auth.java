@@ -32,7 +32,8 @@ public class auth extends maindatabase{
 		public auth() {
 			this.auth = new GitLabApi("https://gitlab.telecomnancy.univ-lorraine.fr", accessToken);		
 
-			/*try {
+			try {
+
 				createNewDatabase("eleves2.db");
 		        createNewTable();
 				Pager<User> users = this.auth.getUserApi().getUsers(60);
@@ -43,13 +44,10 @@ public class auth extends maindatabase{
 						Insert app = new Insert();
 				        app.insert(id, nom, "null", 0 ,"null", "null");
 					}
-					
-				}
-				
-		        
+				}	   
 			} catch (GitLabApiException e) {
 				System.out.println("zizi");
-			}*/
+			}
 
 		}
 	private String Readfunction() {
