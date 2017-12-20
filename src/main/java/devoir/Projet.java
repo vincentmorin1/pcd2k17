@@ -3,7 +3,6 @@ package devoir;
 import java.util.List;
 
 import org.gitlab4j.api.GitLabApiException;
-import org.gitlab4j.api.GroupApi;
 import org.gitlab4j.api.ProjectApi;
 import org.gitlab4j.api.models.Project;
 
@@ -11,13 +10,11 @@ import Authentification.auth;
 
 public class Projet {
 	public ProjectApi proj;
-	private auth Auth;
 	private Devoir devs;
 	
-	public Projet() throws GitLabApiException{
-		Auth = new auth();
-		proj = new ProjectApi(Auth.getAuth());
-		devs = new Devoir();
+	public Projet(auth lab) throws GitLabApiException{
+		proj = lab.getProjectApi();
+		devs = new Devoir(lab);
 		// TODO Auto-generated constructor stub
 	}
 

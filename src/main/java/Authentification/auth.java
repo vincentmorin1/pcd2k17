@@ -8,6 +8,8 @@ import java.io.StringWriter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.gitlab4j.api.GitLabApi;
+import org.gitlab4j.api.GroupApi;
+import org.gitlab4j.api.ProjectApi;
 
 public class auth{
 	
@@ -42,8 +44,15 @@ public class auth{
 			return null;
 		}
 		
-	
 	public GitLabApi getAuth() {
 		return auth;
+	}
+	
+	public GroupApi getGroupApi() {
+		return auth.getGroupApi();
+	}
+	
+	public ProjectApi getProjectApi() {
+		return auth.getProjectApi();
 	}
 }

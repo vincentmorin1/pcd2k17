@@ -4,7 +4,10 @@ import java.io.IOException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.gitlab4j.api.GitLabApiException;
 
+import Authentification.auth;
+import devoir.Devoir;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,6 +20,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class DevoirController{
+	Devoir dev;
 	
   final static Logger log = LogManager.getLogger(DevoirController.class);
   
@@ -105,6 +109,13 @@ public class DevoirController{
 	  log.debug(desc.getText());
 	  log.debug(debut.getValue());
 	  log.debug(fin.getValue());
+	  try {
+		dev = new Devoir(new auth());
+		dev.creerDevoir(titre.getText(), "");
+	} catch (GitLabApiException e) {
+		// TODO Auto-generated catch block
+		System.out.println("Impossible de créer le devoir");
+	}
   }
   
 
