@@ -44,15 +44,15 @@ public class Insert{
 	        }
 	    }
 	    
-	    public void insertdev(String matiere,String titre,String datedeb,String datefin,String liste){
+	    public void insertdev(String matiere,String titre,Date datedeb,Date datefin,String liste){
 	    	String sql2 = "INSERT INTO devoir(matiere,titre,datedeb,datefin,liste) VALUES(?,?,?,?,?)";
 	    	
 	    	try(Connection conn = this.connect();
 	    			PreparedStatement pstmt2 = conn.prepareStatement(sql2)) {
 	    		pstmt2.setString(1,matiere);
 	    		pstmt2.setString(2,titre);
-	    		pstmt2.setString(3,datedeb);
-	    		pstmt2.setString(4,datefin);
+	    		pstmt2.setDate(3,datedeb);
+	    		pstmt2.setDate(4,datefin);
 	    		pstmt2.setString(5,liste);
 	    		pstmt2.executeUpdate();
 	    	} catch (SQLException e) {

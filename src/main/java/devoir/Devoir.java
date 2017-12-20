@@ -1,5 +1,6 @@
 package devoir;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.gitlab4j.api.*;
@@ -24,7 +25,7 @@ public class Devoir extends maindatabase{
 	}
 	//création d'un nouveau devoir
 	
-	public void creerDevoir(String name, String desc, String nomMat,String debut,String fin,String liste) throws GitLabApiException{
+	public void creerDevoir(String name, String desc, String nomMat,Date debut,Date fin,String liste) throws GitLabApiException{
 			this.devs.addGroup(name, name, desc, Boolean.FALSE, Boolean.TRUE,Visibility.PRIVATE,Boolean.FALSE,Boolean.FALSE,mat.getMatiereId(nomMat),0);
 			createNewTabledev();
 			  Insert app = new Insert();

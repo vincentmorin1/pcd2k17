@@ -162,7 +162,10 @@ private MenuItem creation = new MenuItem();
 		} catch (GitLabApiException e) {
 			mat.creerMatiere(nomMat);
 		}
-		dev.creerDevoir(devoir, desc.getText(),nomMat,debut.toString(),fin.toString(),liste.getValue());
+		LocalDate date1 = debut.getValue();
+		LocalDate date2 = fin.getValue();
+		
+		dev.creerDevoir(devoir, desc.getText(),nomMat,Date.valueOf(date1.toString()),Date.valueOf(date2.toString()),liste.getValue());
 		//dev.ajouterMembre(devoir, "Schwien", "Victor");
 		Stage stage = new Stage();
 		  new ModifView(stage);
