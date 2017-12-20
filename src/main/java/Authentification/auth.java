@@ -31,7 +31,9 @@ public class auth extends maindatabase{
 	// Pour le test d'après
 		public auth() {
 			this.auth = new GitLabApi("https://gitlab.telecomnancy.univ-lorraine.fr", accessToken);		
+
 			try {
+
 				createNewDatabase("eleves2.db");
 		        createNewTable();
 				Pager<User> users = this.auth.getUserApi().getUsers(60);

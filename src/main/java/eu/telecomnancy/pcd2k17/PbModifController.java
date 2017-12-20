@@ -1,18 +1,10 @@
 package eu.telecomnancy.pcd2k17;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.time.LocalDate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.gitlab4j.api.GitLabApiException;
 
-import Authentification.auth;
-import database.Insert;
-import database.maindatabase;
-import devoir.Devoir;
-import devoir.Matiere;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,13 +19,12 @@ import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToggleButton;
 
-public class CreationController extends maindatabase{
-	Devoir dev;
-	Matiere mat;
+public class PbModifController{
 	
-  final static Logger log = LogManager.getLogger(CreationController.class);
+  final static Logger log = LogManager.getLogger(PbModifController.class);
   
   ObservableList<String> list = FXCollections.observableArrayList("1A","2A","3A");
+  ObservableList<String> group = FXCollections.observableArrayList("1","2","3","4","5");
 
   @FXML
   private Button accueil = new Button();
@@ -42,13 +33,10 @@ public class CreationController extends maindatabase{
   private SplitMenuButton devoir = new SplitMenuButton();
   
   @FXML
-private MenuItem creation = new MenuItem();
+  private MenuItem creation = new MenuItem();
   
   @FXML
   private MenuItem modifier = new MenuItem();
-  
-  @FXML
-  private Button listesEleves = new Button();
   
   @FXML
   private Button deco = new Button();
@@ -75,13 +63,19 @@ private MenuItem creation = new MenuItem();
   private DatePicker debut = new DatePicker();
   
   @FXML 
-  private DatePicker fin= new DatePicker();
+  private DatePicker fin = new DatePicker();
   
   @FXML
   private ToggleButton aleatoire = new ToggleButton();
   
+  @FXML
+  private Button modif = new Button();
+  
   @FXML 
   private ChoiceBox<String> liste;
+  
+  @FXML
+  private ChoiceBox<String> groupe;
   
   @FXML
   public void handleClickAccueil(ActionEvent event) throws IOException{
@@ -94,13 +88,13 @@ private MenuItem creation = new MenuItem();
   
   @FXML
   public void handleClickQuit(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) accueil.getScene().getWindow();
+	  Stage primaryStage = (Stage) quit.getScene().getWindow();
 	  primaryStage.hide();
   }
   
   @FXML
   public void handleClickDeco(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) accueil.getScene().getWindow();
+	  Stage primaryStage = (Stage) deco.getScene().getWindow();
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
@@ -109,17 +103,25 @@ private MenuItem creation = new MenuItem();
   
   @FXML
   public void handleClickCreation(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) creer.getScene().getWindow();
+	  Stage primaryStage = (Stage) devoir.getScene().getWindow();
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
 	  new CreationView(stage);
-	  
+  }
+  
+  @FXML
+  public void handleClickListesEleves(ActionEvent event) throws IOException{
+	  Stage primaryStage = (Stage) modif.getScene().getWindow();
+		primaryStage.close();
+		
+		Stage stage = new Stage();
+		new ListesElevesView(stage);
   }
   
   @FXML
   public void handleClickModifier(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) creer.getScene().getWindow();
+	  Stage primaryStage = (Stage) devoir.getScene().getWindow();
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
@@ -127,56 +129,17 @@ private MenuItem creation = new MenuItem();
   }
   
   @FXML
-  public void handleClickListesEleves(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) listesEleves.getScene().getWindow();
+  public void handleClickModif(ActionEvent event) throws IOException {
+	  Stage primaryStage = (Stage) modif.getScene().getWindow();
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
-	  new ListesElevesView(stage);
+	  new ModifView(stage);
   }
   
   @FXML
   public void initialize() {
-	  liste.setItems(list);
 }
-  
-  @FXML
-  public void handleClickCreer(ActionEvent event) throws IOException{
-	  Stage primaryStage = (Stage) creer.getScene().getWindow();
-		primaryStage.close();
-	  log.debug(liste.getValue());
-	  log.debug(titre.getText());
-	  log.debug(matiere.getText());
-	  log.debug(nb.getText());
-	  log.debug(desc.getText());
-	  log.debug(debut.getValue());
-	  log.debug(fin.getValue());
-	  log.debug(aleatoire.getText());
-	  
-	  try {
-		dev = new Devoir(new auth());
-		mat = new Matiere(new auth());
-		String devoir = titre.getText();
-		String nomMat = matiere.getText();
-		try {
-			mat.getMatiere(nomMat);
-		} catch (GitLabApiException e) {
-			mat.creerMatiere(nomMat);
-		}
-		LocalDate date1 = debut.getValue();
-		LocalDate date2 = fin.getValue();
-		
-		dev.creerDevoir(devoir, desc.getText(),nomMat,Date.valueOf(date1.toString()),Date.valueOf(date2.toString()),liste.getValue());
-		//dev.ajouterMembre(devoir, "Schwien", "Victor");
-		Stage stage = new Stage();
-		  new ModifView(stage);
-	} catch (GitLabApiException e) {
-		Stage stage = new Stage();
-		new PbCreationView(stage);
-	}
-	  
-	  
-  }
   
 
 }

@@ -103,6 +103,15 @@ private MenuItem creation = new MenuItem();
   }
   
   @FXML
+  public void handleClickListesEleves(ActionEvent event) throws IOException{
+	  Stage primaryStage = (Stage) creer.getScene().getWindow();
+		primaryStage.close();
+		
+		Stage stage = new Stage();
+		new ListesElevesView(stage);
+  }
+  
+  @FXML
   public void handleClickCreation(ActionEvent event) throws IOException {
 	  Stage primaryStage = (Stage) creer.getScene().getWindow();
 	  primaryStage.hide();

@@ -27,6 +27,9 @@ public class HomeController{
     
     @FXML
     private MenuItem modifier = new MenuItem();
+    
+  @FXML
+  private Button listesEleves = new Button();
   
   @FXML
   private Button deco = new Button();
@@ -74,6 +77,15 @@ public class HomeController{
 	  
 	  Stage stage = new Stage();
 	  new ConnexionView(stage);
+  }
+  
+  @FXML
+  public void handleClickListesEleves(ActionEvent event) throws IOException {
+	  Stage primaryStage = (Stage) listesEleves.getScene().getWindow();
+	  primaryStage.hide();
+	  
+	  Stage stage = new Stage();
+	  new ListesElevesView(stage);
   }
   
   @FXML

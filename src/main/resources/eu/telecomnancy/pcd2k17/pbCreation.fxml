@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<SplitPane fx:id="home" dividerPositions="0.1912568306010929" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.pcd2k17.PbCreationController">
+<SplitPane fx:id="home" dividerPositions="0.20541082164328658" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.pcd2k17.PbCreationController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="767.0" prefWidth="310.0">
          <children>
@@ -28,8 +28,8 @@
                </image>
             </ImageView>
             <Button fx:id="accueil" layoutX="43.0" layoutY="163.0" mnemonicParsing="false" onAction="#handleClickAccueil" prefHeight="27.0" prefWidth="120.0" text="Accueil" />
-            <Button fx:id="deco" layoutX="43.0" layoutY="283.0" mnemonicParsing="false" onAction="#handleClickDeco" prefHeight="27.0" prefWidth="120.0" text="Se déconnecter" />
-            <Button fx:id="quit" layoutX="43.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleClickQuit" prefHeight="27.0" prefWidth="120.0" text="Quitter" />
+            <Button fx:id="deco" layoutX="43.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleClickDeco" prefHeight="27.0" prefWidth="120.0" text="Se déconnecter" />
+            <Button fx:id="quit" layoutX="43.0" layoutY="403.0" mnemonicParsing="false" onAction="#handleClickQuit" prefHeight="27.0" prefWidth="120.0" text="Quitter" />
             <Line endX="65.0" layoutX="120.0" layoutY="105.0" startX="-100.0" strokeWidth="2.0" />
             <Pane layoutY="919.0" prefHeight="65.0" prefWidth="206.0">
                <children>
@@ -45,12 +45,13 @@
                   </ImageView>
                </children>
             </Pane>
-            <SplitMenuButton alignment="CENTER" layoutX="43.0" layoutY="221.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="120.0" text="Devoir" textAlignment="CENTER">
+            <SplitMenuButton alignment="CENTER" layoutX="43.0" layoutY="223.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="120.0" text="Devoir" textAlignment="CENTER">
               <items>
                 <MenuItem fx:id="creation" mnemonicParsing="false" onAction="#handleClickCreation" text="Créer" />
                 <MenuItem fx:id="modifier" mnemonicParsing="false" onAction="#handleClickModifier" text="Modifier" />
               </items>
             </SplitMenuButton>
+            <Button fx:id="listesEleves" layoutX="43.0" layoutY="283.0" mnemonicParsing="false" onAction="#handleClickListesEleves" prefHeight="27.0" prefWidth="120.0" text="Listes élèves" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="893.0" prefWidth="101.0">
          <children>
@@ -84,20 +85,14 @@
                   <Font name="Trebuchet MS" size="16.0" />
                </font>
             </Text>
-            <Text layoutX="32.0" layoutY="589.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Groupe">
+            <Text layoutX="14.0" layoutY="586.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nb d'élèves/groupe">
                <font>
                   <Font name="Trebuchet MS" size="16.0" />
                </font>
             </Text>
-            <Text layoutX="7.0" layoutY="639.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nb d'élèves/groupe">
-               <font>
-                  <Font name="Trebuchet MS" size="16.0" />
-               </font>
-            </Text>
-            <TextField fx:id="nb" layoutX="162.0" layoutY="620.0" prefHeight="27.0" prefWidth="58.0" />
-            <ToggleButton fx:id="aleatoire" layoutX="275.0" layoutY="620.0" mnemonicParsing="false" text="Groupes aléatoires" />
+            <TextField fx:id="nb" layoutX="162.0" layoutY="567.0" prefHeight="27.0" prefWidth="58.0" />
+            <ToggleButton fx:id="aleatoire" layoutX="104.0" layoutY="624.0" mnemonicParsing="false" text="Groupes aléatoires" />
             <ChoiceBox fx:id="liste" layoutX="96.0" layoutY="520.0" prefWidth="150.0" />
-            <ChoiceBox fx:id="groupe" layoutX="96.0" layoutY="570.0" prefWidth="150.0" />
             <Button fx:id="creer" layoutX="630.0" layoutY="637.0" mnemonicParsing="false" onAction="#handleClickCreer" text="Créer">
                <font>
                   <Font size="17.0" />
@@ -105,7 +100,7 @@
             </Button>
             <DatePicker fx:id="fin" layoutX="484.0" layoutY="565.0" />
             <DatePicker fx:id="debut" layoutX="484.0" layoutY="522.0" />
-            <Text layoutX="342.0" layoutY="586.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de fin">
+            <Text layoutX="331.0" layoutY="586.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de rendu">
                <font>
                   <Font name="Trebuchet MS" size="16.0" />
                </font>
