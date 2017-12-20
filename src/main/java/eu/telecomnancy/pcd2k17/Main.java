@@ -17,6 +17,7 @@ public class Main extends Application {
 	//System.out.println(dev.getDevoirId("zaaf") + "/" + proj.getProjetId("zaaf", "gra"));
     log.debug("executing main() method.");
     launch(args);
+
   }
 
   @Override

@@ -104,7 +104,7 @@ private MenuItem creation = new MenuItem();
   
   @FXML
   public void handleClickCreation(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) devoir.getScene().getWindow();
+	  Stage primaryStage = (Stage) creer.getScene().getWindow();
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
@@ -113,7 +113,7 @@ private MenuItem creation = new MenuItem();
   
   @FXML
   public void handleClickModifier(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) devoir.getScene().getWindow();
+	  Stage primaryStage = (Stage) creer.getScene().getWindow();
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
