@@ -18,19 +18,29 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.SplitMenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.ToggleButton;
 
-public class DevoirController{
+public class CreationController{
 	Devoir dev;
 	
-  final static Logger log = LogManager.getLogger(DevoirController.class);
+  final static Logger log = LogManager.getLogger(CreationController.class);
   
   ObservableList<String> list = FXCollections.observableArrayList("1A","2A","3A");
+  ObservableList<String> group = FXCollections.observableArrayList("1","2","3","4","5");
 
   @FXML
   private Button accueil = new Button();
   
   @FXML
-  private Button devoir = new Button();
+  private SplitMenuButton devoir = new SplitMenuButton();
+  
+  @FXML
+private MenuItem creation = new MenuItem();
+  
+  @FXML
+  private MenuItem modifier = new MenuItem();
   
   @FXML
   private Button deco = new Button();
@@ -59,8 +69,14 @@ public class DevoirController{
   @FXML 
   private DatePicker fin= new DatePicker();
   
+  @FXML
+  private ToggleButton aleatoire = new ToggleButton();
+  
   @FXML 
   private ChoiceBox<String> liste;
+  
+  @FXML
+  private ChoiceBox<String> groupe;
   
   @FXML
   public void handleClickAccueil(ActionEvent event) throws IOException{
@@ -78,15 +94,6 @@ public class DevoirController{
   }
   
   @FXML
-  public void handleClickDevoir(ActionEvent event) throws IOException{
-	  Stage primaryStage = (Stage) accueil.getScene().getWindow();
-	  primaryStage.close();
-	  
-	  Stage stage = new Stage();
-	  new DevoirView(stage);
-  }
-  
-  @FXML
   public void handleClickDeco(ActionEvent event) throws IOException {
 	  Stage primaryStage = (Stage) accueil.getScene().getWindow();
 	  primaryStage.hide();
@@ -96,19 +103,40 @@ public class DevoirController{
   }
   
   @FXML
+  public void handleClickCreation(ActionEvent event) throws IOException {
+	  Stage primaryStage = (Stage) devoir.getScene().getWindow();
+	  primaryStage.hide();
+	  
+	  Stage stage = new Stage();
+	  new CreationView(stage);
+  }
+  
+  @FXML
+  public void handleClickModifier(ActionEvent event) throws IOException {
+	  Stage primaryStage = (Stage) devoir.getScene().getWindow();
+	  primaryStage.hide();
+	  
+	  Stage stage = new Stage();
+	  new ModifView(stage);
+  }
+  
+  @FXML
   public void initialize() {
 	  liste.setItems(list);
+	  groupe.setItems(group);
 }
   
   @FXML
   public void handleClickCreer(ActionEvent event) throws IOException{
 	  log.debug(liste.getValue());
+	  log.debug(groupe.getValue());
 	  log.debug(titre.getText());
 	  log.debug(matiere.getText());
 	  log.debug(nb.getText());
 	  log.debug(desc.getText());
 	  log.debug(debut.getValue());
 	  log.debug(fin.getValue());
+	  log.debug(aleatoire.getText());
 	  try {
 		dev = new Devoir(new auth());
 		dev.creerDevoir(titre.getText(), "");
@@ -116,6 +144,9 @@ public class DevoirController{
 		// TODO Auto-generated catch block
 		System.out.println("Impossible de créer le devoir");
 	}
+
+	  Stage stage = new Stage();
+	  new ModifView(stage);
   }
   
 
