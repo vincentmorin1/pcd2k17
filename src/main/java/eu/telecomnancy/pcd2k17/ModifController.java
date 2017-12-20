@@ -87,6 +87,15 @@ public class ModifController{
   }
   
   @FXML
+  public void handleClickListesEleves(ActionEvent event) throws IOException{
+	  Stage primaryStage = (Stage) modif.getScene().getWindow();
+		primaryStage.close();
+		
+		Stage stage = new Stage();
+		new ListesElevesView(stage);
+  }
+  
+  @FXML
   public void handleClickQuit(ActionEvent event) throws IOException {
 	  Stage primaryStage = (Stage) quit.getScene().getWindow();
 	  primaryStage.hide();
@@ -125,7 +134,7 @@ public class ModifController{
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
-	  new ModifView(stage);
+	  new PbModifView(stage);
   }
   
   @FXML

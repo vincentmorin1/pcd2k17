@@ -30,7 +30,6 @@ public class CreationController{
   final static Logger log = LogManager.getLogger(CreationController.class);
   
   ObservableList<String> list = FXCollections.observableArrayList("1A","2A","3A");
-  ObservableList<String> group = FXCollections.observableArrayList("1","2","3","4","5");
 
   @FXML
   private Button accueil = new Button();
@@ -43,6 +42,9 @@ private MenuItem creation = new MenuItem();
   
   @FXML
   private MenuItem modifier = new MenuItem();
+  
+  @FXML
+  private Button listesEleves = new Button();
   
   @FXML
   private Button deco = new Button();
@@ -76,9 +78,6 @@ private MenuItem creation = new MenuItem();
   
   @FXML 
   private ChoiceBox<String> liste;
-  
-  @FXML
-  private ChoiceBox<String> groupe;
   
   @FXML
   public void handleClickAccueil(ActionEvent event) throws IOException{
@@ -123,9 +122,17 @@ private MenuItem creation = new MenuItem();
   }
   
   @FXML
+  public void handleClickListesEleves(ActionEvent event) throws IOException {
+	  Stage primaryStage = (Stage) listesEleves.getScene().getWindow();
+	  primaryStage.hide();
+	  
+	  Stage stage = new Stage();
+	  new ListesElevesView(stage);
+  }
+  
+  @FXML
   public void initialize() {
 	  liste.setItems(list);
-	  groupe.setItems(group);
 }
   
   @FXML
@@ -133,7 +140,6 @@ private MenuItem creation = new MenuItem();
 	  Stage primaryStage = (Stage) creer.getScene().getWindow();
 		primaryStage.close();
 	  log.debug(liste.getValue());
-	  log.debug(groupe.getValue());
 	  log.debug(titre.getText());
 	  log.debug(matiere.getText());
 	  log.debug(nb.getText());
@@ -141,6 +147,7 @@ private MenuItem creation = new MenuItem();
 	  log.debug(debut.getValue());
 	  log.debug(fin.getValue());
 	  log.debug(aleatoire.getText());
+	  
 	  try {
 		dev = new Devoir(new auth());
 		mat = new Matiere(new auth());
