@@ -1,15 +1,12 @@
 package eu.telecomnancy.pcd2k17;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.time.LocalDate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.gitlab4j.api.GitLabApiException;
 
 import Authentification.auth;
-import database.Insert;
 import database.maindatabase;
 import devoir.Devoir;
 import devoir.Matiere;
@@ -34,6 +31,7 @@ public class CreationController extends maindatabase{
   final static Logger log = LogManager.getLogger(CreationController.class);
   
   ObservableList<String> list = FXCollections.observableArrayList("1A","2A","3A");
+  ObservableList<String> matier = FXCollections.observableArrayList("TOP","POO","SD","C","RS","MOCI","AMIO","BDA","IA");
 
   @FXML
   private Button accueil = new Button();
@@ -60,7 +58,7 @@ private MenuItem creation = new MenuItem();
   private Button creer = new Button();
   
   @FXML
-  private TextField matiere = new TextField();
+  private ChoiceBox<String> matiere;
   
   @FXML
   private TextField titre = new TextField();
@@ -138,6 +136,7 @@ private MenuItem creation = new MenuItem();
   @FXML
   public void initialize() {
 	  liste.setItems(list);
+	  matiere.setItems(matier);
 }
   
   @FXML
@@ -146,7 +145,7 @@ private MenuItem creation = new MenuItem();
 		primaryStage.close();
 	  log.debug(liste.getValue());
 	  log.debug(titre.getText());
-	  log.debug(matiere.getText());
+	  log.debug(matiere.getValue());
 	  log.debug(nb.getText());
 	  log.debug(desc.getText());
 	  log.debug(debut.getValue());
@@ -157,7 +156,7 @@ private MenuItem creation = new MenuItem();
 		dev = new Devoir(new auth());
 		mat = new Matiere(new auth());
 		String devoir = titre.getText();
-		String nomMat = matiere.getText();
+		String nomMat = matiere.getValue();
 		try {
 			mat.getMatiere(nomMat);
 		} catch (GitLabApiException e) {
