@@ -8,7 +8,6 @@ import org.gitlab4j.api.GitLabApiException;
 
 import Authentification.auth;
 import devoir.Devoir;
-import devoir.Matiere;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,11 +22,10 @@ import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToggleButton;
 
-public class CreationController{
+public class PbCreationController{
 	Devoir dev;
-	Matiere mat;
 	
-  final static Logger log = LogManager.getLogger(CreationController.class);
+  final static Logger log = LogManager.getLogger(PbCreationController.class);
   
   ObservableList<String> list = FXCollections.observableArrayList("1A","2A","3A");
   ObservableList<String> group = FXCollections.observableArrayList("1","2","3","4","5");
@@ -143,19 +141,11 @@ private MenuItem creation = new MenuItem();
 	  log.debug(aleatoire.getText());
 	  try {
 		dev = new Devoir(new auth());
-		mat = new Matiere(new auth());
-		String devoir = titre.getText();
-		String nomMat = matiere.getText();
-		try {
-			mat.getMatiere(nomMat);
-		} catch (GitLabApiException e) {
-			mat.creerMatiere(nomMat);
-		}
-		dev.creerDevoir(devoir, desc.getText(),nomMat);
-		//dev.ajouterMembre(devoir, "Schwien", "Victor");
+		//dev.creerDevoir(titre.getText(), "");
 		Stage stage = new Stage();
 		  new ModifView(stage);
 	} catch (GitLabApiException e) {
+		System.out.println("Impossible de créer le devoir");
 		Stage stage = new Stage();
 		new PbCreationView(stage);
 	}

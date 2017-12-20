@@ -31,7 +31,7 @@ public class ConnexionController{
 	
        final String fichier = "token.txt";
        try {
-           // creation d'un writer (un écrivain)
+           // creation d'un writer (un ï¿½crivain)
            final FileWriter writer = new FileWriter(fichier);
            try {
                writer.write(token.getText());
@@ -43,17 +43,20 @@ public class ConnexionController{
            System.out.println("Ca marche pas");
        }
        
-       try { //test token
-    	   		Projet test = new Projet(new auth());
-    	   		test.creerProjet("xvfsfd45");
-    	   		test.supprProjet("xvfsfd45");
-    	   		Stage stage = new Stage();
-    	   		new HomeView(stage);
-       } catch(GitLabApiException e) {
-    	   		System.out.println("Pb de connexion");
-    	   		Stage stage = new Stage();
-    	   		new PbConnexionView(stage);
-       }
+       //test token
+       
+    	   		try { 
+   	   		Projet test = new Projet(new auth());
+   	   		test.testCo();
+   	   		Stage stage = new Stage();
+   	   		new HomeView(stage);
+    	   		} catch(GitLabApiException e) {
+   	   		System.out.println("Pb de connexion");
+   	   		Stage stage = new Stage();
+   	   		new PbConnexionView(stage);
+    	   		}
+       
+  
 	
   }  
   
