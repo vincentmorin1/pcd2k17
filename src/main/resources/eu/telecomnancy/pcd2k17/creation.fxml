@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<SplitPane fx:id="home" dividerPositions="0.1912568306010929" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1100.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.pcd2k17.CreationController">
+<SplitPane fx:id="home" dividerPositions="0.1912568306010929" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.pcd2k17.CreationController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="767.0" prefWidth="310.0">
          <children>
@@ -53,65 +53,65 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="893.0" prefWidth="101.0">
          <children>
-            <Text layoutX="317.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Création devoir">
+            <Text layoutX="298.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Création devoir" textAlignment="CENTER">
                <font>
-                  <Font name="Trebuchet MS" size="36.0" />
+                  <Font name="Trebuchet MS" size="30.0" />
                </font>
             </Text>
-            <Line endX="100.0" layoutX="442.0" layoutY="14.0" startX="-100.0" strokeWidth="2.0" />
-            <Line endX="100.0" layoutX="442.0" layoutY="72.0" startX="-100.0" strokeWidth="2.0" />
-            <Text layoutX="89.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre">
+            <Line endX="100.0" layoutX="402.0" layoutY="14.0" startX="-100.0" strokeWidth="2.0" />
+            <Line endX="100.0" layoutX="402.0" layoutY="69.0" startX="-100.0" strokeWidth="2.0" />
+            <Text layoutX="41.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre">
                <font>
-                  <Font name="Trebuchet MS" size="17.0" />
+                  <Font name="Trebuchet MS" size="16.0" />
                </font>
             </Text>
-            <Text layoutX="407.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matière">
+            <Text layoutX="407.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matière">
                <font>
-                  <Font name="Trebuchet MS" size="17.0" />
+                  <Font name="Trebuchet MS" size="16.0" />
                </font>
             </Text>
-            <Text layoutX="37.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+            <Text layoutX="14.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
                <font>
-                  <Font name="Trebuchet MS" size="17.0" />
+                  <Font name="Trebuchet MS" size="16.0" />
                </font>
             </Text>
-            <TextArea fx:id="desc" layoutX="145.0" layoutY="213.0" prefHeight="328.0" prefWidth="697.0" />
-            <TextField fx:id="titre" layoutX="161.0" layoutY="126.0" />
-            <TextField fx:id="matiere" layoutX="500.0" layoutY="126.0" />
-            <Text layoutX="69.0" layoutY="656.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste">
+            <TextArea fx:id="desc" layoutX="103.0" layoutY="162.0" prefHeight="328.0" prefWidth="681.0" />
+            <TextField fx:id="titre" layoutX="107.0" layoutY="99.0" />
+            <TextField fx:id="matiere" layoutX="497.0" layoutY="98.0" />
+            <Text layoutX="41.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste">
                <font>
-                  <Font name="Trebuchet MS" size="17.0" />
+                  <Font name="Trebuchet MS" size="16.0" />
                </font>
             </Text>
-            <Text layoutX="59.0" layoutY="721.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Groupe">
+            <Text layoutX="32.0" layoutY="589.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Groupe">
                <font>
-                  <Font name="Trebuchet MS" size="17.0" />
+                  <Font name="Trebuchet MS" size="16.0" />
                </font>
             </Text>
-            <Text layoutX="14.0" layoutY="792.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nb d'élèves/groupe">
+            <Text layoutX="7.0" layoutY="639.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nb d'élèves/groupe">
                <font>
-                  <Font name="Trebuchet MS" size="17.0" />
+                  <Font name="Trebuchet MS" size="16.0" />
                </font>
             </Text>
-            <TextField fx:id="nb" layoutX="183.0" layoutY="773.0" prefHeight="27.0" prefWidth="58.0" />
-            <ToggleButton fx:id="aleatoire" layoutX="286.0" layoutY="773.0" mnemonicParsing="false" text="Groupes aléatoires" />
-            <ChoiceBox fx:id="liste" layoutX="183.0" layoutY="638.0" prefWidth="150.0" />
-            <ChoiceBox fx:id="groupe" layoutX="183.0" layoutY="702.0" prefWidth="150.0" />
-            <Button fx:id="creer" layoutX="407.0" layoutY="892.0" mnemonicParsing="false" onAction="#handleClickCreer" text="Créer">
+            <TextField fx:id="nb" layoutX="162.0" layoutY="620.0" prefHeight="27.0" prefWidth="58.0" />
+            <ToggleButton fx:id="aleatoire" layoutX="275.0" layoutY="620.0" mnemonicParsing="false" text="Groupes aléatoires" />
+            <ChoiceBox fx:id="liste" layoutX="96.0" layoutY="520.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="groupe" layoutX="96.0" layoutY="570.0" prefWidth="150.0" />
+            <Button fx:id="creer" layoutX="630.0" layoutY="637.0" mnemonicParsing="false" onAction="#handleClickCreer" text="Créer">
                <font>
                   <Font size="17.0" />
                </font>
             </Button>
-            <DatePicker fx:id="fin" layoutX="627.0" layoutY="638.0" />
-            <DatePicker fx:id="debut" layoutX="627.0" layoutY="716.0" />
-            <Text layoutX="501.0" layoutY="656.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de fin">
+            <DatePicker fx:id="fin" layoutX="484.0" layoutY="565.0" />
+            <DatePicker fx:id="debut" layoutX="484.0" layoutY="522.0" />
+            <Text layoutX="342.0" layoutY="586.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de fin">
                <font>
-                  <Font name="Trebuchet MS" size="17.0" />
+                  <Font name="Trebuchet MS" size="16.0" />
                </font>
             </Text>
-            <Text layoutX="500.0" layoutY="735.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de début">
+            <Text layoutX="331.0" layoutY="541.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de début">
                <font>
-                  <Font name="Trebuchet MS" size="17.0" />
+                  <Font name="Trebuchet MS" size="16.0" />
                </font>
             </Text>
          </children>
