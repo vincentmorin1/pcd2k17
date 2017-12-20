@@ -9,12 +9,10 @@ import Authentification.auth;
 
 public class Devoir{
 	public GroupApi devs;
-	private auth Auth;
 	private List<Group> liste ;
 	
-	public Devoir() throws GitLabApiException{
-		Auth = new auth();
-		devs = new GroupApi(Auth.getAuth());
+	public Devoir(auth lab) throws GitLabApiException{
+		devs = lab.getGroupApi();
 		liste = devs.getGroups();
 		// TODO Auto-generated constructor stub
 	}

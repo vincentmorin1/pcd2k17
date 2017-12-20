@@ -11,6 +11,10 @@ import org.gitlab4j.api.GitLabApi;
 import org.gitlab4j.api.GitLabApiException;
 import org.gitlab4j.api.models.User;
 
+import org.gitlab4j.api.GroupApi;
+import org.gitlab4j.api.ProjectApi;
+
+
 import database.Insert;
 import database.maindatabase;
 
@@ -60,11 +64,16 @@ public class auth extends maindatabase{
 			return null;
 		}
 		
-	
 	public GitLabApi getAuth() {
 		return auth;
 	}
 	
+
+	public GroupApi getGroupApi() {
+		return auth.getGroupApi();
+	}
 	
-	
+	public ProjectApi getProjectApi() {
+		return auth.getProjectApi();
+	}
 }
