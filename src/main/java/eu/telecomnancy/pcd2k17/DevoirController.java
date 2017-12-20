@@ -111,7 +111,9 @@ public class DevoirController{
 	  log.debug(fin.getValue());
 	  try {
 		dev = new Devoir(new auth());
-		dev.creerDevoir(titre.getText(), "");
+		String devoir = titre.getText();
+		dev.creerDevoir(devoir, desc.getText());
+		//dev.ajouterMembre(devoir, "Schwien", "Victor");
 	} catch (GitLabApiException e) {
 		// TODO Auto-generated catch block
 		System.out.println("Impossible de créer le devoir");

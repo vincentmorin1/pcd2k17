@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.gitlab4j.api.GitLabApi;
 import org.gitlab4j.api.GroupApi;
 import org.gitlab4j.api.ProjectApi;
+import org.gitlab4j.api.UserApi;
 
 public class auth{
 	
@@ -54,5 +55,9 @@ public class auth{
 	
 	public ProjectApi getProjectApi() {
 		return auth.getProjectApi();
+	}
+	
+	public UserApi getUserApi() {
+		return auth.getUserApi();
 	}
 }

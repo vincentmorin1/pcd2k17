@@ -9,11 +9,15 @@ import Authentification.auth;
 
 public class Devoir{
 	public GroupApi devs;
+	public UserApi users;
 	private List<Group> liste ;
+	private List<User> usersListe;
 	
 	public Devoir(auth lab) throws GitLabApiException{
 		devs = lab.getGroupApi();
 		liste = devs.getGroups();
+		users = lab.getUserApi();
+		usersListe = users.getUsers();
 		// TODO Auto-generated constructor stub
 	}
 	//création d'un nouveau devoir
@@ -51,5 +55,17 @@ public class Devoir{
 	
 	public List<Group> getListe(){
 		return liste;
+	}
+	
+	public void ajouterMembre(String devoir,String nom,String prenom) {
+		try {
+			Integer userId = users.getUser(prenom+"."+nom+"@telecomnancy.eu").getId();
+			Integer accessLevel = 0;
+			devs.addMember(devs.getGroup(devoir).getId(), userId, accessLevel);
+		} catch (GitLabApiException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Impossible d'ajouter "+nom+" "+prenom);
+		}
+		
 	}
 }
