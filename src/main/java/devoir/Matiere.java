@@ -57,4 +57,5 @@ public class Matiere {
 			Integer accessLevel = 0;
 			matiere.addMember(matiere.getGroup(matiereName).getId(), userId, accessLevel);	
 	}
+	
 }

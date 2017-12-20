@@ -54,4 +54,18 @@ public class Devoir{
 			Integer accessLevel = 0;
 			devs.addMember(devs.getGroup(devoir).getId(), userId, accessLevel);
 	}
+	
+	public void modifiernomDevoir(String name, String newname) throws GitLabApiException{
+		this.devs.updateGroup(devs.getGroup(name).getId(), newname, newname, devs.getGroup(name).getDescription(), Boolean.FALSE, Boolean.TRUE,Visibility.PRIVATE,Boolean.FALSE,Boolean.FALSE,devs.getGroup(name).getParentId(),0);
+    }
+	
+	public void modifierdescDevoir(String name, String newdesc) throws GitLabApiException{
+		this.devs.updateGroup(devs.getGroup(name).getId(), name, name, newdesc, Boolean.FALSE, Boolean.TRUE,Visibility.PRIVATE,Boolean.FALSE,Boolean.FALSE,devs.getGroup(name).getParentId(),0);
+    }
+	
+	public void modifiermatiereDevoir(String name, String nomMat) throws GitLabApiException{
+		this.devs.updateGroup(devs.getGroup(name).getId(), name, name, devs.getGroup(name).getDescription(), Boolean.FALSE, Boolean.TRUE,Visibility.PRIVATE,Boolean.FALSE,Boolean.FALSE,mat.getMatiereId(nomMat),0);
+    }
+	
+	
 }
