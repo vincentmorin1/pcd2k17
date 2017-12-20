@@ -79,7 +79,6 @@
             </Text>
             <TextArea fx:id="desc" layoutX="103.0" layoutY="162.0" prefHeight="328.0" prefWidth="681.0" />
             <TextField fx:id="titre" layoutX="107.0" layoutY="99.0" />
-            <TextField fx:id="matiere" layoutX="497.0" layoutY="98.0" />
             <Text layoutX="41.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste">
                <font>
                   <Font name="Trebuchet MS" size="16.0" />
@@ -110,6 +109,7 @@
                   <Font name="Trebuchet MS" size="16.0" />
                </font>
             </Text>
+            <ChoiceBox fx:id="matiere" layoutX="506.0" layoutY="98.0" prefHeight="27.0" prefWidth="167.0" />
          </children>
       </AnchorPane>
   </items>
