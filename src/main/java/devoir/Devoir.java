@@ -26,7 +26,6 @@ public class Devoir{
 	
 	public void creerDevoir(String name, String desc, String nomMat) throws GitLabApiException{
 			this.devs.addGroup(name, name, desc, Boolean.FALSE, Boolean.TRUE,Visibility.PRIVATE,Boolean.FALSE,Boolean.FALSE,mat.getMatiereId(nomMat),0);
-			liste.add(devs.getGroup(name));
 	}
 	
 	public void supprDevoir(String name) throws GitLabApiException {

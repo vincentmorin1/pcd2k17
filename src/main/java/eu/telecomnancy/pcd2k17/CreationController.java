@@ -146,13 +146,16 @@ private MenuItem creation = new MenuItem();
 		mat = new Matiere(new auth());
 		String devoir = titre.getText();
 		String nomMat = matiere.getText();
-		mat.creerMatiere(nomMat);
+		try {
+			mat.getMatiere(nomMat);
+		} catch (GitLabApiException e) {
+			mat.creerMatiere(nomMat);
+		}
 		dev.creerDevoir(devoir, desc.getText(),nomMat);
 		//dev.ajouterMembre(devoir, "Schwien", "Victor");
 		Stage stage = new Stage();
 		  new ModifView(stage);
 	} catch (GitLabApiException e) {
-		System.out.println("Impossible de créer le devoir");
 		Stage stage = new Stage();
 		new PbCreationView(stage);
 	}

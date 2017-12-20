@@ -7,7 +7,7 @@ import org.gitlab4j.api.GroupApi;
 import org.gitlab4j.api.UserApi;
 import org.gitlab4j.api.models.Group;
 import org.gitlab4j.api.models.User;
-import org.gitlab4j.api.models.Visibility;
+
 
 import Authentification.auth;
 
@@ -28,7 +28,6 @@ public class Matiere {
 	
 	public void creerMatiere(String name) throws GitLabApiException{
 			this.matiere.addGroup(name, name);
-			liste.add(matiere.getGroup(name));
 	}
 	
 	public void supprMatiere(String name) throws GitLabApiException {
