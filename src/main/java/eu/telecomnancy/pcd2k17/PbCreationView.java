@@ -29,7 +29,7 @@ public class PbCreationView {
 		 log.debug("terminating application.");
 		 Platform.exit();
 		});
-		stage.setScene(new Scene(root, 1100, 1000));
+		stage.setScene(new Scene(root, 1000, 700));
 		stage.setResizable(false);
 		stage.show();
 	}

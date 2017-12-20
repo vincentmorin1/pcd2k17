@@ -9,36 +9,31 @@ import Authentification.auth;
 
 public class Devoir{
 	public GroupApi devs;
+	public UserApi users;
+	public Matiere mat;
 	private List<Group> liste ;
+	private List<User> usersListe;
 	
 	public Devoir(auth lab) throws GitLabApiException{
 		devs = lab.getGroupApi();
 		liste = devs.getGroups();
+		users = lab.getUserApi();
+		usersListe = users.getUsers();
+		mat = new Matiere(lab);
 		// TODO Auto-generated constructor stub
 	}
 	//création d'un nouveau devoir
 	
-	public void creerDevoir(String name, String desc){
-		try {
-			this.devs.addGroup(name, name);
-			liste.add(devs.getGroup(name));
-		} catch (GitLabApiException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Impossible de créer le devoir "+name+ ".");
-		}
+	public void creerDevoir(String name, String desc, String nomMat) throws GitLabApiException{
+			this.devs.addGroup(name, name, desc, Boolean.FALSE, Boolean.TRUE,Visibility.PRIVATE,Boolean.FALSE,Boolean.FALSE,mat.getMatiereId(nomMat),0);
 	}
 	
-	public void supprDevoir(String name) {
+	public void supprDevoir(String name) throws GitLabApiException {
 		Group todel;
-		try {
 			todel = devs.getGroup(name);
 			this.devs.deleteGroup(todel);
 			liste = devs.getGroups();
-		} catch (GitLabApiException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Le devoir "+name+" n'existe pas !");
-		}
-		
+
 	}
 	
 	public Integer getDevoirId(String name) throws GitLabApiException {
@@ -51,5 +46,12 @@ public class Devoir{
 	
 	public List<Group> getListe(){
 		return liste;
+	}
+	
+	public void ajouterMembre(String devoir,String nom,String prenom) throws GitLabApiException {
+
+			Integer userId = users.getUser(prenom+"."+nom+"@telecomnancy.eu").getId();
+			Integer accessLevel = 0;
+			devs.addMember(devs.getGroup(devoir).getId(), userId, accessLevel);
 	}
 }

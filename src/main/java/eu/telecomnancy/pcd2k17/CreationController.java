@@ -8,6 +8,7 @@ import org.gitlab4j.api.GitLabApiException;
 
 import Authentification.auth;
 import devoir.Devoir;
+import devoir.Matiere;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +25,7 @@ import javafx.scene.control.ToggleButton;
 
 public class CreationController{
 	Devoir dev;
+	Matiere mat;
 	
   final static Logger log = LogManager.getLogger(CreationController.class);
   
@@ -128,6 +130,8 @@ private MenuItem creation = new MenuItem();
   
   @FXML
   public void handleClickCreer(ActionEvent event) throws IOException{
+	  Stage primaryStage = (Stage) creer.getScene().getWindow();
+		primaryStage.close();
 	  log.debug(liste.getValue());
 	  log.debug(groupe.getValue());
 	  log.debug(titre.getText());
@@ -139,11 +143,19 @@ private MenuItem creation = new MenuItem();
 	  log.debug(aleatoire.getText());
 	  try {
 		dev = new Devoir(new auth());
-		dev.creerDevoir(titre.getText(), "");
+		mat = new Matiere(new auth());
+		String devoir = titre.getText();
+		String nomMat = matiere.getText();
+		try {
+			mat.getMatiere(nomMat);
+		} catch (GitLabApiException e) {
+			mat.creerMatiere(nomMat);
+		}
+		dev.creerDevoir(devoir, desc.getText(),nomMat);
+		//dev.ajouterMembre(devoir, "Schwien", "Victor");
 		Stage stage = new Stage();
 		  new ModifView(stage);
 	} catch (GitLabApiException e) {
-		System.out.println("Impossible de créer le devoir");
 		Stage stage = new Stage();
 		new PbCreationView(stage);
 	}
