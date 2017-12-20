@@ -31,7 +31,7 @@ public class ConnexionController{
 	
        final String fichier = "token.txt";
        try {
-           // creation d'un writer (un Ã©crivain)
+           // creation d'un writer (un écrivain)
            final FileWriter writer = new FileWriter(fichier);
            try {
                writer.write(token.getText());

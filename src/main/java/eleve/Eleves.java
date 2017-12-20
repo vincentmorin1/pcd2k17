@@ -199,9 +199,15 @@ public class Eleves extends Groupe{
 		}
 	}
 	
+	public static void generategroupe(ArrayList<Eleve> eleves, int nbeleves){
+		int c=0;
+		ArrayList<Eleve> tmp = eleves;
+		for(Eleve eleve : tmp){		
+			ArrayList<Eleve> listegroupe = new ArrayList<Eleve>();
+			}	
+		}
 	
-	
-	
+
 	/* public Eleves grouppromo(Eleves eleves, String promo,int nbeleves){
 		eleves.extractpromo(promo);
 		
@@ -250,24 +256,30 @@ public class Eleves extends Groupe{
 		Eleve eleve10 = new Eleve (10,"Schwien","Victor", "Victor.Schwien@telecomnancy.eu",21,"1A","null");
 		Eleve eleve11 = new Eleve (11,"Bortolus","Alan", "Alan.Bortolus@telecomnancy.eu",20,"1A","null");
 		Eleve eleve12 = new Eleve (12,"Nakong","Dylan", "Dylan.Nakong@telecomnancy.eu",20,"1A","null");
-		Eleves groupe= new Eleves();
-		groupe.ajouter(eleve1);
-		groupe.ajouter(eleve2);
-		groupe.ajouter(eleve3);
-		groupe.ajouter(eleve4);
-		groupe.ajouter(eleve5);
-		groupe.ajouter(eleve6);
-		groupe.ajouter(eleve7);
-		groupe.ajouter(eleve8);
-		groupe.ajouter(eleve9);
-		groupe.ajouter(eleve10);
-		groupe.ajouter(eleve11);
-		groupe.ajouter(eleve12);
-		//test listid
+		ArrayList<Eleve> groupe= new ArrayList<Eleve>();
+		groupe.add(eleve1);
+		groupe.add(eleve2);
+		groupe.add(eleve3);
+		groupe.add(eleve4);
+		groupe.add(eleve5);
+		groupe.add(eleve6);
+		groupe.add(eleve7);
+		groupe.add(eleve8);
+		groupe.add(eleve9);
+		groupe.add(eleve10);
+		groupe.add(eleve11);
+		groupe.add(eleve12);
+		generategroupe(groupe, 2);
+		//test génération aleatoire de groupe à partir d'une arraylist d'eleves
+		
+		
+		
+		/*test listid
 		groupe.save("testid.csv");
 		ArrayList<Integer> listid = new ArrayList<Integer>();
 		listid = getids("testid.csv");
-		System.out.println(listid);
+		System.out.println(listid);*/
+		
 		//test extractpromo
 		//Eleves liste2 = groupe.extractpromo("2A");
 		//System.out.println(liste2.toString());
