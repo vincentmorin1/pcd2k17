@@ -26,7 +26,7 @@
             <Image url="@logo.png" />
          </image>
       </ImageView>
-      <TextField fx:id="token" layoutX="322.0" layoutY="212.0" />
+      <TextField fx:id="token" layoutX="322.0" layoutY="212.0" onKeyPressed="#enterKeyPressed" />
       <Text layoutX="262.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Token">
          <font>
             <Font name="Trebuchet MS Bold" size="17.0" />

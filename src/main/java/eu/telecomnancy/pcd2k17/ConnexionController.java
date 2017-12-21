@@ -12,6 +12,8 @@ import devoir.Room;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -63,6 +65,15 @@ public class ConnexionController{
   
 	
   }  
+
+@FXML
+public void enterKeyPressed(KeyEvent e) throws IOException {
+	if (e.getCode().equals(KeyCode.ENTER)) {
+		handleClickConnexion(null);
+	}
+	
+}
+  
   
   @FXML
   public void initialize() {
