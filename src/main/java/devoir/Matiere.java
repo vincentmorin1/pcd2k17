@@ -27,7 +27,7 @@ public class Matiere {
 	//création d'un nouveau devoir
 	
 	public void creerMatiere(String name) throws GitLabApiException{
-			this.matiere.addGroup(name, name, "", Boolean.FALSE, Boolean.TRUE,Visibility.PRIVATE,Boolean.FALSE,Boolean.FALSE,room.getRoomId("PCDpotes"),0);
+			this.matiere.addGroup(name, name, "", Boolean.FALSE, Boolean.TRUE,Visibility.PRIVATE,Boolean.FALSE,Boolean.FALSE,room.getRoomId(),0);
 	}
 	
 	public void supprMatiere(String name) throws GitLabApiException {
@@ -38,15 +38,15 @@ public class Matiere {
 	}
 	
 	public Integer getMatiereId(String name) throws GitLabApiException {
-		return matiere.getGroup("PCDpotes/"+name).getId();
+		return matiere.getGroup(room.getRoomName()+"/"+name).getId();
 	}
 	
 	public Group getMatiere(String name) throws GitLabApiException {
-		return matiere.getGroup("PCDpotes/"+name);
+		return matiere.getGroup(room.getRoomName()+"/"+name);
 	}
 		
 	public void ajouterMembre(String matiereName,String username) throws GitLabApiException {
-			matiere.addMember(matiere.getGroup("PCDpotes/"+matiereName).getId(), 336, AccessLevel.OWNER);
+			matiere.addMember(matiere.getGroup(room.getRoomName()+"/"+matiereName).getId(), 336, AccessLevel.OWNER);
 	}
 	
 	
