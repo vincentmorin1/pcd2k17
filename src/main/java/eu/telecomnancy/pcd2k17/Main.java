@@ -16,12 +16,13 @@ public class Main extends Application {
 	
 	//System.out.println(dev.getDevoirId("zaaf") + "/" + proj.getProjetId("zaaf", "gra"));
     log.debug("executing main() method.");
-    launch(args);	  
+    launch(args);
   }
 
   @Override
   public void start(Stage primaryStage) throws Exception {
 	  new ConnexionView(primaryStage);
   }
+  
 
 }

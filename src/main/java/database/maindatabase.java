@@ -35,22 +35,13 @@ public class maindatabase{
 	        // SQL statement for creating a new table
 	        String sql = "CREATE TABLE IF NOT EXISTS eleves2 (\n"
 	                + "	id integer PRIMARY KEY,\n"
-	                + "	nom text NOT NULL,\n"
+	                + "	prenom text ,\n"
+	                + "	nom text ,\n"
 	                + "	email text,\n"
-	                + "	age integer, \n"
 	                + "	classe text,\n"
 	                + "	appro text\n"
 	                + ");";
 	        
-	        String sql2 = "CREATE TABLE IF NOT EXISTS devoir (\n"
-	        		+"Mati�re text,\n"
-	        		+"Titre text,\n"
-	        		+"Dated�but date,\n"
-	        		+"Datefin date,\n"
-	        		+"Liste text,\n"
-	        		+"Groupe integer,\n"
-	        		+"Préfixe,\n"
-	        		+");";
 	        
 	        try (Connection conn = DriverManager.getConnection(url);
 	                Statement stmt = conn.createStatement()) {
