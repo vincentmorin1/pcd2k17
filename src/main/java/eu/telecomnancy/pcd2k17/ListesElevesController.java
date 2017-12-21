@@ -142,51 +142,8 @@ public class ListesElevesController implements Initializable{
 	  Stage stage = new Stage();
 	  new ListesElevesView(stage);
   }
-  
-  /*
-  @FXML
-  public void handleClickListe1A(ActionEvent event) throws IOException {
-	  
-	  for (String str : tabclasse) {
-		  if (str == "1A" ) {
-			  Listeeleve.add(str);
-		  }
-	  }
-	  
-	  Stage primaryStage = (Stage) liste1A.getScene().getWindow();
-	  primaryStage.hide();
-	  
-	  Stage stage = new Stage();
-	  new ListesElevesView(stage);
-  }
-*/  
-  @FXML
-  public void handleClickListe2A(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) liste2A.getScene().getWindow();
-	  primaryStage.hide();
-	  
-	  Stage stage = new Stage();
-	  new ListesElevesView(stage);
-  }
-  
-  @FXML
-  public void handleClickListe3A(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) liste3A.getScene().getWindow();
-	  primaryStage.hide();
-	  
-	  Stage stage = new Stage();
-	  new ListesElevesView(stage);
-  }
-  
-  @FXML
-  public void handleClickAll(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) all.getScene().getWindow();
-	  primaryStage.hide();
-	  
-	  Stage stage = new Stage();
-	  new ListesElevesView(stage);
-  }
-  
+
+ 
   private Connection connect() {
       // SQLite connection string
       String url = "jdbc:sqlite:src/main/java/database/eleves2.db";
