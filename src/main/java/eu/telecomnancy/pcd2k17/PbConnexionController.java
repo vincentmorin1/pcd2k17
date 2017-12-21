@@ -8,6 +8,7 @@ import org.gitlab4j.api.GitLabApiException;
 
 import Authentification.auth;
 import devoir.Projet;
+import devoir.Room;
 import javafx.event.ActionEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -46,9 +47,11 @@ public class PbConnexionController{
        }
        
        try { //test token
-    	   		Projet test = new Projet(new auth());
-    	   		test.creerProjet("xvfsfd45");
-    	   		test.supprProjet("xvfsfd45");
+    	   		Room test = new Room(new auth());
+    	   		test.testCo();
+    	   		try {
+    	   			test.creerRoom("PCDpotes");
+    	   		} catch (GitLabApiException e) {}
     	   		Stage stage = new Stage();
     	   		new HomeView(stage);
        } catch(GitLabApiException e) {

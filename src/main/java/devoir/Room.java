@@ -33,6 +33,11 @@ public class Room {
 			System.out.println("Le devoir "+name+" n'existe pas !");
 	}
 	
+	public void testCo() throws GitLabApiException {
+		room.addGroup("vfrvfrgtb","vfrvfrgtb");
+		room.deleteGroup(room.getGroup("vfrvfrgtb"));
+	}
+	
 	public Integer getRoomId() throws GitLabApiException {
 		return room.getGroup(roomName).getId();
 	}
@@ -66,10 +71,12 @@ public class Room {
 		room.removeMember(room.getGroup(roomName).getId(),user.getUser(username).getId());
 	}
 	
-	public static void main(String args[]) throws GitLabApiException {
+	/*public static void main(String args[]) throws GitLabApiException {
 		Room room = new Room(new auth());
-		room.ajouterMembre("Victor.Schwien","Developer");
-	}
+		room.ajouterMembre("Vincent.Morin","Developer");
+		room.ajouterMembre("Cedric.Bell","Developer");
+		room.ajouterMembre("Eliot.Godard","Developer");
+	}*/
 	
 	public String getRoomName() {
 		return this.roomName;
