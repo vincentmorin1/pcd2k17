@@ -81,6 +81,18 @@ public class ListesElevesController implements Initializable{
   private ArrayList<String> tabappro;
   
   @FXML
+  private String idtableau = null;
+  
+  @FXML
+  private String classetableau = null;
+  
+  @FXML
+  private String approtableau = null;
+  
+  @FXML
+  private String nomtableau = null;
+  
+  @FXML
   public void handleClickAccueil(ActionEvent event) throws IOException{
 	  Stage primaryStage = (Stage) accueil.getScene().getWindow();
 		primaryStage.close();
@@ -131,15 +143,23 @@ public class ListesElevesController implements Initializable{
 	  new ListesElevesView(stage);
   }
   
+  /*
   @FXML
   public void handleClickListe1A(ActionEvent event) throws IOException {
+	  
+	  for (String str : tabclasse) {
+		  if (str == "1A" ) {
+			  Listeeleve.add(str);
+		  }
+	  }
+	  
 	  Stage primaryStage = (Stage) liste1A.getScene().getWindow();
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
 	  new ListesElevesView(stage);
   }
-  
+*/  
   @FXML
   public void handleClickListe2A(ActionEvent event) throws IOException {
 	  Stage primaryStage = (Stage) liste2A.getScene().getWindow();
@@ -230,17 +250,12 @@ public void initialize(URL location, ResourceBundle resources) {
         
         // loop through the result set
         while (rs.next()) {
-        		String idtableau = rs.getString("id");
-        		String nomtableau = rs.getString("nom");
-        		String emailtableau = rs.getString("email");
-        		String classetableau = rs.getString("classe");
-        		String approtableau = rs.getString("appro");
-        		
+        		idtableau = rs.getString("id");
+        		nomtableau = rs.getString("nom");
+        		classetableau = rs.getString("classe");
+        		approtableau = rs.getString("appro");
+        		tabclasse.add(classetableau);
         		Listeeleve.add(new RecupBD(idtableau,classetableau,nomtableau,approtableau)); 
-        		
-        		// A LA PLACE DE FAIRE UN PRINT METTRE DANS LE TABLEAU !
-        		
-        		System.out.println(idtableau + " " + nomtableau + " " + emailtableau + " " + classetableau + " " + approtableau);
         }
     } catch (SQLException e) {
         System.out.println(e.getMessage());
