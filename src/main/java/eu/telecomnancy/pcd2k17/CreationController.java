@@ -25,6 +25,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.RadioButton;
 
 public class CreationController extends maindatabase{
 	Devoir dev;
@@ -33,7 +34,7 @@ public class CreationController extends maindatabase{
   final static Logger log = LogManager.getLogger(CreationController.class);
   
   ObservableList<String> list = FXCollections.observableArrayList("1A","2A","3A");
-  ObservableList<String> matier = FXCollections.observableArrayList("TOP","POO","SD","C","RS","MOCI","AMIO","BDA","IA");
+  ObservableList<String> matier = FXCollections.observableArrayList("TOP","POO","SD","CSHELL","RS","MOCI","AMIO","BDA","IA");
 
   @FXML
   private Button accueil = new Button();
@@ -79,6 +80,12 @@ private MenuItem creation = new MenuItem();
   
   @FXML
   private ToggleButton aleatoire = new ToggleButton();
+  
+  @FXML
+  private RadioButton privee = new RadioButton();
+  
+  @FXML
+  private RadioButton publique = new RadioButton();
   
   @FXML 
   private ChoiceBox<String> liste;
@@ -153,6 +160,8 @@ private MenuItem creation = new MenuItem();
 	  log.debug(debut.getValue());
 	  log.debug(fin.getValue());
 	  log.debug(aleatoire.getText());
+	  log.debug(privee.getText());
+	  log.debug(publique.getText());
 	  
 	  try {
 		dev = new Devoir(new auth());
@@ -164,10 +173,9 @@ private MenuItem creation = new MenuItem();
 		} catch (GitLabApiException e) {
 			mat.creerMatiere(nomMat);
 		}
-		LocalDate date1 = debut.getValue();
-		LocalDate date2 = fin.getValue();
+
 		
-		dev.creerDevoir(devoir, desc.getText(),nomMat,Date.valueOf(date1.toString()),Date.valueOf(date2.toString()),liste.getValue());
+		dev.creerDevoir(devoir, desc.getText(),matiere.getValue(),debut.getValue(),fin.getValue(),liste.getValue());
 		//dev.ajouterMembre(devoir, "Schwien", "Victor");
 		Stage stage = new Stage();
 		  new ModifView(stage);
@@ -176,6 +184,37 @@ private MenuItem creation = new MenuItem();
 		new PbCreationView(stage);
 	}
 	  
+	  if (debut.getValue() != null && fin.getValue() != null) {
+		  if (debut.getValue().compareTo(fin.getValue()) > 0) {
+			  Stage stage = new Stage();
+			new PbCreationDateView(stage);
+		  }
+		  else {
+			  try {
+				  dev = new Devoir(new auth());
+				  mat = new Matiere(new auth());
+				  String devoir = titre.getText();
+				  String nomMat = matiere.getValue();
+				  try {
+					  mat.getMatiere(nomMat);
+				  } catch (GitLabApiException e) {
+					  mat.creerMatiere(nomMat);
+				  }
+				  
+				  dev.creerDevoir(devoir, desc.getText(),nomMat,debut.getValue(),fin.getValue(),liste.getValue());
+				  //dev.ajouterMembre(devoir, "Schwien", "Victor");
+				  Stage stage = new Stage();
+				  new ModifView(stage);
+			  } catch (GitLabApiException e) {
+				  Stage stage = new Stage();
+				  new PbCreationView(stage);
+			  }
+		  }
+	  }
+	  else {
+		  	Stage stage = new Stage();
+			new PbCreationDateView(stage);
+	  }
 	  
   }
   
