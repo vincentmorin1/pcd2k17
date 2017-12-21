@@ -43,12 +43,13 @@ public class maindatabase{
 	                + ");";
 	        
 	        String sql2 = "CREATE TABLE IF NOT EXISTS devoir (\n"
-	        		+"Matière text,\n"
+	        		+"Matiï¿½re text,\n"
 	        		+"Titre text,\n"
-	        		+"Datedébut date,\n"
+	        		+"Datedï¿½but date,\n"
 	        		+"Datefin date,\n"
 	        		+"Liste text,\n"
 	        		+"Groupe integer,\n"
+	        		+"PrÃ©fixe,\n"
 	        		+");";
 	        
 	        try (Connection conn = DriverManager.getConnection(url);
