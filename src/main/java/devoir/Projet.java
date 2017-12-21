@@ -15,6 +15,7 @@ public class Projet {
 	public Projet(auth lab) throws GitLabApiException{
 		proj = lab.getProjectApi();
 		devs = new Devoir(lab);
+		//devoirname = devs.getDevoirName(id))
 		// TODO Auto-generated constructor stub
 	}
 
@@ -34,6 +35,15 @@ public class Projet {
 		} catch (GitLabApiException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Impossible de créer le projet "+name+".");
+		}
+	}
+	
+	public void creerProjetPrefixe(String devoirName,String name) {
+		try {
+			this.proj.createProject(devs.getDevoirId(devoirName),devoirName+name);
+		} catch (GitLabApiException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Impossible de créer le projet "+devoirName+name+".");
 		}
 	}
 	
