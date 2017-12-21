@@ -9,6 +9,8 @@ import org.gitlab4j.api.GitLabApiException;
 import Authentification.auth;
 import devoir.Projet;
 import javafx.event.ActionEvent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
@@ -54,7 +56,15 @@ public class PbConnexionController{
     	   		new PbConnexionView(stage);
     	   		System.out.println("Pb de connexion");
        }
-  }  
+  } 
+
+@FXML
+public void enterKeyPressed(KeyEvent e) throws IOException {
+	if (e.getCode().equals(KeyCode.ENTER)) {
+		handleClickConnexion(null);
+	}
+	
+}
   
   @FXML
   public void initialize() {

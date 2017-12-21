@@ -1,8 +1,6 @@
 package eu.telecomnancy.pcd2k17;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.time.LocalDate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,6 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.RadioButton;
 
 public class CreationController extends maindatabase{
 	Devoir dev;
@@ -33,7 +32,7 @@ public class CreationController extends maindatabase{
   final static Logger log = LogManager.getLogger(CreationController.class);
   
   ObservableList<String> list = FXCollections.observableArrayList("1A","2A","3A");
-  ObservableList<String> matier = FXCollections.observableArrayList("TOP","POO","SD","C","RS","MOCI","AMIO","BDA","IA");
+  ObservableList<String> matier = FXCollections.observableArrayList("TOP","POO","SD","CSHELL","RS","MOCI","AMIO","BDA","IA");
 
   @FXML
   private Button accueil = new Button();
@@ -65,6 +64,9 @@ private MenuItem creation = new MenuItem();
   @FXML
   private TextField titre = new TextField();
   
+  @FXML 
+  private TextField pre = new TextField();
+  
   @FXML
   private TextField nb = new TextField();
   
@@ -79,6 +81,12 @@ private MenuItem creation = new MenuItem();
   
   @FXML
   private ToggleButton aleatoire = new ToggleButton();
+  
+  @FXML
+  private RadioButton privee = new RadioButton();
+  
+  @FXML
+  private RadioButton publique = new RadioButton();
   
   @FXML 
   private ChoiceBox<String> liste;
@@ -153,36 +161,62 @@ private MenuItem creation = new MenuItem();
 	  log.debug(debut.getValue());
 	  log.debug(fin.getValue());
 	  log.debug(aleatoire.getText());
+	  log.debug(privee.getText());
+	  log.debug(publique.getText());
+	  log.debug(pre.getText());
 	  
-	  if (debut.getValue().compareTo(fin.getValue()) > 0) {
-		  Stage stage = new Stage();
+	  if (debut.getValue() != null && fin.getValue() != null && titre.getText() != "" && matiere.getValue() != null) {
+		  if (debut.getValue().compareTo(fin.getValue()) > 0) {
+			  Stage stage = new Stage();
 			new PbCreationDateView(stage);
+		  }
+		  else {
+			  try {
+				  dev = new Devoir(new auth());
+				  System.out.println(1);
+				  mat = new Matiere(new auth());
+				  System.out.println(2);
+				  String devoir = titre.getText();
+				  System.out.println(3);
+				  String nomMat = matiere.getValue();
+				  System.out.println(4);
+				  try {
+					  System.out.println("try");
+					  mat.getMatiere(nomMat);
+					  
+				  } catch (GitLabApiException e) {
+					  System.out.println("catch");
+					  mat.creerMatiere(nomMat);
+					  
+				  }
+				  System.out.println(5);
+				  dev.creerDevoir(devoir, desc.getText(),nomMat);
+				  System.out.println(6);
+				  Stage stage = new Stage();
+				  System.out.println(7);
+				  new ModifView(stage);
+			  } catch (GitLabApiException e) {
+				  Stage stage = new Stage();
+				  new PbCreationView(stage);
+			  }
+		  }
 	  }
 	  else {
-	  try {
-		dev = new Devoir(new auth());
-		mat = new Matiere(new auth());
-		String devoir = titre.getText();
-		String nomMat = matiere.getValue();
-		try {
-			mat.getMatiere(nomMat);
-		} catch (GitLabApiException e) {
-			mat.creerMatiere(nomMat);
-		}
-		LocalDate date1 = debut.getValue();
-		LocalDate date2 = fin.getValue();
-		
-		dev.creerDevoir(devoir, desc.getText(),nomMat,Date.valueOf(date1.toString()),Date.valueOf(date2.toString()),liste.getValue());
-		//dev.ajouterMembre(devoir, "Schwien", "Victor");
-		Stage stage = new Stage();
-		  new ModifView(stage);
-	} catch (GitLabApiException e) {
-		Stage stage = new Stage();
-		new PbCreationView(stage);
-	}
+		  	Stage stage = new Stage();
+			new PbCreationDateView(stage);
 	  }
 	  
-	  
+  }
+  
+  @FXML
+  public void handleClickOui(ActionEvent event) throws IOException {
+	  pre.setVisible(true);
+  }
+  
+  @FXML
+  public void handleClickNon(ActionEvent event) throws IOException {
+	  pre.setText(null);
+	  pre.setVisible(false);
   }
   
 

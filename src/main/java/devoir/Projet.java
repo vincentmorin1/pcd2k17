@@ -4,16 +4,21 @@ import java.util.List;
 
 import org.gitlab4j.api.GitLabApiException;
 import org.gitlab4j.api.ProjectApi;
+import org.gitlab4j.api.UserApi;
+import org.gitlab4j.api.models.AccessLevel;
 import org.gitlab4j.api.models.Project;
+import org.gitlab4j.api.models.User;
 
 import Authentification.auth;
 
 public class Projet {
 	public ProjectApi proj;
 	private Devoir devs;
+	UserApi useapi;
 	
 	public Projet(auth lab) throws GitLabApiException{
 		proj = lab.getProjectApi();
+		useapi = lab.getUserApi();
 		devs = new Devoir(lab);
 		//devoirname = devs.getDevoirName(id))
 		// TODO Auto-generated constructor stub
@@ -71,6 +76,12 @@ public void testCo() throws GitLabApiException{
 		return proj.getProject(devoirName,name).getId();
 	}
 	
+	public void ajouterMembre(String devoirName,String projName) throws GitLabApiException {
+		proj.addMember(proj.getProject(devoirName,projName).getId(), 336, AccessLevel.MASTER);
+}
+	public static void main(String args[]) throws GitLabApiException {
+		Projet proj = new Projet(new auth());
+		//proj.ajouterMembre("okapi", "juin");
+	}
 	
-
 }

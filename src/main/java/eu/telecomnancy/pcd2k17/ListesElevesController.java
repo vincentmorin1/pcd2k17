@@ -25,7 +25,7 @@ public class ListesElevesController{
   ObservableList<Integer> ideleve = FXCollections.observableArrayList();
   ObservableList<String> prom = FXCollections.observableArrayList();
   ObservableList<String> preno = FXCollections.observableArrayList();
-  ObservableList<String> no = FXCollections.observableArrayList();
+  ObservableList<String> name = FXCollections.observableArrayList();
   ObservableList<String> grp = FXCollections.observableArrayList();
   
 

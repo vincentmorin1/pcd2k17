@@ -20,6 +20,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleButton;
 
 public class PbCreationController{
@@ -28,7 +29,7 @@ public class PbCreationController{
   final static Logger log = LogManager.getLogger(PbCreationController.class);
   
   ObservableList<String> list = FXCollections.observableArrayList("1A","2A","3A");
-  ObservableList<String> matier = FXCollections.observableArrayList("TOP","POO","SD","C","RS","MOCI","AMIO","BDA","IA");
+  ObservableList<String> matier = FXCollections.observableArrayList("TOP","POO","SD","CSHELL","RS","MOCI","AMIO","BDA","IA");
 
   @FXML
   private Button accueil = new Button();
@@ -61,10 +62,19 @@ private MenuItem creation = new MenuItem();
   private TextArea desc = new TextArea();
   
   @FXML
+  private RadioButton privee = new RadioButton();
+  
+  @FXML
+  private RadioButton publique = new RadioButton();
+  
+  @FXML
   private DatePicker debut = new DatePicker();
   
   @FXML 
   private DatePicker fin= new DatePicker();
+  
+  @FXML
+  private TextField pre = new TextField();
   
   @FXML
   private ToggleButton aleatoire = new ToggleButton();
@@ -144,22 +154,43 @@ private MenuItem creation = new MenuItem();
 	  log.debug(debut.getValue());
 	  log.debug(fin.getValue());
 	  log.debug(aleatoire.getText());
-	  if (debut.getValue().compareTo(fin.getValue()) > 0) {
-		  Stage stage = new Stage();
-			new PbCreationDateView(stage);
+	  log.debug(privee.isSelected());
+	  log.debug(publique.isSelected());
+	  log.debug(pre.getText());
+	  
+	  if (debut.getValue() != null && fin.getValue()!=null && titre.getText() != "" && matiere.getValue() != null) {
+		  	  if (debut.getValue().compareTo(fin.getValue()) > 0) {
+		  		  Stage stage = new Stage();
+		  		  new PbCreationDateView(stage);
+		  	  }
+		  	  else {
+		  		  try {
+		  			  dev = new Devoir(new auth());
+		  			  //dev.creerDevoir(titre.getText(), "");
+		  			  Stage stage = new Stage();
+		  			  new ModifView(stage);
+		  		  } catch (GitLabApiException e) {
+		  			  System.out.println("Impossible de créer le devoir");
+		  			  Stage stage = new Stage();
+		  			  new PbCreationView(stage);
+		  		  }
+		  	  }
 	  }
 	  else {
-	  try {
-		dev = new Devoir(new auth());
-		//dev.creerDevoir(titre.getText(), "");
-		Stage stage = new Stage();
-		  new ModifView(stage);
-	} catch (GitLabApiException e) {
-		System.out.println("Impossible de créer le devoir");
-		Stage stage = new Stage();
-		new PbCreationView(stage);
-	}
+		  Stage stage = new Stage();
+  		  new PbCreationDateView(stage);
+	  }
   }
+  
+  @FXML
+  public void handleClickOui(ActionEvent event) throws IOException {
+	  pre.setVisible(true);
+  }
+  
+  @FXML
+  public void handleClickNon(ActionEvent event) throws IOException {
+	  pre.setText(null);
+	  pre.setVisible(false);
   }
 
 }
