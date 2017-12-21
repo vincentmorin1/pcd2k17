@@ -23,7 +23,7 @@ public class maindatabase{
 	            }
 	 
 	        } catch (SQLException e) {
-	            System.out.println(e.getMessage());
+	            //System.out.println(e.getMessage());
 	        }
 	    }
 	  
@@ -49,7 +49,6 @@ public class maindatabase{
 	        		+"Datefin date,\n"
 	        		+"Liste text,\n"
 	        		+"Groupe integer,\n"
-	        		+"Préfixe,\n"
 	        		+");";
 	        
 	        try (Connection conn = DriverManager.getConnection(url);
@@ -57,7 +56,7 @@ public class maindatabase{
 	            // create a new table
 	            stmt.execute(sql);
 	        } catch (SQLException e) {
-	            System.out.println(e.getMessage());
+	            //System.out.println(e.getMessage());
 	        }
 	    }
 	    
@@ -77,7 +76,7 @@ public class maindatabase{
 	            // create a new table
 	            stmt.execute(sql2);
 	        } catch (SQLException e) {
-	            System.out.println(e.getMessage());
+	            //System.out.println(e.getMessage());
 	        }
 
 	    }

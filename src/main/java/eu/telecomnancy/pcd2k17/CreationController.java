@@ -173,18 +173,27 @@ private MenuItem creation = new MenuItem();
 		  else {
 			  try {
 				  dev = new Devoir(new auth());
+				  System.out.println(1);
 				  mat = new Matiere(new auth());
+				  System.out.println(2);
 				  String devoir = titre.getText();
+				  System.out.println(3);
 				  String nomMat = matiere.getValue();
+				  System.out.println(4);
 				  try {
+					  System.out.println("try");
 					  mat.getMatiere(nomMat);
+					  
 				  } catch (GitLabApiException e) {
+					  System.out.println("catch");
 					  mat.creerMatiere(nomMat);
+					  
 				  }
-				  
-				  dev.creerDevoir(devoir, desc.getText(),nomMat,debut.getValue(),fin.getValue(),liste.getValue());
-				  //dev.ajouterMembre(devoir, "Schwien", "Victor");
+				  System.out.println(5);
+				  dev.creerDevoir(devoir, desc.getText(),nomMat);
+				  System.out.println(6);
 				  Stage stage = new Stage();
+				  System.out.println(7);
 				  new ModifView(stage);
 			  } catch (GitLabApiException e) {
 				  Stage stage = new Stage();

@@ -37,7 +37,7 @@ public class Devoir extends maindatabase{
 	}
 
 	public void creerDevoir(String name, String desc, String nomMat) throws GitLabApiException{
-			this.devs.addGroup(name, name, desc, Boolean.FALSE, Boolean.TRUE,Visibility.PUBLIC,Boolean.FALSE,Boolean.FALSE,mat.getMatiereId(nomMat),0);
+			this.devs.addGroup(name, name, desc, Boolean.FALSE, Boolean.TRUE,Visibility.PRIVATE,Boolean.FALSE,Boolean.FALSE,mat.getMatiereId(nomMat),0);
 
 	}
 	

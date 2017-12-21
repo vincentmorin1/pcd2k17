@@ -16,6 +16,7 @@ import org.gitlab4j.api.models.User;
 
 import database.Insert;
 import database.maindatabase;
+import devoir.Room;
 
 public class auth extends maindatabase{
 	
@@ -30,8 +31,7 @@ public class auth extends maindatabase{
 	
 	// Pour le test d'aprÃ¨s
 		public auth() {
-			this.auth = new GitLabApi("https://gitlab.telecomnancy.univ-lorraine.fr", accessToken);		
-
+			this.auth = new GitLabApi("https://gitlab.telecomnancy.univ-lorraine.fr", accessToken);
 			try {
 
 				createNewDatabase("eleves2.db");
@@ -50,7 +50,7 @@ public class auth extends maindatabase{
 			}
 
 		}
-		//coucouc vincent : en fait non c'est un prank. kdsnùfvkjz^nbjdtbvdfjslm
+		//coucouc vincent : en fait non c'est un prank. kdsnï¿½fvkjz^nbjdtbvdfjslm
 	private String Readfunction() {
 		    try {
 		       BufferedInputStream lecture = new BufferedInputStream(new FileInputStream("token.txt"));
