@@ -42,7 +42,6 @@ public class auth extends maindatabase{
 		public auth() {
 			this.auth = new GitLabApi("https://gitlab.telecomnancy.univ-lorraine.fr", accessToken);
 			try {
-				int i=0;
 				Eleves liste = new Eleves();
 				liste.load("eleves.csv");
 				String[] resparts = null;
@@ -54,37 +53,29 @@ public class auth extends maindatabase{
 				Insert app = new Insert();
 				while(users.hasNext()){
 					List<User> page = users.next();
-					for(User user : page)
-						System.out.println(user.getName());
 					for(User user : page){
-						String username =user.getUsername();
-						System.out.println(username);
+						String username = user.getUsername();
 						String delims = "[.]";
 						resparts = username.split(delims);
 						String name;
 						if(resparts.length > 1)
 							name = resparts[1];
 						else
-							name = "CACA";
+							name = "test";
 						Integer id = user.getId();
-				        app.insert(id, username,"null", "null" ,"null", "null");
+						System.out.println(id);
+				        app.insert(id, username,"null","null", "null" ,"null"," null");
 				       
 				        for (Eleve eleve : listefinale){
 				        	if (eleve.nom.toLowerCase().equals(name.toLowerCase())){
-				        		//System.out.println("match");
-					        	i=i+1;
-
-				        		//System.out.println(user.getId());
-				        		app2.update(user.getId(),eleve.nom,eleve.prenom,eleve.email,eleve.classe,eleve.appro);
-				        		//System.out.println("quelqu'un updated");
+				        		app2.update(user.getId(),username,eleve.nom,eleve.prenom,eleve.email,eleve.classe,eleve.appro);
+				        		System.out.println("on est la");
 				        	}
 				        }
 					}							
-				
-					System.out.println(i);
 				}	   
 			} catch (GitLabApiException e) {
-				System.out.println("fake");
+				System.out.println("erreur try auth");
 			}
 		}
 		//coucouc vincent : en fait non c'est un prank. kdsn�fvkjz^nbjdtbvdfjslm

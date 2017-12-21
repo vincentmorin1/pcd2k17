@@ -7,8 +7,10 @@ public class Eleve {
 	public String email;
 	public String classe;
 	public String appro;
+	public String username ;
 
-	public Eleve(String prenom,String nom, String email,String classe,String appro){
+	public Eleve(String username,String prenom,String nom, String email,String classe,String appro){
+		this.username=username;
 		this.nom=nom;
 		this.prenom=prenom;
 		this.classe = classe;
@@ -22,7 +24,7 @@ public class Eleve {
 	}
 	
 	public String toString(){
-		return "\nprenom : "+this.prenom+ "\nnom : "+this.nom+"\nemail : "+this.email+"\nclasse : "+this.classe+"\nappro :"+this.appro ; 
+		return "\nusername : "+this.username+"\nprenom : "+this.prenom+ "\nnom : "+this.nom+"\nemail : "+this.email+"\nclasse : "+this.classe+"\nappro :"+this.appro ; 
 	}
 	
 	public static void main ( String args[]){
