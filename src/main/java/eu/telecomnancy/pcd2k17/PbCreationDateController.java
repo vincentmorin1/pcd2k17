@@ -22,10 +22,10 @@ import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToggleButton;
 
-public class PbCreationController{
+public class PbCreationDateController{
 	Devoir dev;
 	
-  final static Logger log = LogManager.getLogger(PbCreationController.class);
+  final static Logger log = LogManager.getLogger(PbCreationDateController.class);
   
   ObservableList<String> list = FXCollections.observableArrayList("1A","2A","3A");
   ObservableList<String> matier = FXCollections.observableArrayList("TOP","POO","SD","C","RS","MOCI","AMIO","BDA","IA");
@@ -159,7 +159,8 @@ private MenuItem creation = new MenuItem();
 		Stage stage = new Stage();
 		new PbCreationView(stage);
 	}
+	  }
   }
-  }
+  
 
 }
