@@ -10,6 +10,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -122,8 +123,11 @@
                   <Font name="Trebuchet MS" size="16.0" />
                </font>
             </Text>
-            <RadioButton fx:id="privee" layoutX="274.0" layoutY="629.0" mnemonicParsing="false" text="Privée" />
-            <RadioButton fx:id="publique" layoutX="344.0" layoutY="629.0" mnemonicParsing="false" text="Publique" />
+            <RadioButton fx:id="privee" layoutX="274.0" layoutY="629.0" mnemonicParsing="false" selected="true" text="Privée">
+               <toggleGroup>
+                  <ToggleGroup fx:id="visibilite" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="publique" layoutX="344.0" layoutY="629.0" mnemonicParsing="false" text="Publique" toggleGroup="$visibilite" />
          </children>
       </AnchorPane>
   </items>

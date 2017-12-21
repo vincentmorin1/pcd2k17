@@ -163,7 +163,7 @@ private MenuItem creation = new MenuItem();
 	  log.debug(privee.getText());
 	  log.debug(publique.getText());
 	  
-	  if (debut.getValue() != null && fin.getValue() != null) {
+	  if (debut.getValue() != null && fin.getValue() != null  && titre.getText() != "" && matiere.getValue() != null) {
 		  if (debut.getValue().compareTo(fin.getValue()) > 0) {
 			  Stage stage = new Stage();
 			new PbCreationDateView(stage);
