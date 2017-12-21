@@ -25,7 +25,7 @@ public class Matiere {
 	//création d'un nouveau devoir
 	
 	public void creerMatiere(String name) throws GitLabApiException{
-			this.matiere.addGroup(name, name, "", Boolean.FALSE, Boolean.TRUE,Visibility.PRIVATE,Boolean.FALSE,Boolean.FALSE,room.getRoomId(),0);
+			this.matiere.addGroup(name, name, "", Boolean.FALSE, Boolean.TRUE,Visibility.PUBLIC,Boolean.FALSE,Boolean.FALSE,room.getRoomId(),0);
 	}
 	
 	public void supprMatiere(String name) throws GitLabApiException {
