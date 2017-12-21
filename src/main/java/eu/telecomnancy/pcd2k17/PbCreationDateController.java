@@ -68,6 +68,9 @@ private MenuItem creation = new MenuItem();
   private DatePicker fin= new DatePicker();
   
   @FXML
+  private TextField pre = new TextField();
+  
+  @FXML
   private RadioButton privee = new RadioButton();
   
   @FXML
@@ -153,6 +156,7 @@ private MenuItem creation = new MenuItem();
 	  log.debug(aleatoire.getText());
 	  log.debug(privee.isSelected());
 	  log.debug(publique.isSelected());
+	  log.debug(pre.getText());
 	  
 	  if (debut.getValue() != null && fin.getValue() != null && titre.getText() != "" && matiere.getValue() != null) {
 		  if (debut.getValue().compareTo(fin.getValue()) > 0) {
@@ -177,6 +181,17 @@ private MenuItem creation = new MenuItem();
 		  new PbCreationDateView(stage);
 	}
 
+  }
+  
+  @FXML
+  public void handleClickOui(ActionEvent event) throws IOException {
+	  pre.setVisible(true);
+  }
+  
+  @FXML
+  public void handleClickNon(ActionEvent event) throws IOException {
+	  pre.setText(null);
+	  pre.setVisible(false);
   }
   
 
