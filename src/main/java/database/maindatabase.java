@@ -42,7 +42,15 @@ public class maindatabase{
 	                + "	appro text\n"
 	                + ");";
 	        
-	        
+	        String sql2 = "CREATE TABLE IF NOT EXISTS devoir (\n"
+	        		+"Mati�re text,\n"
+	        		+"Titre text,\n"
+	        		+"Dated�but date,\n"
+	        		+"Datefin date,\n"
+	        		+"Liste text,\n"
+	        		+"Groupe integer,\n"
+	        		+"Préfixe,\n"
+	        		+");";
 	        
 	        try (Connection conn = DriverManager.getConnection(url);
 	                Statement stmt = conn.createStatement()) {

@@ -42,10 +42,16 @@ public class Matiere {
 		return matiere.getGroup(name);
 	}
 		
-	public void ajouterMembre(String matiereName,String nom,String prenom) throws GitLabApiException {
-			Integer userId = users.getUser(prenom+"."+nom+"@telecomnancy.eu").getId();
+	public void ajouterMembre(String matiereName,String username) throws GitLabApiException {
+			//Integer userId = users.getUser(username).getId();
 			Integer accessLevel = 0;
-			matiere.addMember(matiere.getGroup(matiereName).getId(), userId, accessLevel);	
+			matiere.addMember(matiere.getGroup(matiereName).getId(), 336, accessLevel);	
+	}
+	
+	public static void main(String args[]) throws GitLabApiException {
+		auth lab = new auth();
+		Matiere mat = new Matiere(lab);
+		mat.ajouterMembre("ravin","Schwien");
 	}
 	
 }

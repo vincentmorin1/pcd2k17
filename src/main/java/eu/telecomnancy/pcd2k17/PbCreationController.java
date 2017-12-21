@@ -144,6 +144,11 @@ private MenuItem creation = new MenuItem();
 	  log.debug(debut.getValue());
 	  log.debug(fin.getValue());
 	  log.debug(aleatoire.getText());
+	  if (debut.getValue().compareTo(fin.getValue()) > 0) {
+		  Stage stage = new Stage();
+			new PbCreationDateView(stage);
+	  }
+	  else {
 	  try {
 		dev = new Devoir(new auth());
 		//dev.creerDevoir(titre.getText(), "");
@@ -155,6 +160,6 @@ private MenuItem creation = new MenuItem();
 		new PbCreationView(stage);
 	}
   }
-  
+  }
 
 }
