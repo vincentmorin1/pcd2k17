@@ -1,8 +1,6 @@
 package eu.telecomnancy.pcd2k17;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.time.LocalDate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -65,6 +63,9 @@ private MenuItem creation = new MenuItem();
   
   @FXML
   private TextField titre = new TextField();
+  
+  @FXML 
+  private TextField pre = new TextField();
   
   @FXML
   private TextField nb = new TextField();
@@ -162,6 +163,7 @@ private MenuItem creation = new MenuItem();
 	  log.debug(aleatoire.getText());
 	  log.debug(privee.getText());
 	  log.debug(publique.getText());
+	  log.debug(pre.getText());
 	  
 	  if (debut.getValue() != null && fin.getValue() != null && titre.getText() != "" && matiere.getValue() != null) {
 		  if (debut.getValue().compareTo(fin.getValue()) > 0) {
@@ -171,18 +173,27 @@ private MenuItem creation = new MenuItem();
 		  else {
 			  try {
 				  dev = new Devoir(new auth());
+				  System.out.println(1);
 				  mat = new Matiere(new auth());
+				  System.out.println(2);
 				  String devoir = titre.getText();
+				  System.out.println(3);
 				  String nomMat = matiere.getValue();
+				  System.out.println(4);
 				  try {
+					  System.out.println("try");
 					  mat.getMatiere(nomMat);
+					  
 				  } catch (GitLabApiException e) {
+					  System.out.println("catch");
 					  mat.creerMatiere(nomMat);
+					  
 				  }
-				  
-				  dev.creerDevoir(devoir, desc.getText(),nomMat,debut.getValue(),fin.getValue(),liste.getValue());
-				  //dev.ajouterMembre(devoir, "Schwien", "Victor");
+				  System.out.println(5);
+				  dev.creerDevoir(devoir, desc.getText(),nomMat);
+				  System.out.println(6);
 				  Stage stage = new Stage();
+				  System.out.println(7);
 				  new ModifView(stage);
 			  } catch (GitLabApiException e) {
 				  Stage stage = new Stage();
@@ -195,6 +206,17 @@ private MenuItem creation = new MenuItem();
 			new PbCreationDateView(stage);
 	  }
 	  
+  }
+  
+  @FXML
+  public void handleClickOui(ActionEvent event) throws IOException {
+	  pre.setVisible(true);
+  }
+  
+  @FXML
+  public void handleClickNon(ActionEvent event) throws IOException {
+	  pre.setText(null);
+	  pre.setVisible(false);
   }
   
 
