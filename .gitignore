@@ -1,7 +1,7 @@
 eleves2.db
 token.txt
-<<<<<<< HEAD
-=======
+
+
 token_test.txt
 
 # logs folder
@@ -200,5 +200,5 @@ bin/
 #!.vscode/launch.json
 #!.vscode/extensions.json
 .history
-eleves2.db
->>>>>>> 015a4e6606dcacb629b4c9fdf0a327c7a25e52e1
+
+
