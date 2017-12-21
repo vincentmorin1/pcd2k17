@@ -1,6 +1,8 @@
 package eu.telecomnancy.pcd2k17;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -162,10 +164,9 @@ private MenuItem creation = new MenuItem();
 		} catch (GitLabApiException e) {
 			mat.creerMatiere(nomMat);
 		}
-		LocalDate date1 = debut.getValue();
-		LocalDate date2 = fin.getValue();
+
 		
-		dev.creerDevoir(devoir, desc.getText(),nomMat,Date.valueOf(date1.toString()),Date.valueOf(date2.toString()),liste.getValue());
+		dev.creerDevoir(devoir, desc.getText(),matiere.getValue(),debut.getValue(),fin.getValue(),liste.getValue());
 		//dev.ajouterMembre(devoir, "Schwien", "Victor");
 		Stage stage = new Stage();
 		  new ModifView(stage);

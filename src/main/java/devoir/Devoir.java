@@ -1,6 +1,7 @@
 package devoir;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.gitlab4j.api.*;
@@ -25,11 +26,14 @@ public class Devoir extends maindatabase{
 	}
 	//création d'un nouveau devoir
 	
-	public void creerDevoir(String name, String desc, String nomMat,Date debut,Date fin,String liste) throws GitLabApiException{
+	public void creerDevoir(String name, String desc, String nomMat,LocalDate debut,LocalDate fin,String liste) throws GitLabApiException{
 			this.devs.addGroup(name, name, desc, Boolean.FALSE, Boolean.TRUE,Visibility.PRIVATE,Boolean.FALSE,Boolean.FALSE,mat.getMatiereId(nomMat),0);
+			Date d = Date.valueOf(debut);
+			Date f = Date.valueOf(fin);
+			System.out.println(d.toString());
 			createNewTabledev();
 			  Insert app = new Insert();
-			  app.insertdev(nomMat, name,debut,fin,liste);
+			  app.insertdev(nomMat, name,d.toString(),f.toString(),liste);
 	}
 
 	public void creerDevoir(String name, String desc, String nomMat) throws GitLabApiException{
@@ -69,6 +73,5 @@ public class Devoir extends maindatabase{
 	public void modifiermatiereDevoir(String name, String nomMat) throws GitLabApiException{
 		this.devs.updateGroup(devs.getGroup(name).getId(), name, name, devs.getGroup(name).getDescription(), Boolean.FALSE, Boolean.TRUE,Visibility.PRIVATE,Boolean.FALSE,Boolean.FALSE,mat.getMatiereId(nomMat),0);
     }
-	
 	
 }
