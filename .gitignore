@@ -197,3 +197,4 @@ bin/
 #!.vscode/launch.json
 #!.vscode/extensions.json
 .history
+eleves2.db
