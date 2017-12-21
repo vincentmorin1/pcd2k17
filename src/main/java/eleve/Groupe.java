@@ -29,7 +29,7 @@ public class Groupe {
 
 		
 	public static void main(String args[]){
-		Eleve eleve1 = new Eleve (1,"Loembe","Alex-Kevin", "Alex-Kevin.Loembe@telecomnancy.eu",23,"3A","TRS");
+		/*Eleve eleve1 = new Eleve (1,"Loembe","Alex-Kevin", "Alex-Kevin.Loembe@telecomnancy.eu",23,"3A","TRS");
 		Eleve eleve2 = new Eleve (2,"Martin","Victoria", "Victoria.Martin@telecomnancy.eu",22,"3A","SIE");
 		Eleve eleve3 = new Eleve (3,"Leroux","Paul", "Paul.Leroux@telecomnancy.eu",22,"2A","IAMD");
 		Eleve eleve4 = new Eleve (4,"Roudaut","Tanguy", "Tanguy.Roudaut@telecomnancy.eu",21,"2A","IL");
@@ -53,7 +53,7 @@ public class Groupe {
 		groupe.ajouter(eleve9);
 		groupe.ajouter(eleve10);
 		groupe.ajouter(eleve11);
-		groupe.ajouter(eleve12);
+		groupe.ajouter(eleve12);*/
 		
 	}
 	
