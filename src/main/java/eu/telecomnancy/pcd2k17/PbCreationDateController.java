@@ -22,10 +22,10 @@ import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToggleButton;
 
-public class PbCreationController{
+public class PbCreationDateController{
 	Devoir dev;
 	
-  final static Logger log = LogManager.getLogger(PbCreationController.class);
+  final static Logger log = LogManager.getLogger(PbCreationDateController.class);
   
   ObservableList<String> list = FXCollections.observableArrayList("1A","2A","3A");
   ObservableList<String> matier = FXCollections.observableArrayList("TOP","POO","SD","CSHELL","RS","MOCI","AMIO","BDA","IA");
@@ -145,28 +145,30 @@ private MenuItem creation = new MenuItem();
 	  log.debug(fin.getValue());
 	  log.debug(aleatoire.getText());
 	  
-	  if (debut.getValue() != null && fin.getValue()!=null) {
-		  	  if (debut.getValue().compareTo(fin.getValue()) > 0) {
-		  		  Stage stage = new Stage();
-		  		  new PbCreationDateView(stage);
-		  	  }
-		  	  else {
-		  		  try {
-		  			  dev = new Devoir(new auth());
-		  			  //dev.creerDevoir(titre.getText(), "");
-		  			  Stage stage = new Stage();
-		  			  new ModifView(stage);
-		  		  } catch (GitLabApiException e) {
-		  			  System.out.println("Impossible de créer le devoir");
-		  			  Stage stage = new Stage();
-		  			  new PbCreationView(stage);
-		  		  }
-		  	  }
+	  if (debut.getValue() != null && fin.getValue() != null) {
+		  if (debut.getValue().compareTo(fin.getValue()) > 0) {
+			  Stage stage = new Stage();
+			  new PbCreationDateView(stage);
+		  }
+		  else {
+			  try {
+				  dev = new Devoir(new auth());
+				  //dev.creerDevoir(titre.getText(), "");
+				  Stage stage = new Stage();
+				  new ModifView(stage);
+			  } catch (GitLabApiException e) {
+				  System.out.println("Impossible de créer le devoir");
+				  Stage stage = new Stage();
+				  new PbCreationView(stage);
+			  }
+		  }
 	  }
-	  else {
-		  Stage stage = new Stage();
-  		  new PbCreationDateView(stage);
-	  }
+	else {
+		Stage stage = new Stage();
+		  new PbCreationDateView(stage);
+	}
+
   }
+  
 
 }

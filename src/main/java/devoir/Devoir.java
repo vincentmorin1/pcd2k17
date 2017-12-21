@@ -51,6 +51,10 @@ public class Devoir extends maindatabase{
 		return devs.getGroup(name).getId();
 	}
 	
+	public String getDevoirName(Integer id) throws GitLabApiException {
+		return devs.getGroup(id).getName();
+	}
+	
 	public Group getDevoir(String name) throws GitLabApiException {
 		return devs.getGroup(name);
 	}
