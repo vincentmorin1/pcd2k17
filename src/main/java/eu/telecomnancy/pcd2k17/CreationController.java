@@ -1,6 +1,8 @@
 package eu.telecomnancy.pcd2k17;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
