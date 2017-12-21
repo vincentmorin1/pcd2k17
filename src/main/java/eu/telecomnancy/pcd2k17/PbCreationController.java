@@ -28,7 +28,7 @@ public class PbCreationController{
   final static Logger log = LogManager.getLogger(PbCreationController.class);
   
   ObservableList<String> list = FXCollections.observableArrayList("1A","2A","3A");
-  ObservableList<String> matier = FXCollections.observableArrayList("TOP","POO","SD","C","RS","MOCI","AMIO","BDA","IA");
+  ObservableList<String> matier = FXCollections.observableArrayList("TOP","POO","SD","CSHELL","RS","MOCI","AMIO","BDA","IA");
 
   @FXML
   private Button accueil = new Button();
@@ -144,22 +144,29 @@ private MenuItem creation = new MenuItem();
 	  log.debug(debut.getValue());
 	  log.debug(fin.getValue());
 	  log.debug(aleatoire.getText());
-	  if (debut.getValue().compareTo(fin.getValue()) > 0) {
-		  Stage stage = new Stage();
-			new PbCreationDateView(stage);
+	  
+	  if (debut.getValue() != null && fin.getValue()!=null) {
+		  	  if (debut.getValue().compareTo(fin.getValue()) > 0) {
+		  		  Stage stage = new Stage();
+		  		  new PbCreationDateView(stage);
+		  	  }
+		  	  else {
+		  		  try {
+		  			  dev = new Devoir(new auth());
+		  			  //dev.creerDevoir(titre.getText(), "");
+		  			  Stage stage = new Stage();
+		  			  new ModifView(stage);
+		  		  } catch (GitLabApiException e) {
+		  			  System.out.println("Impossible de créer le devoir");
+		  			  Stage stage = new Stage();
+		  			  new PbCreationView(stage);
+		  		  }
+		  	  }
 	  }
 	  else {
-	  try {
-		dev = new Devoir(new auth());
-		//dev.creerDevoir(titre.getText(), "");
-		Stage stage = new Stage();
-		  new ModifView(stage);
-	} catch (GitLabApiException e) {
-		System.out.println("Impossible de créer le devoir");
-		Stage stage = new Stage();
-		new PbCreationView(stage);
-	}
-  }
+		  Stage stage = new Stage();
+  		  new PbCreationDateView(stage);
+	  }
   }
 
 }
