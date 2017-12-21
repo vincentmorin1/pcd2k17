@@ -24,8 +24,14 @@ public class Devoir extends maindatabase{
 	}
 	//création d'un nouveau devoir
 	
-	public void creerDevoir(String name, String desc, String nomMat,LocalDate debut,LocalDate fin,String liste) throws GitLabApiException{
-			this.devs.addGroup(name, name, desc, Boolean.FALSE, Boolean.TRUE,Visibility.PRIVATE,Boolean.FALSE,Boolean.FALSE,mat.getMatiereId(nomMat),0);
+	public void creerDevoir(String name, String desc, String nomMat,boolean visi,LocalDate debut,LocalDate fin,String liste) throws GitLabApiException{
+		Visibility var;
+		if(visi) {
+			var = Visibility.PRIVATE;
+		} else {
+			var = Visibility.PUBLIC;
+		}	
+		this.devs.addGroup(name, name, desc, Boolean.FALSE, Boolean.TRUE,var,Boolean.FALSE,Boolean.FALSE,mat.getMatiereId(nomMat),0);
 			Date d = Date.valueOf(debut);
 			Date f = Date.valueOf(fin);
 			System.out.println(d.toString());
@@ -34,8 +40,14 @@ public class Devoir extends maindatabase{
 			  app.insertdev(nomMat, name,d.toString(),f.toString(),liste);
 	}
 
-	public void creerDevoir(String name, String desc, String nomMat) throws GitLabApiException{
-			this.devs.addGroup(name, name, desc, Boolean.FALSE, Boolean.TRUE,Visibility.PRIVATE,Boolean.FALSE,Boolean.FALSE,mat.getMatiereId(nomMat),0);
+	public void creerDevoir(String name, String desc, String nomMat, boolean visi) throws GitLabApiException{
+		Visibility var;
+		if(visi) {
+			var = Visibility.PRIVATE;
+		} else {
+			var = Visibility.PUBLIC;
+		}
+			this.devs.addGroup(name, name, desc, Boolean.FALSE, Boolean.TRUE,var,Boolean.FALSE,Boolean.FALSE,mat.getMatiereId(nomMat),0);
 
 	}
 	
