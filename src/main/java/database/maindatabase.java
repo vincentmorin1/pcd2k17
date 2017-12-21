@@ -49,7 +49,6 @@ public class maindatabase{
 	        		+"Datefin date,\n"
 	        		+"Liste text,\n"
 	        		+"Groupe integer,\n"
-	        		+"Préfixe,\n"
 	        		+");";
 	        
 	        try (Connection conn = DriverManager.getConnection(url);
