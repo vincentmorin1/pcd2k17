@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -41,31 +42,46 @@ public class auth extends maindatabase{
 		public auth() {
 			this.auth = new GitLabApi("https://gitlab.telecomnancy.univ-lorraine.fr", accessToken);
 			try {
+				int i=0;
 				Eleves liste = new Eleves();
 				liste.load("eleves.csv");
 				String[] resparts = null;
 				createNewDatabase("eleves2.db");
 		        createNewTable();
 				Pager<User> users = this.auth.getUserApi().getUsers(60);
+				ArrayList<Eleve> listefinale = liste.getListeEleves();
 				Update app2 = new Update();
 				Insert app = new Insert();
 				while(users.hasNext()){
-					for(User user : users.next()){
+					List<User> page = users.next();
+					for(User user : page)
+						System.out.println(user.getName());
+					for(User user : page){
 						String username =user.getUsername();
+						System.out.println(username);
 						String delims = "[.]";
 						resparts = username.split(delims);
-						System.out.println(resparts[1].toLowerCase());
+						String name;
+						if(resparts.length > 1)
+							name = resparts[1];
+						else
+							name = "CACA";
 						Integer id = user.getId();
 				        app.insert(id, username,"null", "null" ,"null", "null");
-				        for (Eleve eleve : liste.getListeEleves()){
-				        	if (eleve.nom.toLowerCase().equals((CharSequence) resparts[1].toLowerCase())){
-				        		System.out.println("match");
-				        		System.out.println(user.getId());
+				       
+				        for (Eleve eleve : listefinale){
+				        	if (eleve.nom.toLowerCase().equals(name.toLowerCase())){
+				        		//System.out.println("match");
+					        	i=i+1;
+
+				        		//System.out.println(user.getId());
 				        		app2.update(user.getId(),eleve.nom,eleve.prenom,eleve.email,eleve.classe,eleve.appro);
-				        		System.out.println("quelqu'un updated");
+				        		//System.out.println("quelqu'un updated");
 				        	}
-					}
+				        }
 					}							
+				
+					System.out.println(i);
 				}	   
 			} catch (GitLabApiException e) {
 				System.out.println("fake");

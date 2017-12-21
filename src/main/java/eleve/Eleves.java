@@ -11,6 +11,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import org.gitlab4j.api.Pager;
+
 public class Eleves extends Groupe{
 	
 
@@ -24,6 +26,16 @@ public class Eleves extends Groupe{
 	public ArrayList<Eleve> getListeEleves(){
 		return this.listeEleves;
 	}
+	
+	/*public Pager<Eleve> getListefinale(){
+		int c=0;
+		while (c<listeEleves.size()-1){
+			c=c+1;
+			
+		}
+		
+		return this.listeEleves;
+	}*/
 	
 	public void ajouter(Eleve eleve) {
 		this.listeEleves.add(eleve);
