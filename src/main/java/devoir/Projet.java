@@ -5,6 +5,7 @@ import java.util.List;
 import org.gitlab4j.api.GitLabApiException;
 import org.gitlab4j.api.ProjectApi;
 import org.gitlab4j.api.UserApi;
+import org.gitlab4j.api.models.AccessLevel;
 import org.gitlab4j.api.models.Project;
 import org.gitlab4j.api.models.User;
 
@@ -67,7 +68,11 @@ public void testCo() throws GitLabApiException{
 	}
 	
 	public void ajouterMembre(String devoirName,String projName) throws GitLabApiException {
-
+		proj.addMember(proj.getProject(devoirName,projName).getId(), 336, AccessLevel.MASTER);
 }
+	public static void main(String args[]) throws GitLabApiException {
+		Projet proj = new Projet(new auth());
+		//proj.ajouterMembre("okapi", "juin");
+	}
 	
 }

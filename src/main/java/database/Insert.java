@@ -40,7 +40,7 @@ public class Insert{
 	            pstmt.executeUpdate();
 	            
 	        } catch (SQLException e) {
-	            System.out.println(e.getMessage());
+	            //System.out.println(e.getMessage());
 	        }
 	    }
 	    
@@ -56,7 +56,7 @@ public class Insert{
 	    		pstmt2.setString(5,liste);
 	    		pstmt2.executeUpdate();
 	    	} catch (SQLException e) {
-	    		System.out.println(e.getMessage());
+	    		//System.out.println(e.getMessage());
 	    	}
 	    }
 	}

@@ -21,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.RadioButton;
 
 public class PbCreationDateController{
 	Devoir dev;
@@ -65,6 +66,12 @@ private MenuItem creation = new MenuItem();
   
   @FXML 
   private DatePicker fin= new DatePicker();
+  
+  @FXML
+  private RadioButton privee = new RadioButton();
+  
+  @FXML
+  private RadioButton publique = new RadioButton();
   
   @FXML
   private ToggleButton aleatoire = new ToggleButton();
@@ -144,8 +151,10 @@ private MenuItem creation = new MenuItem();
 	  log.debug(debut.getValue());
 	  log.debug(fin.getValue());
 	  log.debug(aleatoire.getText());
+	  log.debug(privee.isSelected());
+	  log.debug(publique.isSelected());
 	  
-	  if (debut.getValue() != null && fin.getValue() != null) {
+	  if (debut.getValue() != null && fin.getValue() != null && titre.getText() != "" && matiere.getValue() != null) {
 		  if (debut.getValue().compareTo(fin.getValue()) > 0) {
 			  Stage stage = new Stage();
 			  new PbCreationDateView(stage);

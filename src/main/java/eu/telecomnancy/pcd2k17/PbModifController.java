@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import devoir.Devoir;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,6 +19,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableView;
 
 public class PbModifController{
 	
@@ -25,6 +28,13 @@ public class PbModifController{
   
   ObservableList<String> list = FXCollections.observableArrayList("1A","2A","3A");
   ObservableList<String> group = FXCollections.observableArrayList("1","2","3","4","5");
+  
+  ObservableList<String> titr = FXCollections.observableArrayList();
+  ObservableList<String> matie = FXCollections.observableArrayList();
+  ObservableList<DatePicker> star = FXCollections.observableArrayList();
+  ObservableList<DatePicker> ends = FXCollections.observableArrayList();
+  ObservableList<String> proms = FXCollections.observableArrayList();
+  ObservableList<Integer> grpe = FXCollections.observableArrayList();
 
   @FXML
   private Button accueil = new Button();
@@ -76,6 +86,27 @@ public class PbModifController{
   
   @FXML
   private ChoiceBox<String> groupe;
+  
+  @FXML
+  private TreeTableView<Devoir> tableau = new TreeTableView<Devoir>();
+  
+  @FXML
+  private TreeTableColumn<Devoir,String> title = new TreeTableColumn<Devoir,String>();
+  
+  @FXML
+  private TreeTableColumn<Devoir,String> matier = new TreeTableColumn<Devoir,String>();
+  
+  @FXML
+  private TreeTableColumn<Devoir,DatePicker> start = new TreeTableColumn<Devoir,DatePicker>();
+  
+  @FXML
+  private TreeTableColumn<Devoir,DatePicker> end = new TreeTableColumn<Devoir,DatePicker>();
+  
+  @FXML
+  private TreeTableColumn<Devoir,String> prom = new TreeTableColumn<Devoir,String>();
+  
+  @FXML
+  private TreeTableColumn<Devoir,Integer> grp = new TreeTableColumn<Devoir,Integer>();
   
   @FXML
   public void handleClickAccueil(ActionEvent event) throws IOException{
