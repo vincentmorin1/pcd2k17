@@ -2,6 +2,7 @@ package devoir;
 
 import java.util.List;
 
+import org.gitlab4j.api.GitLabApi;
 import org.gitlab4j.api.GitLabApiException;
 import org.gitlab4j.api.ProjectApi;
 import org.gitlab4j.api.UserApi;
@@ -14,11 +15,11 @@ import Authentification.auth;
 public class Projet {
 	public ProjectApi proj;
 	private Devoir devs;
-	UserApi useapi;
+	UserApi user;
 	
 	public Projet(auth lab) throws GitLabApiException{
 		proj = lab.getProjectApi();
-		useapi = lab.getUserApi();
+		user = lab.getUserApi();
 		devs = new Devoir(lab);
 		//devoirname = devs.getDevoirName(id))
 		// TODO Auto-generated constructor stub
@@ -34,54 +35,63 @@ public class Projet {
 		}
 	}
 	
-	public void creerProjet(String devoirName,String name) {
+	public void creerProjet(String matName, String devoirName,String name) {
 		try {
-			this.proj.createProject(devs.getDevoirId(devoirName),name);
+			this.proj.createProject(devs.getDevoirId(matName,devoirName),name);
 		} catch (GitLabApiException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Impossible de créer le projet "+name+".");
 		}
 	}
 	
-	public void creerProjetPrefixe(String devoirName,String name) {
+	public void creerProjetPrefixe(String matName, String devoirName,String name) {
 		try {
-			this.proj.createProject(devs.getDevoirId(devoirName),devoirName+name);
+			this.proj.createProject(devs.getDevoirId(matName, devoirName),devoirName+name);
 		} catch (GitLabApiException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Impossible de créer le projet "+devoirName+name+".");
 		}
 	}
 	
-public void testCo() throws GitLabApiException{
-	List<Project> current;
-	String name = "ahgdznbksvkxz";
-	this.proj.createProject(name);
-	current = proj.getProjects(name);
-	proj.deleteProject(current.get(0));
-}
-	
-	public void supprProjet(String name) {
-		List<Project> current;
-		try {
-			current = proj.getProjects(name);
-			if (current.isEmpty()) {
-				System.out.println("Le projet "+name+" n'éxiste pas !");
-			} else {
-				proj.deleteProject(current.get(0));
-			}
-		} catch (GitLabApiException e1) {}
+	public void supprProjet(String matName, String devName, String projName) throws GitLabApiException {
+		proj.deleteProject(proj.getProject(devs.getFullPath(matName,devName),projName));
+
 	}
 	
-	public Integer getProjetId(String devoirName, String name) throws GitLabApiException {
-		return proj.getProject(devoirName,name).getId();
+	public Integer getProjetId(String matName, String devName, String projName) throws GitLabApiException {
+		return proj.getProject(devs.getFullPath(matName,devName),projName).getId();
 	}
 	
-	public void ajouterMembre(String devoirName,String projName) throws GitLabApiException {
-		proj.addMember(proj.getProject(devoirName,projName).getId(), 336, AccessLevel.MASTER);
-}
-	public static void main(String args[]) throws GitLabApiException {
-		Projet proj = new Projet(new auth());
-		//proj.ajouterMembre("okapi", "juin");
+	public void ajouterMembre(String matName, String devName, String projName, String username, String niveau) throws GitLabApiException {
+		AccessLevel var;
+		switch(niveau) {
+		case "Owner":
+			var = AccessLevel.OWNER;
+			break;
+		case "Master":
+			var = AccessLevel.MASTER;
+			break;
+		case "Developer":
+			var = AccessLevel.DEVELOPER;
+			break;
+		case "Guest":
+			var = AccessLevel.GUEST;
+			break;
+		default:
+			var = AccessLevel.NONE;
+		}
+		proj.addMember(proj.getProject(devs.getFullPath(matName,devName),projName).getId(), user.getUser(username).getId(), var);
 	}
+	
+	public void retirerMembre(String matName, String devName, String projName, String username) throws GitLabApiException {
+		proj.removeMember(proj.getProject(devs.getFullPath(matName,devName),projName).getId(),user.getUser(username).getId());
+	}
+	/*public static void main(String args[]) throws GitLabApiException {
+		auth lab = new auth();
+		Projet proj = new Projet(lab);
+		ProjectApi pro = lab.getProjectApi();
+		UserApi user = lab.getUserApi();
+		//proj.ajouterMembre("TOP","choco", "figue", "Victor.Schwien", "Master");
+	}*/
 	
 }

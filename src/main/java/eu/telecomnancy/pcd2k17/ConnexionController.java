@@ -49,11 +49,10 @@ public class ConnexionController{
        //test token
        		auth lab = new auth();
     	   		try { 
-   	   		Projet test = new Projet(lab);
+   	   		Room test = new Room(lab);
    	   		test.testCo();
    	   	try {
-   			Room room = new Room(lab);
-   			room.creerRoom("PCDpotes");
+   			test.creerRoom("PCDpotes");
    		} catch (GitLabApiException e) {}
    	   		Stage stage = new Stage();
    	   		new HomeView(stage);
