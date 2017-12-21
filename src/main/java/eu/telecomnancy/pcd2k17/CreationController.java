@@ -1,8 +1,6 @@
 package eu.telecomnancy.pcd2k17;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.time.LocalDate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -65,6 +63,9 @@ private MenuItem creation = new MenuItem();
   
   @FXML
   private TextField titre = new TextField();
+  
+  @FXML 
+  private TextField pre = new TextField();
   
   @FXML
   private TextField nb = new TextField();
@@ -162,6 +163,7 @@ private MenuItem creation = new MenuItem();
 	  log.debug(aleatoire.getText());
 	  log.debug(privee.getText());
 	  log.debug(publique.getText());
+	  log.debug(pre.getText());
 	  
 	  if (debut.getValue() != null && fin.getValue() != null && titre.getText() != "" && matiere.getValue() != null) {
 		  if (debut.getValue().compareTo(fin.getValue()) > 0) {
@@ -195,6 +197,17 @@ private MenuItem creation = new MenuItem();
 			new PbCreationDateView(stage);
 	  }
 	  
+  }
+  
+  @FXML
+  public void handleClickOui(ActionEvent event) throws IOException {
+	  pre.setVisible(true);
+  }
+  
+  @FXML
+  public void handleClickNon(ActionEvent event) throws IOException {
+	  pre.setText(null);
+	  pre.setVisible(false);
   }
   
 

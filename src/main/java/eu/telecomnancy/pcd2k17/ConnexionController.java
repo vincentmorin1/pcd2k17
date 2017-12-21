@@ -59,16 +59,14 @@ public class ConnexionController{
        
   
 	
-  }  
+  }
 
 @FXML
 public void enterKeyPressed(KeyEvent e) throws IOException {
-	if (e.getCode().equals(KeyCode.ENTER)) {
+	if(e.getCode().equals(KeyCode.ENTER)) {
 		handleClickConnexion(null);
 	}
-	
 }
-  
   
   @FXML
   public void initialize() {
