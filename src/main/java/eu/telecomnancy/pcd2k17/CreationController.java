@@ -163,7 +163,7 @@ private MenuItem creation = new MenuItem();
 	  log.debug(privee.getText());
 	  log.debug(publique.getText());
 	  
-	  if (debut.getValue() != null && fin.getValue() != null  && titre.getText() != "" && matiere.getValue() != null) {
+	  if (debut.getValue() != null && fin.getValue() != null && titre.getText() != "" && matiere.getValue() != null) {
 		  if (debut.getValue().compareTo(fin.getValue()) > 0) {
 			  Stage stage = new Stage();
 			new PbCreationDateView(stage);
@@ -179,10 +179,8 @@ private MenuItem creation = new MenuItem();
 				  } catch (GitLabApiException e) {
 					  mat.creerMatiere(nomMat);
 				  }
-				  LocalDate date1 = debut.getValue();
-				  LocalDate date2 = fin.getValue();
 				  
-				  dev.creerDevoir(devoir, desc.getText(),nomMat,Date.valueOf(date1.toString()),Date.valueOf(date2.toString()),liste.getValue());
+				  dev.creerDevoir(devoir, desc.getText(),nomMat,debut.getValue(),fin.getValue(),liste.getValue());
 				  //dev.ajouterMembre(devoir, "Schwien", "Victor");
 				  Stage stage = new Stage();
 				  new ModifView(stage);
