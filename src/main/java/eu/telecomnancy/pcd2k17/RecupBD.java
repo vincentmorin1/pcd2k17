@@ -1,48 +1,50 @@
 package eu.telecomnancy.pcd2k17;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 public class RecupBD {
+
 	
-	private static Connection connect() {
-        // SQLite connection string
-        String url = "jdbc:sqlite:src/main/java/database/eleves2.db";
-        Connection conn = null;
-        try {
-            conn = DriverManager.getConnection(url);
-            System.out.println("Connecté");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return conn;
-    }
- 
-    public static void select(){
-        String sql = "SELECT * FROM eleves2";
-        
-        try (Connection conn = connect();
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
-            
-            // loop through the result set
-            while (rs.next()) {
-            		int idtableau = rs.getInt("id");
-            		String nomtableau = rs.getString("nom");
-            		String emailtableau = rs.getString("email");
-            		int agetableau = rs.getInt("age");
-            		String classetableau = rs.getString("classe");
-            		String approtableau = rs.getString("appro");
-            		
-            		// A LA PLACE DE FAIRE UN PRINT METTRE DANS LE TABLEAU !
-            		
-            		System.out.println(idtableau + " " + nomtableau + " " + emailtableau + " " + agetableau + " " + classetableau + " " + approtableau);
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
+	private Integer tabId;
+	private String tabNom;
+	private String tabPromo;
+	private String tabGroupe;
+	
+	public RecupBD () {
+		this.tabId = null;
+		this.tabGroupe = null;
+		this.tabNom = null;
+		this.tabPromo = null;
+	}
+	
+	public RecupBD(String tabId, String tabPromo, String tabNom, String tabGroupe) {
+		this.tabGroupe = new String(tabGroupe);
+		this.tabId = new Integer(tabId);
+		this.tabNom = new String(tabNom);
+		this.tabPromo = new String(tabPromo);
+		
+	}
+	
+	public Integer getTabId() {
+		return tabId;
+	}
+	public void setTabId(Integer tabId) {
+		this.tabId = tabId;
+	}
+	public String getTabNom() {
+		return tabNom;
+	}
+	public void setTabNom(String tabNom) {
+		this.tabNom = tabNom;
+	}
+	public String getTabPromo() {
+		return tabPromo;
+	}
+	public void setTabPromo(String tabPromo) {
+		this.tabPromo = tabPromo;
+	}
+	public String getTabGroupe() {
+		return tabGroupe;
+	}
+	public void setTabGroupe(String tabGroupe) {
+		this.tabGroupe = tabGroupe;
+	}
 }

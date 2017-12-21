@@ -4,8 +4,9 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -58,15 +59,30 @@
             </Text>
             <Line endX="100.0" layoutX="397.0" layoutY="73.0" startX="-100.0" strokeWidth="2.0" />
             <Line endX="100.0" layoutX="395.0" layoutY="14.0" startX="-100.0" strokeWidth="2.0" />
-            <TreeTableView fx:id="tableview" layoutX="33.0" layoutY="216.0" prefHeight="468.0" prefWidth="729.0">
+            <TableView fx:id="tableview" layoutX="32.0" layoutY="175.0" prefHeight="486.0" prefWidth="737.0">
               <columns>
-                  <TreeTableColumn fx:id="idEleve" prefWidth="99.0" text="Id élève" />
-                  <TreeTableColumn fx:id="promo" prefWidth="103.0" text="Promo" />
-                  <TreeTableColumn fx:id="prenom" prefWidth="173.0" text="Prénom" />
-                <TreeTableColumn fx:id="nom" prefWidth="227.0" text="Nom" />
-                  <TreeTableColumn fx:id="groupe" prefWidth="126.0" text="Groupe" />
+                  <TableColumn prefWidth="125.0" text="Id élève">
+                  	<cellValueFactory>
+                  		<PropertyValueFactory property="tabId" />
+                  	</cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="promo" prefWidth="135.0" text="Promo">
+                  	<cellValueFactory>
+                  		<PropertyValueFactory property="tabPromo" />
+                  	</cellValueFactory>
+                  </TableColumn>
+                <TableColumn fx:id="nom" prefWidth="359.0" text="Nom">
+                		<cellValueFactory>
+                			<PropertyValueFactory property="tabNom" />
+                		</cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="groupe" prefWidth="117.0" text="Groupe">
+                		<cellValueFactory>
+                			<PropertyValueFactory property="tabGroupe" />
+                		</cellValueFactory>
+                	</TableColumn>
               </columns>
-            </TreeTableView>
+            </TableView>
             <Button fx:id="liste1A" layoutX="250.0" layoutY="112.0" mnemonicParsing="false" onAction="#handleClickListe1A" text="Liste 1A" />
             <Button fx:id="liste2A" layoutX="330.0" layoutY="112.0" mnemonicParsing="false" onAction="#handleClickListe2A" text="Liste 2A" />
             <Button fx:id="liste3A" layoutX="410.0" layoutY="112.0" mnemonicParsing="false" onAction="#handleClickListe3A" text="Liste 3A" />

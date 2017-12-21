@@ -14,7 +14,7 @@ public class Main extends Application {
 
   public static void main(String args[]){
 	
-	RecupBD.select();
+	
 	//System.out.println(dev.getDevoirId("zaaf") + "/" + proj.getProjetId("zaaf", "gra"));
     log.debug("executing main() method.");
     launch(args);	  

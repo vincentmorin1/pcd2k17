@@ -1,6 +1,14 @@
 package eu.telecomnancy.pcd2k17;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,22 +21,15 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
+import javafx.scene.control.TableView;
+import javafx.fxml.Initializable;
 
-import eleve.Eleves;
-
-public class ListesElevesController{
+public class ListesElevesController implements Initializable{
 	
   final static Logger log = LogManager.getLogger(ListesElevesController.class);
   
-  ObservableList<Integer> ideleve = FXCollections.observableArrayList();
-  ObservableList<String> prom = FXCollections.observableArrayList();
-  ObservableList<String> preno = FXCollections.observableArrayList();
-  ObservableList<String> name = FXCollections.observableArrayList();
-  ObservableList<String> grp = FXCollections.observableArrayList();
+  ObservableList<RecupBD> Listeeleve = FXCollections.observableArrayList();
   
-
   @FXML
   private Button accueil = new Button();
   
@@ -51,23 +52,7 @@ public class ListesElevesController{
   private Button quit = new Button();
   
   @FXML
-  private TreeTableView<Eleves> tableview = new TreeTableView<Eleves>();
-  
-  @FXML
-  private TreeTableColumn<Eleves,String> idEleve = new TreeTableColumn<Eleves,String>();
-  
-  @FXML
-  private TreeTableColumn<Eleves,String> promo = new TreeTableColumn<Eleves,String>();
-  
-  @FXML
-  private TreeTableColumn<Eleves,String> prenom = new TreeTableColumn<Eleves,String>();
-  
-  @FXML
-  private TreeTableColumn<Eleves,String> nom = new TreeTableColumn<Eleves,String>();
-  
-  @FXML
-  private TreeTableColumn<Eleves,String> groupe = new TreeTableColumn<Eleves,String>();
-  
+  private TableView<RecupBD> tableview;
   @FXML
   private Button liste1A = new Button();
   
@@ -79,6 +64,21 @@ public class ListesElevesController{
   
   @FXML
   private Button all = new Button();
+  
+  @FXML
+  private ArrayList<String> tabid;
+  
+  @FXML
+  private ArrayList<String> tabnom;
+  
+  @FXML
+  private ArrayList<String> tabemail;
+  
+  @FXML
+  private ArrayList<String> tabclasse;
+ 
+  @FXML
+  private ArrayList<String> tabappro;
   
   @FXML
   public void handleClickAccueil(ActionEvent event) throws IOException{
@@ -167,10 +167,86 @@ public class ListesElevesController{
 	  new ListesElevesView(stage);
   }
   
-  @FXML
-  public void initialize() {
-	  //idEleve.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getidString()));
+  private Connection connect() {
+      // SQLite connection string
+      String url = "jdbc:sqlite:src/main/java/database/eleves2.db";
+      Connection conn = null;
+      try {
+          conn = DriverManager.getConnection(url);
+          System.out.println("Connecté");
+      } catch (SQLException e) {
+          System.out.println(e.getMessage());
+      }
+      return conn;
+  }
+
+	public ArrayList<String> getTabid() {
+		return tabid;
+	}
+
+	public void setTabid(ArrayList<String> tabid) {
+		this.tabid = tabid;
+	}
+
+	public ArrayList<String> getTabnom() {
+		return tabnom;
+	}
+
+	public void setTabnom(ArrayList<String> tabnom) {
+		this.tabnom = tabnom;
+	}
+
+	public ArrayList<String> getTabemail() {
+		return tabemail;
+	}
+
+	public void setTabemail(ArrayList<String> tabemail) {
+		this.tabemail = tabemail;
+	}
+
+	public ArrayList<String> getTabclasse() {
+		return tabclasse;
+	}
+
+	public void setTabclasse(ArrayList<String> tabclasse) {
+		this.tabclasse = tabclasse;
+	}
+
+	public ArrayList<String> getTabappro() {
+		return tabappro;
+	}
+
+	public void setTabappro(ArrayList<String> tabappro) {
+		this.tabappro = tabappro;
+	}
+
+@Override
+public void initialize(URL location, ResourceBundle resources) {
+	String sql = "SELECT * FROM eleves2";
+    
+    try (Connection conn = connect();
+         Statement stmt  = conn.createStatement();
+         ResultSet rs    = stmt.executeQuery(sql)){
+        
+        // loop through the result set
+        while (rs.next()) {
+        		String idtableau = rs.getString("id");
+        		String nomtableau = rs.getString("nom");
+        		String emailtableau = rs.getString("email");
+        		String classetableau = rs.getString("classe");
+        		String approtableau = rs.getString("appro");
+        		
+        		Listeeleve.add(new RecupBD(idtableau,classetableau,nomtableau,approtableau)); 
+        		
+        		// A LA PLACE DE FAIRE UN PRINT METTRE DANS LE TABLEAU !
+        		
+        		System.out.println(idtableau + " " + nomtableau + " " + emailtableau + " " + classetableau + " " + approtableau);
+        }
+    } catch (SQLException e) {
+        System.out.println(e.getMessage());
+    }
+	  tableview.getItems().addAll(Listeeleve);
+	
 }
-  
 
 }

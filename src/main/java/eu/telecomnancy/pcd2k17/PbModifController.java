@@ -36,6 +36,7 @@ public class PbModifController{
   ObservableList<String> proms = FXCollections.observableArrayList();
   ObservableList<Integer> grpe = FXCollections.observableArrayList();
 
+  
   @FXML
   private Button accueil = new Button();
   
@@ -116,6 +117,7 @@ public class PbModifController{
 		Stage stage = new Stage();
 		new HomeView(stage);
   }
+  
   
   @FXML
   public void handleClickQuit(ActionEvent event) throws IOException {
