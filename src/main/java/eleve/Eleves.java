@@ -27,15 +27,6 @@ public class Eleves extends Groupe{
 		return this.listeEleves;
 	}
 	
-	/*public Pager<Eleve> getListefinale(){
-		int c=0;
-		while (c<listeEleves.size()-1){
-			c=c+1;
-			
-		}
-		
-		return this.listeEleves;
-	}*/
 	
 	public void ajouter(Eleve eleve) {
 		this.listeEleves.add(eleve);
@@ -196,7 +187,7 @@ public class Eleves extends Groupe{
 					String email = filtre.next() ;  					
 					String classe = filtre.next();
 					String appro = filtre.next();
-					this.ajouter(new Eleve(prenom,nom,email,classe,appro)) ;
+					this.ajouter(new Eleve("nik",prenom,nom,email,classe,appro)) ;
 							
 					ligne = flotFiltre.readLine() ;
 				}

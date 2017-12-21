@@ -23,27 +23,25 @@ public class Update {
 	    }
 	 
 
-	    public void update(Integer id, String nom,String prenom, String email,String classe, String appro) {
-	        String sql = "UPDATE eleves2 SET nom = ? , "
-	                +"prenom = ? ,"
+	    public void update(Integer id,String username, String nom,String prenom, String email,String classe, String appro) {
+	        String sql = "UPDATE eleves2 SET username = ? , "
+	        		+"nom = ? ,"
+	        		+"prenom = ? ,"
 	        		+ "email = ? ,"
 	                + "classe = ? ,"
 	                + "appro = ? "
 	                + "WHERE id = ?";
-	        
-	        System.out.println("bite");
 	        try (Connection conn = this.connect();
 	                PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-		        System.out.println("bite12");
 	 
 	            // set the corresponding param
-	            pstmt.setInt(6, id);
-		        pstmt.setString(1, nom);
-	            pstmt.setString(2, prenom);
-	            pstmt.setString(3, email);
-	            pstmt.setString(4, classe);
-	            pstmt.setString(5, appro);
+	            pstmt.setInt(7, id);
+	            pstmt.setString(1,username);
+		        pstmt.setString(2, nom);
+	            pstmt.setString(3, prenom);
+	            pstmt.setString(4, email);
+	            pstmt.setString(5, classe);
+	            pstmt.setString(6, appro);
 	            // update 
 	            pstmt.executeUpdate();
 	        } catch (SQLException e) {
