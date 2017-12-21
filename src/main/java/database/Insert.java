@@ -26,15 +26,15 @@ public class Insert{
 	    }
 	 
 
-	    public void insert(int id, String nom,String email,int age,String classe,String appro) {
-	        String sql = "INSERT INTO eleves2(id,nom,email,age,classe,appro) VALUES(?,?,?,?,?,?)";
+	    public void insert(int id,String prenom, String nom,String email,String classe,String appro) {
+	        String sql = "INSERT INTO eleves2(id,prenom,nom,email,classe,appro) VALUES(?,?,?,?,?,?)";
 	      
 	        try (Connection conn = this.connect();
 	                PreparedStatement pstmt = conn.prepareStatement(sql)) {
 	            pstmt.setInt(1, id);
-	            pstmt.setString(2, nom);
+	            pstmt.setString(2, prenom);
+	            pstmt.setString(3, nom);
 	            pstmt.setString(3, email);
-	            pstmt.setInt(4, age);
 	            pstmt.setString(5, classe);
 	            pstmt.setString(6, appro);
 	            pstmt.executeUpdate();

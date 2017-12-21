@@ -4,6 +4,9 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.gitlab4j.api.GitLabApi;
@@ -15,8 +18,14 @@ import org.gitlab4j.api.UserApi;
 import org.gitlab4j.api.models.User;
 
 import database.Insert;
+import database.Update;
 import database.maindatabase;
+
+import eleve.Eleve;
+import eleve.Eleves;
+
 import devoir.Room;
+
 
 public class auth extends maindatabase{
 	
@@ -33,22 +42,50 @@ public class auth extends maindatabase{
 		public auth() {
 			this.auth = new GitLabApi("https://gitlab.telecomnancy.univ-lorraine.fr", accessToken);
 			try {
-
+				int i=0;
+				Eleves liste = new Eleves();
+				liste.load("eleves.csv");
+				String[] resparts = null;
 				createNewDatabase("eleves2.db");
 		        createNewTable();
 				Pager<User> users = this.auth.getUserApi().getUsers(60);
+				ArrayList<Eleve> listefinale = liste.getListeEleves();
+				Update app2 = new Update();
+				Insert app = new Insert();
 				while(users.hasNext()){
-					for(User user : users.next()){
+					List<User> page = users.next();
+					for(User user : page)
+						System.out.println(user.getName());
+					for(User user : page){
+						String username =user.getUsername();
+						System.out.println(username);
+						String delims = "[.]";
+						resparts = username.split(delims);
+						String name;
+						if(resparts.length > 1)
+							name = resparts[1];
+						else
+							name = "CACA";
 						Integer id = user.getId();
-						String nom = user.getName();
-						Insert app = new Insert();
-				        app.insert(id, nom, "null", 0 ,"null", "null");
-					}
+				        app.insert(id, username,"null", "null" ,"null", "null");
+				       
+				        for (Eleve eleve : listefinale){
+				        	if (eleve.nom.toLowerCase().equals(name.toLowerCase())){
+				        		//System.out.println("match");
+					        	i=i+1;
+
+				        		//System.out.println(user.getId());
+				        		app2.update(user.getId(),eleve.nom,eleve.prenom,eleve.email,eleve.classe,eleve.appro);
+				        		//System.out.println("quelqu'un updated");
+				        	}
+				        }
+					}							
+				
+					System.out.println(i);
 				}	   
 			} catch (GitLabApiException e) {
-				System.out.println("zizi");
+				System.out.println("fake");
 			}
-
 		}
 		//coucouc vincent : en fait non c'est un prank. kdsn�fvkjz^nbjdtbvdfjslm
 	private String Readfunction() {

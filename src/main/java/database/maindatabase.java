@@ -35,21 +35,14 @@ public class maindatabase{
 	        // SQL statement for creating a new table
 	        String sql = "CREATE TABLE IF NOT EXISTS eleves2 (\n"
 	                + "	id integer PRIMARY KEY,\n"
-	                + "	nom text NOT NULL,\n"
+	                + "	prenom text ,\n"
+	                + "	nom text ,\n"
 	                + "	email text,\n"
-	                + "	age integer, \n"
 	                + "	classe text,\n"
 	                + "	appro text\n"
 	                + ");";
 	        
-	        String sql2 = "CREATE TABLE IF NOT EXISTS devoir (\n"
-	        		+"Mati�re text,\n"
-	        		+"Titre text,\n"
-	        		+"Dated�but date,\n"
-	        		+"Datefin date,\n"
-	        		+"Liste text,\n"
-	        		+"Groupe integer,\n"
-	        		+");";
+
 	        
 	        try (Connection conn = DriverManager.getConnection(url);
 	                Statement stmt = conn.createStatement()) {
@@ -82,21 +75,4 @@ public class maindatabase{
 	    }
 	 
 
-	    public static void main(String[] args) {
-	        /*createNewDatabase("eleves.db");
-	        createNewTable();
-	        Insert app = new Insert();
-	        app.insert(1,"Loembe","Alex","alex-kevin.loembe@telecomnancy.eu",23,"3A","TRS");
-	        app.insert(2,"Martin","Victoria","victoria.martin@telecomnancy.eu",22,"3A","SIE");
-	        app.insert(3,"Pineau","Constance","constance.pineau@telecomnancy.eu",22,"3A","IAMD");
-	        app.insert(4,"Frederic","Georges","frederic.georges@telecomnancy.eu",22,"3A","IAMD");
-	        app.insert(5,"Eliot","Godard","eliot.godard@telecomnancy.eu",22,"3A","IL");
-	        app.insert(6,"Cholley","Victor","victor.cholley@telecomnancy.eu",24,"3A","IL");
-	        app.insert(7,"Vincent","Nahmias","vincent.nahmias@telecomnancy.eu",22,"3A","TRS");
-	        app.insert(8,"Tom","Barat","@telecomnancy.eu",22,"3A","TRS");
-	        app.insert(9,"Polizzi","Mathilde","mathilde.polizzi@telecomnancy.eu",22,"3A","SIE");
-	        app.insert(10,"Louis-pol","Kelner","louis-pol.kelner@telecomnancy.eu",22,"3A","SIE");
-	        app.insert(11,"Sofian","Chouder","sofian.chouder@telecomnancy.eu",23,"3A","SIE");
-	        app.insert(12,"Victor","Schwien","Victor.schwien@telecomnancy.eu",20,"1A","null");*/
-	}
 }

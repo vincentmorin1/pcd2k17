@@ -11,6 +11,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import org.gitlab4j.api.Pager;
+
 public class Eleves extends Groupe{
 	
 
@@ -20,6 +22,20 @@ public class Eleves extends Groupe{
 	public Eleves() {
 		this.listeEleves=new ArrayList<Eleve>();
 	}
+	
+	public ArrayList<Eleve> getListeEleves(){
+		return this.listeEleves;
+	}
+	
+	/*public Pager<Eleve> getListefinale(){
+		int c=0;
+		while (c<listeEleves.size()-1){
+			c=c+1;
+			
+		}
+		
+		return this.listeEleves;
+	}*/
 	
 	public void ajouter(Eleve eleve) {
 		this.listeEleves.add(eleve);
@@ -61,7 +77,7 @@ public class Eleves extends Groupe{
 	}
 	
 	
-	public void save(String nomFichier) {
+	/*public void save(String nomFichier) {
 		FileWriter flot ;
 		PrintWriter flotFiltre ;
 		String newLine = System.getProperty("line.separator");
@@ -85,7 +101,7 @@ public class Eleves extends Groupe{
 		} catch (IOException e) {
 			System.out.println("Ouverture impossible ou fichier dejaï¿½ existant.") ;
 		}
-	}
+	}*/
 	
 	public Eleves extractpromo(String promo) {
 
@@ -174,16 +190,13 @@ public class Eleves extends Groupe{
 				while (ligne != null) {
 							
 					filtre = new Scanner(ligne) ;
-					filtre.useDelimiter("\\s* \\s*") ;
-					
-					int id = Integer.parseInt(filtre.next());
-					String nom = filtre.next() ; 
-					String prenom = filtre.next(); 
-					String email = filtre.next() ;  
-					int age =Integer.parseInt(filtre.next());
+					filtre.useDelimiter("\\s*;\\s*") ;
+					String prenom = filtre.next();
+					String nom = filtre.next() ;
+					String email = filtre.next() ;  					
 					String classe = filtre.next();
 					String appro = filtre.next();
-					this.ajouter(new Eleve(id,nom,prenom,email,age,classe,appro)) ;
+					this.ajouter(new Eleve(prenom,nom,email,classe,appro)) ;
 							
 					ligne = flotFiltre.readLine() ;
 				}
@@ -198,6 +211,9 @@ public class Eleves extends Groupe{
 			System.out.println("Lecture impossible ou mauvais format.") ;
 		}
 	}
+	
+	
+	
 	
 	public static void generategroupe(ArrayList<Eleve> eleves, int nbeleves){
 		int c=0;
@@ -216,8 +232,13 @@ public class Eleves extends Groupe{
 	
 	public static void main(String args[]){
 		//entrées eleves pour test 
-		//Eleve eleve1 = new Eleve (1,"Loembe","Alex-Kevin", "Alex-Kevin.Loembe@telecomnancy.eu", 23, "3A","TRS");
-
+		//Eleve eleve1 = new Eleve ("Loembe","Alex-Kevin", "Alex-Kevin.Loembe@telecomnancy.eu", "3A","TRS");
+		
+		
+		/*Eleves liste2 = new Eleves();
+		liste2.load1A("testid.csv");
+		System.out.println(liste2.toString());*/
+		
 		//System.out.println(eleve1.toString());
 		//Eleve eleve2 = new Eleve (2,"Martin","Victoria", "Victoria.Martin@telecomnancy.eu", 22, "3A","SIE");
 		//System.out.println(eleve2.toString());
@@ -244,7 +265,7 @@ public class Eleves extends Groupe{
 		//System.out.println(liste.toString());
 		
 		
-		Eleve eleve1 = new Eleve (1,"Loembe","Alex-Kevin", "Alex-Kevin.Loembe@telecomnancy.eu",23,"3A","TRS");
+		/*Eleve eleve1 = new Eleve (1,"Loembe","Alex-Kevin", "Alex-Kevin.Loembe@telecomnancy.eu",23,"3A","TRS");
 		Eleve eleve2 = new Eleve (2,"Martin","Victoria", "Victoria.Martin@telecomnancy.eu",22,"3A","SIE");
 		Eleve eleve3 = new Eleve (3,"Leroux","Paul", "Paul.Leroux@telecomnancy.eu",22,"2A","IAMD");
 		Eleve eleve4 = new Eleve (4,"Roudaut","Tanguy", "Tanguy.Roudaut@telecomnancy.eu",21,"2A","IL");
@@ -269,7 +290,7 @@ public class Eleves extends Groupe{
 		groupe.add(eleve10);
 		groupe.add(eleve11);
 		groupe.add(eleve12);
-		generategroupe(groupe, 2);
+		generategroupe(groupe, 2);*/
 		//test génération aleatoire de groupe à partir d'une arraylist d'eleves
 		
 		
@@ -292,5 +313,6 @@ public class Eleves extends Groupe{
 		/*Eleves liste2 = new Eleves();
 		liste2.load("eleves.bd");
 		System.out.println(liste2.toString());*/
+		
 	}
 }
