@@ -28,7 +28,7 @@ public class PbCreationController{
   final static Logger log = LogManager.getLogger(PbCreationController.class);
   
   ObservableList<String> list = FXCollections.observableArrayList("1A","2A","3A");
-  ObservableList<String> group = FXCollections.observableArrayList("1","2","3","4","5");
+  ObservableList<String> matier = FXCollections.observableArrayList("TOP","POO","SD","C","RS","MOCI","AMIO","BDA","IA");
 
   @FXML
   private Button accueil = new Button();
@@ -52,9 +52,6 @@ private MenuItem creation = new MenuItem();
   private Button creer = new Button();
   
   @FXML
-  private TextField matiere = new TextField();
-  
-  @FXML
   private TextField titre = new TextField();
   
   @FXML
@@ -76,7 +73,7 @@ private MenuItem creation = new MenuItem();
   private ChoiceBox<String> liste;
   
   @FXML
-  private ChoiceBox<String> groupe;
+  private ChoiceBox<String> matiere;
   
   @FXML
   public void handleClickAccueil(ActionEvent event) throws IOException{
@@ -103,6 +100,15 @@ private MenuItem creation = new MenuItem();
   }
   
   @FXML
+  public void handleClickListesEleves(ActionEvent event) throws IOException{
+	  Stage primaryStage = (Stage) creer.getScene().getWindow();
+		primaryStage.close();
+		
+		Stage stage = new Stage();
+		new ListesElevesView(stage);
+  }
+  
+  @FXML
   public void handleClickCreation(ActionEvent event) throws IOException {
 	  Stage primaryStage = (Stage) creer.getScene().getWindow();
 	  primaryStage.hide();
@@ -123,7 +129,7 @@ private MenuItem creation = new MenuItem();
   @FXML
   public void initialize() {
 	  liste.setItems(list);
-	  groupe.setItems(group);
+	  matiere.setItems(matier);
 }
   
   @FXML
@@ -131,9 +137,8 @@ private MenuItem creation = new MenuItem();
 	  Stage primaryStage = (Stage) creer.getScene().getWindow();
 		primaryStage.close();
 	  log.debug(liste.getValue());
-	  log.debug(groupe.getValue());
 	  log.debug(titre.getText());
-	  log.debug(matiere.getText());
+	  log.debug(matiere.getValue());
 	  log.debug(nb.getText());
 	  log.debug(desc.getText());
 	  log.debug(debut.getValue());
