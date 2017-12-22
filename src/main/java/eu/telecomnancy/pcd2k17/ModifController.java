@@ -175,9 +175,9 @@ public class ModifController implements Initializable{
       Connection conn = null;
       try {
           conn = DriverManager.getConnection(url);
-          System.out.println("Connecté");
+          //System.out.println("Connecté");
       } catch (SQLException e) {
-          System.out.println(e.getMessage());
+          //System.out.println(e.getMessage());
       }
       return conn;
   }
@@ -201,9 +201,9 @@ public class ModifController implements Initializable{
           		Listedevoir.add(new RecupDevoir(titretableau,matieretableau,debuttableau,fintableau,listetableau)); 
           }
       } catch (SQLException e) {
-          System.out.println(e.getMessage());
+          //System.out.println(e.getMessage());
       }
-      System.out.println(titretableau);
+      //System.out.println(titretableau);
       Listedevoir.add(new RecupDevoir("test","uy","2016-02-03","2016-02-04","phn"));
   	  table.getItems().addAll(Listedevoir);
   	

@@ -166,9 +166,9 @@ public class PbModifController implements Initializable{
       Connection conn = null;
       try {
           conn = DriverManager.getConnection(url);
-          System.out.println("Connecté");
+          //System.out.println("Connecté");
       } catch (SQLException e) {
-          System.out.println(e.getMessage());
+          //System.out.println(e.getMessage());
       }
       return conn;
   }

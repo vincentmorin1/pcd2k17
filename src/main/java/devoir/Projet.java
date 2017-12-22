@@ -29,7 +29,7 @@ public class Projet {
 			this.proj.createProject(name);
 		} catch (GitLabApiException e) {
 			// TODO Auto-generated catch block
-			System.out.println("Impossible de créer le projet "+name+".");
+			//System.out.println("Impossible de créer le projet "+name+".");
 		}
 	}
 	
@@ -38,7 +38,7 @@ public class Projet {
 			this.proj.createProject(devs.getDevoirs().getDevoir(devoirName).getId(),name);
 		} catch (GitLabApiException e) {
 			// TODO Auto-generated catch block
-			System.out.println("Impossible de créer le projet "+name+".");
+			//System.out.println("Impossible de créer le projet "+name+".");
 		}
 	}
 	
@@ -47,7 +47,7 @@ public class Projet {
 			this.proj.createProject(devs.getDevoirs().getDevoir(devoirName).getId(),devoirName+name);
 		} catch (GitLabApiException e) {
 			// TODO Auto-generated catch block
-			System.out.println("Impossible de créer le projet "+name+".");
+			//System.out.println("Impossible de créer le projet "+name+".");
 		}
 	}
 	
@@ -83,14 +83,6 @@ public class Projet {
 	
 	public void retirerMembre(String matName, String devName, String projName, String username) throws GitLabApiException {
 		proj.removeMember(proj.getProject(devs.getDevoirs().getDevoir(devName).getFullPath(),projName).getId(),user.getUser(username).getId());
-	}
-	public static void main(String args[]) throws GitLabApiException {
-		auth lab = new auth();
-		Room room = new Room(lab);
-		Matiere mat = new Matiere(lab, room);
-		Devoir dev = new Devoir(lab, mat);
-		Projet proj = new Projet(lab, dev);
-		proj.creerProjet("Allo","choco");
 	}
 	
 }

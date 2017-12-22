@@ -37,7 +37,7 @@ public class ConnexionController extends maindatabase{
   
 @FXML
   public void handleClickConnexion(ActionEvent event) throws IOException {
-    log.debug(token.getText());
+    //log.debug(token.getText());
 	Stage primaryStage = (Stage) connexion.getScene().getWindow();
 	primaryStage.close();
 	
@@ -52,7 +52,7 @@ public class ConnexionController extends maindatabase{
                writer.close();
            }
        } catch (Exception e) {
-           System.out.println("Ca marche pas");
+           //System.out.println("Ca marche pas");
        }
        
        //test token
@@ -65,7 +65,7 @@ public class ConnexionController extends maindatabase{
    		} catch (GitLabApiException e) {}
    	   	
    	 try {
-			System.out.println("on est la");
+			//System.out.println("on est la");
 			Insert app = new Insert();
 			Insert app2 = new Insert();
 			Insert app3= new Insert();
