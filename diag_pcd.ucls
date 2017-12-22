@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.0" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="Authentification.auth" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/Authentification/auth.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="150" x="6550" y="896"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="database.Delete" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/database/Delete.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="130" x="3303" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="database.Insert" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/database/Insert.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="281" x="2028" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="database.maindatabase" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/database/maindatabase.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="185" x="5710" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="database.Update" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/database/Update.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="308" x="2619" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="devoir.Devoir" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/devoir/Devoir.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="333" width="421" x="5215" y="1773"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="devoir.GroupDevoir" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/devoir/GroupDevoir.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="333" width="240" x="5215" y="2483"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="devoir.GroupDevoirs" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/devoir/GroupDevoirs.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="297" x="5215" y="2182"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="devoir.GroupMatiere" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/devoir/GroupMatiere.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="333" width="236" x="4882" y="2483"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="devoir.GroupMatieres" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/devoir/GroupMatieres.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="293" x="4882" y="2182"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="devoir.GroupRoom" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/devoir/GroupRoom.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="168" x="4189" y="2182"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="devoir.Matiere" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/devoir/Matiere.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="218" x="4882" y="1773"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="devoir.Projet" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/devoir/Projet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="249" x="5980" y="896"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="devoir.Room" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/devoir/Room.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="187" x="3496" y="1773"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="eleve.Eleve" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eleve/Eleve.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="243" x="4011" y="1773"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="eleve.Eleves" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eleve/Eleves.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="231" x="3759" y="896"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="eleve.Groupe" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eleve/Groupe.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="113" x="4011" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="eu.telecomnancy.pcd2k17.ConnexionController" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/ConnexionController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="189" width="220" x="6290" y="896"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="eu.telecomnancy.pcd2k17.ConnexionView" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/ConnexionView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="139" x="1139" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="eu.telecomnancy.pcd2k17.CreationController" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/CreationController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="729" width="230" x="5710" y="896"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="eu.telecomnancy.pcd2k17.CreationView" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/CreationView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="128" x="3843" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="eu.telecomnancy.pcd2k17.HomeController" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/HomeController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="351" width="230" x="2349" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="eu.telecomnancy.pcd2k17.HomeView" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/HomeView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="119" x="625" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="eu.telecomnancy.pcd2k17.ListesElevesController" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/ListesElevesController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="819" width="230" x="1318" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="eu.telecomnancy.pcd2k17.ListesElevesView" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/ListesElevesView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="149" x="950" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="eu.telecomnancy.pcd2k17.Main" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/Main.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="119" x="3684" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="eu.telecomnancy.pcd2k17.ModifController" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/ModifController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="837" width="269" x="4051" y="896"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="eu.telecomnancy.pcd2k17.ModifView" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/ModifView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="119" x="2967" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="eu.telecomnancy.pcd2k17.NewModifController" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/NewModifController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="783" width="230" x="4900" y="896"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="eu.telecomnancy.pcd2k17.NewModifView" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/NewModifView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="137" x="3126" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="eu.telecomnancy.pcd2k17.NewPbModifController" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/NewPbModifController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="783" width="230" x="5440" y="896"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="eu.telecomnancy.pcd2k17.NewPbModifDateController" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/NewPbModifDateController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="783" width="230" x="4630" y="896"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="eu.telecomnancy.pcd2k17.NewPbModifDateView" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/NewPbModifDateView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="171" x="3473" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="eu.telecomnancy.pcd2k17.NewPbModifView" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/NewPbModifView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="149" x="436" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="eu.telecomnancy.pcd2k17.PbConnexionController" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/PbConnexionController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="189" width="220" x="1588" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="eu.telecomnancy.pcd2k17.PbConnexionView" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/PbConnexionView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="151" x="245" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="eu.telecomnancy.pcd2k17.PbCreationController" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/PbCreationController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="675" width="230" x="4360" y="896"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="eu.telecomnancy.pcd2k17.PbCreationDateController" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/PbCreationDateController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="693" width="230" x="5170" y="896"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="eu.telecomnancy.pcd2k17.PbCreationDateView" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/PbCreationDateView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="162" x="43" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="eu.telecomnancy.pcd2k17.PbCreationView" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/PbCreationView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="140" x="1848" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="eu.telecomnancy.pcd2k17.PbModifController" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/PbModifController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="783" width="230" x="2385" y="896"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="eu.telecomnancy.pcd2k17.PbModifView" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/PbModifView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="126" x="784" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="eu.telecomnancy.pcd2k17.RecupDevoir" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/RecupDevoir.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="369" width="248" x="3723" y="1773"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="eu.telecomnancy.pcd2k17.RecupEleve" project="pcd2k17-pcdpotes" 
+    file="/pcd2k17-pcdpotes/src/main/java/eu/telecomnancy/pcd2k17/RecupEleve.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="369" width="243" x="2655" y="896"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="45">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="46" name="mat"/>      
+      <multiplicity id="47" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="48">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="49" name="mat"/>      
+      <multiplicity id="50" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="51">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="52" name="Listedevoir"/>      
+      <multiplicity id="53" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="43" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="55" name="dev"/>      
+      <multiplicity id="56" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="57">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <generalization id="58">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <association id="59">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="60" name="devs"/>      
+      <multiplicity id="61" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="62">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="63" name="mat"/>      
+      <multiplicity id="64" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="65">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="66" name="mat"/>      
+      <multiplicity id="67" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="68">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="69" name="mat"/>      
+      <multiplicity id="70" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="71">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="72" name="mat"/>      
+      <multiplicity id="73" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="74">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="75" name="groupe"/>      
+      <multiplicity id="76" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="77">    
+    <bendpoint x="4020" y="896"/>    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="78" name="listeEleves"/>      
+      <multiplicity id="79" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="80">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <association id="81">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="82" name="Listeeleve"/>      
+      <multiplicity id="83" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="84">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="85" name="devs"/>      
+      <multiplicity id="86" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="87">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="88" name="room"/>      
+      <multiplicity id="89" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="90">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="91" name="mats"/>      
+      <multiplicity id="92" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="93">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <association id="94">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="95" name="Listedevoir"/>      
+      <multiplicity id="96" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="43" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="97">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="98" name="liste"/>      
+      <multiplicity id="99" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="100">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="101" name="dev"/>      
+      <multiplicity id="102" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="103">    
+    <bendpoint x="6259" y="896"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <association id="104">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="105" name="dev"/>      
+      <multiplicity id="106" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="107">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <association id="108">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="109" name="eleves"/>      
+      <multiplicity id="110" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="111">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="112" name="dev"/>      
+      <multiplicity id="113" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="114">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="115" name="listeEleves"/>      
+      <multiplicity id="116" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="117">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="118" name="mat"/>      
+      <multiplicity id="119" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="120">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="121" name="mats"/>      
+      <multiplicity id="122" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="123">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="124" name="dev"/>      
+      <multiplicity id="125" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="126">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <association id="127">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="128" name="liste"/>      
+      <multiplicity id="129" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="130">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <association id="131">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="132" name="dev"/>      
+      <multiplicity id="133" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="134">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <association id="135">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="136" name="room"/>      
+      <multiplicity id="137" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="138">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="139" name="dev"/>      
+      <multiplicity id="140" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
