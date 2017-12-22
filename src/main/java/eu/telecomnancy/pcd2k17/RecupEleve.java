@@ -1,6 +1,6 @@
 package eu.telecomnancy.pcd2k17;
 
-public class RecupBD {
+public class RecupEleve {
 
 	
 	private Integer tabId;
@@ -8,14 +8,14 @@ public class RecupBD {
 	private String tabPromo;
 	private String tabGroupe;
 	
-	public RecupBD () {
+	public RecupEleve () {
 		this.tabId = null;
 		this.tabGroupe = null;
 		this.tabNom = null;
 		this.tabPromo = null;
 	}
 	
-	public RecupBD(String tabId, String tabPromo, String tabNom, String tabGroupe) {
+	public RecupEleve(String tabId, String tabPromo, String tabNom, String tabGroupe) {
 		this.tabGroupe = new String(tabGroupe);
 		this.tabId = new Integer(tabId);
 		this.tabNom = new String(tabNom);

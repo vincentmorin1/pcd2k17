@@ -28,7 +28,7 @@ public class ListesElevesController implements Initializable{
 	
   final static Logger log = LogManager.getLogger(ListesElevesController.class);
   
-  ObservableList<RecupBD> Listeeleve = FXCollections.observableArrayList();
+  ObservableList<RecupEleve> Listeeleve = FXCollections.observableArrayList();
   
   @FXML
   private Button accueil = new Button();
@@ -52,7 +52,7 @@ public class ListesElevesController implements Initializable{
   private Button quit = new Button();
   
   @FXML
-  private TableView<RecupBD> tableview;
+  private TableView<RecupEleve> tableview;
   @FXML
   private Button liste1A = new Button();
   
@@ -211,8 +211,7 @@ public void initialize(URL location, ResourceBundle resources) {
         		nomtableau = rs.getString("nom");
         		classetableau = rs.getString("classe");
         		approtableau = rs.getString("appro");
-        		tabclasse.add(classetableau);
-        		Listeeleve.add(new RecupBD(idtableau,classetableau,nomtableau,approtableau)); 
+        		Listeeleve.add(new RecupEleve(idtableau,classetableau,nomtableau,approtableau)); 
         }
     } catch (SQLException e) {
         System.out.println(e.getMessage());
