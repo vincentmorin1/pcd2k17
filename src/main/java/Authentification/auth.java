@@ -81,7 +81,7 @@ public class auth extends maindatabase{
 					}							
 				}	   
 			} catch (GitLabApiException e) {
-				System.out.println("erreur try auth");
+				//System.out.println("erreur try auth");
 			}
 		}
 			

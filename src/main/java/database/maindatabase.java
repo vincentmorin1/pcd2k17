@@ -23,7 +23,7 @@ public class maindatabase{
 	            }
 	 
 	        } catch (SQLException e) {
-	            System.out.println(e.getMessage());
+	            //System.out.println(e.getMessage());
 	        }
 	    }
 	  
@@ -49,7 +49,7 @@ public class maindatabase{
 	            // create a new table
 	            stmt.execute(sql);
 	        } catch (SQLException e) {
-	            System.out.println(e.getMessage());
+	            //System.out.println(e.getMessage());
 	        }
 	    }
 	    
@@ -70,7 +70,7 @@ public class maindatabase{
 	            // create a new table
 	            stmt.execute(sql2);
 	        } catch (SQLException e) {
-	            System.out.println(e.getMessage());
+	            //System.out.println(e.getMessage());
 	        }
 
 	    }
@@ -92,7 +92,7 @@ public class maindatabase{
 	            // create a new table
 	            stmt.execute(sql2);
 	        } catch (SQLException e) {
-	            System.out.println(e.getMessage());
+	            //System.out.println(e.getMessage());
 	        }
 
 	    }
@@ -110,7 +110,7 @@ public class maindatabase{
 	            // create a new table
 	            stmt.execute(sql2);
 	        } catch (SQLException e) {
-	            System.out.println(e.getMessage());
+	            //System.out.println(e.getMessage());
 	        }
 
 	    }

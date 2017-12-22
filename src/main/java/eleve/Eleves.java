@@ -156,7 +156,7 @@ public class Eleves extends Groupe{
 			else throw new IOException();
 
 		} catch (IOException e) {
-			System.out.println("Lecture impossible ou mauvais format.") ;
+			//System.out.println("Lecture impossible ou mauvais format.") ;
 		}
 		return listid ;
 	}
@@ -199,7 +199,7 @@ public class Eleves extends Groupe{
 			else throw new IOException();
 
 		} catch (IOException e) {
-			System.out.println("Lecture impossible ou mauvais format.") ;
+			//System.out.println("Lecture impossible ou mauvais format.") ;
 		}
 	}
 	
@@ -222,7 +222,7 @@ public class Eleves extends Groupe{
 
 	
 	public static void main(String args[]){
-		//entrées eleves pour test 
+		//entrï¿½es eleves pour test 
 		//Eleve eleve1 = new Eleve ("Loembe","Alex-Kevin", "Alex-Kevin.Loembe@telecomnancy.eu", "3A","TRS");
 		
 		
@@ -282,7 +282,7 @@ public class Eleves extends Groupe{
 		groupe.add(eleve11);
 		groupe.add(eleve12);
 		generategroupe(groupe, 2);*/
-		//test génération aleatoire de groupe à partir d'une arraylist d'eleves
+		//test gï¿½nï¿½ration aleatoire de groupe ï¿½ partir d'une arraylist d'eleves
 		
 		
 		
@@ -300,7 +300,7 @@ public class Eleves extends Groupe{
 		Eleves liste =groupe.extractappro("2A", "SIE");
 		System.out.println(liste.toString());*/
 		
-		//test base de données sql
+		//test base de donnï¿½es sql
 		/*Eleves liste2 = new Eleves();
 		liste2.load("eleves.bd");
 		System.out.println(liste2.toString());*/

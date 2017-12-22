@@ -1,6 +1,8 @@
 package eu.telecomnancy.pcd2k17;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -92,6 +94,13 @@ private MenuItem creation = new MenuItem();
   @FXML 
   private ChoiceBox<String> liste;
   
+  @FXML
+  private String titree;
+  private String matieree;
+  private String debutee;
+  private String finee;
+  private String listee;
+  
   private boolean alea;
   
   @FXML
@@ -124,7 +133,7 @@ private MenuItem creation = new MenuItem();
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
-	  new CreationView(stage);
+	  new ModifView(stage);
 	  
   }
   
@@ -158,6 +167,18 @@ private MenuItem creation = new MenuItem();
   
   @FXML
   public void initialize() {
+	  titree=ModifController.titretableau;
+	  matieree=ModifController.matieretableau;
+	  debutee=ModifController.debuttableau;
+	  finee=ModifController.fintableau;
+	  listee=ModifController.listetableau;
+	  
+	  titre.setText(titree);
+	  matiere.setValue(matieree);
+	  debut.setValue(LocalDate.parse(debutee));
+	  fin.setValue(LocalDate.parse(finee));
+	  liste.setValue(listee);
+	  
 	  liste.setItems(list);
 	  matiere.setItems(matier);
 }
@@ -166,7 +187,7 @@ private MenuItem creation = new MenuItem();
   public void handleClickModification(ActionEvent event) throws IOException{
 	  Stage primaryStage = (Stage) modification.getScene().getWindow();
 		primaryStage.close();
-	  log.debug(liste.getValue());
+	  /*log.debug(liste.getValue());
 	  log.debug(titre.getText());
 	  log.debug(matiere.getValue());
 	  log.debug(nb.getText());
@@ -176,12 +197,12 @@ private MenuItem creation = new MenuItem();
 	  log.debug(aleatoire.getText());
 	  log.debug(privee.getText());
 	  log.debug(publique.getText());
-	  log.debug(pre.getText());
+	  log.debug(pre.getText());*/
 	  
 	  if (debut.getValue() != null && fin.getValue() != null && titre.getText() != "" && matiere.getValue() != null) {
 		  if (debut.getValue().compareTo(fin.getValue()) > 0) {
 			  Stage stage = new Stage();
-			new PbCreationDateView(stage);
+			new NewPbModifDateView(stage);
 		  }
 		  else {
 			  try {
@@ -205,13 +226,13 @@ private MenuItem creation = new MenuItem();
 				  new ModifView(stage);
 			  } catch (GitLabApiException e) {
 				  Stage stage = new Stage();
-				  new PbCreationView(stage);
+				  new NewPbModifView(stage);
 			  }
 		  }
 	  }
 	  else {
 		  	Stage stage = new Stage();
-			new PbCreationView(stage);
+			new NewPbModifView(stage);
 			//
 	  }
 	  
