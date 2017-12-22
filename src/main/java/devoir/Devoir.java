@@ -45,7 +45,7 @@ public class Devoir extends maindatabase{
 		devs.addDevoir(new GroupDevoir(devApi,mats.getMatiere(nomMat),name) );
 			Date d = Date.valueOf(debut);
 			Date f = Date.valueOf(fin);
-			System.out.println(d.toString());
+			//System.out.println(d.toString());
 			createNewTabledev();
 			  Insert app = new Insert();
 			  app.insertdev(devs.getDevoir(name).getId(), name,nomMat,d.toString(),f.toString(),liste);
@@ -64,7 +64,7 @@ public class Devoir extends maindatabase{
 		devs.updateDevoir(devApi, mats.getMatiere(nomMat), devApi.getGroups());
 			Date d = Date.valueOf(debut);
 			Date f = Date.valueOf(fin);
-			System.out.println(d.toString());
+			//System.out.println(d.toString());
 			createNewTabledev();
 			  Update app = new Update();
 			  app.updatedev(devs.getDevoir(name).getId(), name,nomMat,d.toString(),f.toString(),liste);

@@ -37,7 +37,7 @@ public class GroupMatieres {
 			}}
 
 		}
-		System.out.println(liste.toString());
+		//System.out.println(liste.toString());
 	}
 	
 	public HashMap<String,GroupMatiere> getListe(){
