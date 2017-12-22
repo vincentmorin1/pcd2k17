@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -15,6 +16,11 @@ import org.gitlab4j.api.GroupApi;
 import org.gitlab4j.api.Pager;
 import org.gitlab4j.api.ProjectApi;
 import org.gitlab4j.api.UserApi;
+import org.gitlab4j.api.models.Group;
+import org.gitlab4j.api.models.Member;
+import org.gitlab4j.api.models.Owner;
+import org.gitlab4j.api.models.Project;
+import org.gitlab4j.api.models.ProjectSharedGroup;
 import org.gitlab4j.api.models.User;
 
 import database.Insert;
@@ -23,7 +29,7 @@ import database.maindatabase;
 
 import eleve.Eleve;
 import eleve.Eleves;
-
+import devoir.Matiere;
 import devoir.Room;
 
 
@@ -34,6 +40,8 @@ public class auth extends maindatabase{
 	//Retrouve les identifiants des utilisateurs (en attente de comment reprendre les vrai input de l'interface)
 		private String accessToken = Readfunction();
 		public GitLabApi auth ;
+
+		private List<Group> listemat;
 
 	// CrÃ©er une instance pour communiquer avec notre serveur Gitlab
 	//GitLabApi gitLabApi = new GitLabApi("https://gitlab.telecomnancy.univ-lorraine.fr",identifiant) ;
@@ -75,7 +83,65 @@ public class auth extends maindatabase{
 			} catch (GitLabApiException e) {
 				System.out.println("erreur try auth");
 			}
-			//ProjectApi projects = this.auth.getProjectApi().get;
+			/*try {
+				System.out.println("on est la");
+
+				GroupApi groups =this.auth.getGroupApi();
+				Pager<Group> pagergroupe = groups.getGroups(60);
+				List<Group> listgroup = pagergroupe.next();
+				List<Group> listemat = 
+				//Integer listidmat = null; => problème
+				//String listnommat = null;				
+				createNewTableProject();
+				createNewTabledev();
+				createNewTableMatiere();
+				int id_room = groups.getGroup("PCDpotes").getId();
+				for(Group group : listgroup){
+					if (group.getParentId()==id_room){
+						System.out.println("Condition1");//OK
+						listemat.add(group);
+						System.out.println(listemat);
+						//appeler ce dont on a besoin
+						for(Group group2 : listemat){
+							Integer id= group2.getId();
+							String nommat = group2.getName();
+							Insert app = new Insert();
+							app.insertmat(id, nommat);
+						}
+						/*System.out.println(listidmat);
+						listnommat.add(group.getName());
+						System.out.println(listnommat);*/
+
+						/*for(Integer i : listidmat){
+							Insert app2 = new Insert();
+							System.out.println("i :"+i);
+							app2.insertmat(i, listnommat.get(i));
+							if (group.getId()==i){
+								System.out.println("Condition2");
+								String titre = group.getName();
+								Integer id = group.getId();	
+								Group matiere =groups.getGroup(group.getParentId());
+								List<Project> pagerproject = groups.getProjects(60);				
+								for (Project project : pagerproject){
+									Integer idproject = project.getId();
+									String name = project.getName();
+									Owner owner = project.getOwner();
+									Date datedeb = project.getCreatedAt();
+									Insert app = new Insert();
+									app.insertdev(id, matiere.toString(), titre, "unknown", "unknown", "unknown");//ajouter iddevoir
+									app.insertproj(idproject,name, owner.toString(), datedeb.toString());
+									
+								}
+							}
+						}
+					}
+					
+				}
+				
+			} catch (GitLabApiException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}*/
 			
 		}
 		//coucouc vincent : en fait non c'est un prank. kdsnï¿½fvkjz^nbjdtbvdfjslm

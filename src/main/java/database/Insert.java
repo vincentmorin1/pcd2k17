@@ -45,20 +45,53 @@ public class Insert{
 	        }
 	    }
 	    
-	    public void insertdev(String matiere,String titre,String datedeb,String datefin,String liste){
+	    public void insertdev(int id, String matiere,String titre,String datedeb,String datefin,String liste){
 	    	String sql2 = "INSERT INTO devoir(matiere,titre,datedeb,datefin,liste) VALUES(?,?,?,?,?)";
 	    	
 	    	try(Connection conn = this.connect();
 	    			PreparedStatement pstmt2 = conn.prepareStatement(sql2)) {
-	    		pstmt2.setString(1,matiere);
-	    		pstmt2.setString(2,titre);
-	    		pstmt2.setString(3,datedeb);
-	    		pstmt2.setString(4,datefin);
-	    		pstmt2.setString(5,liste);
+	    		pstmt2.setInt(1, id);
+	    		pstmt2.setString(2,matiere);
+	    		pstmt2.setString(3,titre);
+	    		pstmt2.setString(4,datedeb);
+	    		pstmt2.setString(5,datefin);
+	    		pstmt2.setString(6,liste);
 	    		pstmt2.executeUpdate();
 	    	} catch (SQLException e) {
 	    		//System.out.println(e.getMessage());
 	    	}
 	    }
+	    
+	    public void insertproj(int id,String titre,String owner,String datedeb){
+	    	String sql2 = "INSERT INTO project(id,titre,owner,datedeb) VALUES(?,?,?,?)";
+	    	
+	    	try(Connection conn = this.connect();
+	    			PreparedStatement pstmt2 = conn.prepareStatement(sql2)) {
+	    		pstmt2.setInt(1,id);
+	    		pstmt2.setString(2,titre);
+	    		pstmt2.setString(3,owner);
+	    		pstmt2.setString(4,datedeb);
+	    		pstmt2.executeUpdate();
+	    	} catch (SQLException e) {
+	    		//System.out.println(e.getMessage());
+	    	}
+	    }
+	    
+	    public void insertmat(int id,String nom){
+	    	String sql2 = "INSERT INTO project(id,nom) VALUES(?,?)";
+	    	
+	    	try(Connection conn = this.connect();
+	    			PreparedStatement pstmt2 = conn.prepareStatement(sql2)) {
+	    		pstmt2.setInt(1,id);
+	    		pstmt2.setString(2,nom);
+	    		pstmt2.executeUpdate();
+	    	} catch (SQLException e) {
+	    		//System.out.println(e.getMessage());
+	    	}
+	    }
+	    
+	    
+	    /*insertmat(int id, String nom){
+}*/
 	}
 

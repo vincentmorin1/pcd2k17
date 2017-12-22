@@ -93,6 +93,24 @@ public class maindatabase{
 	        }
 
 	    }
+	    
+	    public static void createNewTableMatiere(){
+	    	String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/src/main/java/database/eleves2.db";
+	    	
+	    	String sql2 = "CREATE TABLE IF NOT EXISTS matiere (\n"
+	        		+"id integer,\n"
+	        		+"nom text\n"
+	        		+");";
+	    	
+	    	try (Connection conn = DriverManager.getConnection(url);
+	                Statement stmt = conn.createStatement()) {
+	            // create a new table
+	            stmt.execute(sql2);
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+
+	    }
 
 	    public static void main(String[] args) {
 	        /*createNewDatabase("eleves.db");

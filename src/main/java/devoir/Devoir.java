@@ -15,11 +15,14 @@ public class Devoir extends maindatabase{
 	public GroupApi devs;
 	public UserApi user;
 	public Matiere mat;
+	public ProjectApi projs;
+	public GitLabApi auth ;
 	
 	public Devoir(auth lab) throws GitLabApiException{
 		devs = lab.getGroupApi();
 		user = lab.getUserApi();
 		mat = new Matiere(lab);
+		
 		// TODO Auto-generated constructor stub
 	}
 	//création d'un nouveau devoir
@@ -35,9 +38,10 @@ public class Devoir extends maindatabase{
 			Date d = Date.valueOf(debut);
 			Date f = Date.valueOf(fin);
 			System.out.println(d.toString());
+			Integer id = this.devs.getGroup(name).getId();
 			createNewTabledev();
 			  Insert app = new Insert();
-			  app.insertdev(nomMat, name,d.toString(),f.toString(),liste);
+			  app.insertdev(id,nomMat, name,d.toString(),f.toString(),liste);
 	}
 
 	public void creerDevoir(String name, String desc, String nomMat, boolean visi) throws GitLabApiException{
