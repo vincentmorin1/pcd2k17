@@ -112,7 +112,7 @@
                </font>
             </Text>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="RED" height="65.0" layoutX="529.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="258.0" />
-            <Text fill="WHITE" layoutX="571.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erreur. Devoir non créé. Veuillez réessayer. " wrappingWidth="187.00000643730164">
+            <Text fill="WHITE" layoutX="571.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erreur. Choix des dates erron�. Veuillez réessayer. " wrappingWidth="187.00000643730164">
                <font>
                   <Font size="16.0" />
                </font>

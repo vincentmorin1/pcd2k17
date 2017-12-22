@@ -1,39 +1,39 @@
 package eu.telecomnancy.pcd2k17;
 
 import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.gitlab4j.api.GitLabApiException;
 
+import Authentification.auth;
+import database.maindatabase;
+import devoir.Devoir;
+import devoir.Matiere;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.SplitMenuButton;
-import javafx.scene.control.TableView;
 import javafx.scene.control.MenuItem;
-import javafx.fxml.Initializable;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.RadioButton;
 
-public class PbModifController implements Initializable{
+public class PbModifController extends maindatabase{
+	Devoir dev;
+	Matiere mat;
 	
   final static Logger log = LogManager.getLogger(PbModifController.class);
   
-  ObservableList<RecupDevoir> Listedevoir = FXCollections.observableArrayList();
+  ObservableList<String> list = FXCollections.observableArrayList("1A","2A","3A");
+  ObservableList<String> matier = FXCollections.observableArrayList("TOP","POO","SD","CSHELL","RS","MOCI","AMIO","BDA","IA");
 
-  
-  @FXML
-  private TableView<RecupDevoir> table;
-  
   @FXML
   private Button accueil = new Button();
   
@@ -41,50 +41,57 @@ public class PbModifController implements Initializable{
   private SplitMenuButton devoir = new SplitMenuButton();
   
   @FXML
-  private MenuItem creation = new MenuItem();
+private MenuItem creation = new MenuItem();
   
   @FXML
   private MenuItem modifier = new MenuItem();
+  
+  @FXML
+  private Button listesEleves = new Button();
   
   @FXML
   private Button deco = new Button();
   
   @FXML
   private Button quit = new Button();
- 
-  @FXML
-  private Button modif = new Button();
- 
   
   @FXML
-  private ArrayList<String> title;
+  private Button creer = new Button();
   
   @FXML
-  private ArrayList<String> matier;
+  private ChoiceBox<String> matiere;
   
   @FXML
-  private ArrayList<String> start;
+  private TextField titre = new TextField();
+  
+  @FXML 
+  private TextField pre = new TextField();
   
   @FXML
-  private ArrayList<String> end;
- 
-  @FXML
-  private ArrayList<String> listee;
+  private TextField nb = new TextField();
   
   @FXML
-  private String titretableau = null;
+  private TextArea desc = new TextArea();
   
   @FXML
-  private String matieretableau = null;
+  private DatePicker debut = new DatePicker();
+  
+  @FXML 
+  private DatePicker fin= new DatePicker();
   
   @FXML
-  private String debuttableau = null;
+  private ToggleButton aleatoire = new ToggleButton();
   
   @FXML
-  private String fintableau = null;
+  private RadioButton privee = new RadioButton();
   
   @FXML
-  private String listetableau = null;
+  private RadioButton publique = new RadioButton();
+  
+  @FXML 
+  private ChoiceBox<String> liste;
+  
+  private boolean alea;
   
   @FXML
   public void handleClickAccueil(ActionEvent event) throws IOException{
@@ -96,23 +103,14 @@ public class PbModifController implements Initializable{
   }
   
   @FXML
-  public void handleClickListesEleves(ActionEvent event) throws IOException{
-	  Stage primaryStage = (Stage) modif.getScene().getWindow();
-		primaryStage.close();
-		
-		Stage stage = new Stage();
-		new ListesElevesView(stage);
-  }
-  
-  @FXML
   public void handleClickQuit(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) quit.getScene().getWindow();
+	  Stage primaryStage = (Stage) accueil.getScene().getWindow();
 	  primaryStage.hide();
   }
   
   @FXML
   public void handleClickDeco(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) deco.getScene().getWindow();
+	  Stage primaryStage = (Stage) accueil.getScene().getWindow();
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
@@ -121,16 +119,27 @@ public class PbModifController implements Initializable{
   
   @FXML
   public void handleClickCreation(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) devoir.getScene().getWindow();
+	  Stage primaryStage = (Stage) creer.getScene().getWindow();
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
 	  new CreationView(stage);
+	  
+  }
+  
+  @FXML
+  public void handleClickRandom(ActionEvent event) throws IOException {
+	  if (aleatoire.isSelected()) {
+		  alea = true;
+	  }
+	  else {
+		  alea = false;
+	  }
   }
   
   @FXML
   public void handleClickModifier(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) devoir.getScene().getWindow();
+	  Stage primaryStage = (Stage) creer.getScene().getWindow();
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
@@ -138,91 +147,85 @@ public class PbModifController implements Initializable{
   }
   
   @FXML
-  public void handleClickModif(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) modif.getScene().getWindow();
+  public void handleClickListesEleves(ActionEvent event) throws IOException {
+	  Stage primaryStage = (Stage) listesEleves.getScene().getWindow();
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
-	  new PbModifView(stage);
+	  new ListesElevesView(stage);
   }
   
-  private Connection connect() {
-      // SQLite connection string
-      String url = "jdbc:sqlite:src/main/java/database/eleves2.db";
-      Connection conn = null;
-      try {
-          conn = DriverManager.getConnection(url);
-          System.out.println("Connecté");
-      } catch (SQLException e) {
-          System.out.println(e.getMessage());
-      }
-      return conn;
-  }
-
+  @FXML
+  public void initialize() {
+	  liste.setItems(list);
+	  matiere.setItems(matier);
+}
   
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-  	String sql = "SELECT * FROM devoir";
-      
-      try (Connection conn = connect();
-           Statement stmt  = conn.createStatement();
-           ResultSet rs    = stmt.executeQuery(sql)){
-          
-          // loop through the result set
-          while (rs.next()) {
-          		titretableau = rs.getString("title");
-          		matieretableau = rs.getString("matier");
-          		debuttableau = rs.getString("start");
-          		fintableau = rs.getString("end");
-          		listetableau = rs.getString("listee");
-          		Listedevoir.add(new RecupDevoir(titretableau,matieretableau,debuttableau,fintableau,listetableau)); 
-          }
-      } catch (SQLException e) {
-          System.out.println(e.getMessage());
-      }
-  	  table.getItems().addAll(Listedevoir);
-  	
+  @FXML
+  public void handleClickCreer(ActionEvent event) throws IOException{
+	  Stage primaryStage = (Stage) creer.getScene().getWindow();
+		primaryStage.close();
+	  log.debug(liste.getValue());
+	  log.debug(titre.getText());
+	  log.debug(matiere.getValue());
+	  log.debug(nb.getText());
+	  log.debug(desc.getText());
+	  log.debug(debut.getValue());
+	  log.debug(fin.getValue());
+	  log.debug(aleatoire.getText());
+	  log.debug(privee.getText());
+	  log.debug(publique.getText());
+	  log.debug(pre.getText());
+	  
+	  if (debut.getValue() != null && fin.getValue() != null && titre.getText() != "" && matiere.getValue() != null) {
+		  if (debut.getValue().compareTo(fin.getValue()) > 0) {
+			  Stage stage = new Stage();
+			new PbCreationDateView(stage);
+		  }
+		  else {
+			  try {
+				  dev = new Devoir(new auth());
+				  mat = new Matiere(new auth());
+				  String devoir = titre.getText();
+				  String nomMat = matiere.getValue();
+				  try {
+					  mat.getMatiere(nomMat);
+				  } catch (GitLabApiException e) {
+					  mat.creerMatiere(nomMat);
+				  }
+				  
+				  if (!alea){
+					  dev.creerDevoir(devoir, desc.getText(),nomMat,privee.isSelected(),debut.getValue(),fin.getValue(),liste.getValue());
+				  } else {
+				  		dev.creerDevoirAlea(devoir, desc.getText(), nomMat,privee.isSelected(),debut.getValue(),fin.getValue(),liste.getValue());
+				  }
+				  
+				  Stage stage = new Stage();
+				  new ModifView(stage);
+			  } catch (GitLabApiException e) {
+				  Stage stage = new Stage();
+				  new PbCreationView(stage);
+			  }
+		  }
+	  }
+	  else {
+		  	Stage stage = new Stage();
+			new PbCreationDateView(stage);
+			//
+	  }
+	  
   }
-
-public ArrayList<String> getTitle() {
-	return title;
-}
-
-public void setTitle(ArrayList<String> title) {
-	this.title = title;
-}
-
-public ArrayList<String> getMatier() {
-	return matier;
-}
-
-public void setMatier(ArrayList<String> matier) {
-	this.matier = matier;
-}
-
-public ArrayList<String> getStart() {
-	return start;
-}
-
-public void setStart(ArrayList<String> start) {
-	this.start = start;
-}
-
-public ArrayList<String> getEnd() {
-	return end;
-}
-
-public void setEnd(ArrayList<String> end) {
-	this.end = end;
-}
-
-public ArrayList<String> getListee() {
-	return listee;
-}
-
-public void setListee(ArrayList<String> listee) {
-	this.listee = listee;
-}
- 
+  
+  @FXML
+  public void handleClickOui(ActionEvent event) throws IOException {
+	  pre.setVisible(true);
+  }
+  
+  @FXML
+  public void handleClickNon(ActionEvent event) throws IOException {
+	  pre.setText(null);
+	  pre.setVisible(false);
+  }
+  
 
 }

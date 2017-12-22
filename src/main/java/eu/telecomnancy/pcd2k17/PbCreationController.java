@@ -35,6 +35,7 @@ public class PbCreationController{
 
   @FXML
   private Button accueil = new Button();
+  private boolean alea;
   
   @FXML
   private SplitMenuButton devoir = new SplitMenuButton();
@@ -191,6 +192,15 @@ private MenuItem creation = new MenuItem();
 	  }
   }
   
+  @FXML
+  public void handleClickRandom(ActionEvent event) throws IOException {
+	  if (aleatoire.isSelected()) {
+		  alea = true;
+	  }
+	  else {
+		  alea = false;
+	  }
+  }
   @FXML
   public void handleClickOui(ActionEvent event) throws IOException {
 	  pre.setVisible(true);
