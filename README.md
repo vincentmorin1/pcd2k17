@@ -74,6 +74,13 @@ Base de donnees fonctionnelle, lien entre Gitlab et base de donnees locale.
 
 
 
+
+#Bilan final
+Nous n'avons pas eu le temps d'implementer la totalite des fonctionnalites demandees ni celles que nous souhaitions implementer en plus comme la generation de groupe d'eleves aleatoire mais pondere par un critere de niveau pour un projet donne.
+Nous aurions egalement souhaite implementer une fonction permettant de sauvegarder les donnees si nous voulons quitter le logiciel sans avoir fini la serie de traitement souhaitee, ou encore un systeme de notifications pour les eleves. Nous voulions egalement implementer une fnction qui redemande le token de connexion toutes les 10min de non utilisation. 
+
+
+
 â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”		CodingWeek 2017 - Sample project	â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 
 
