@@ -41,8 +41,6 @@ public class auth extends maindatabase{
 		private String accessToken = Readfunction();
 		public GitLabApi auth ;
 
-		private List<Group> listemat;
-
 	// CrÃ©er une instance pour communiquer avec notre serveur Gitlab
 	//GitLabApi gitLabApi = new GitLabApi("https://gitlab.telecomnancy.univ-lorraine.fr",identifiant) ;
 	
@@ -83,36 +81,44 @@ public class auth extends maindatabase{
 			} catch (GitLabApiException e) {
 				System.out.println("erreur try auth");
 			}
-			/*try {
+			try {
 				System.out.println("on est la");
-
+				Insert app = new Insert();
+				int i = 0;
+				int z= 0;
 				GroupApi groups =this.auth.getGroupApi();
-				Pager<Group> pagergroupe = groups.getGroups(60);
-				List<Group> listgroup = pagergroupe.next();
-				List<Group> listemat = 
-				//Integer listidmat = null; => problème
-				//String listnommat = null;				
+				Pager<Group> pagergroupe = groups.getGroups(60);				
 				createNewTableProject();
 				createNewTabledev();
 				createNewTableMatiere();
 				int id_room = groups.getGroup("PCDpotes").getId();
-				for(Group group : listgroup){
-					if (group.getParentId()==id_room){
-						System.out.println("Condition1");//OK
-						listemat.add(group);
-						System.out.println(listemat);
-						//appeler ce dont on a besoin
-						for(Group group2 : listemat){
-							Integer id= group2.getId();
-							String nommat = group2.getName();
-							Insert app = new Insert();
-							app.insertmat(id, nommat);
-						}
+				while(pagergroupe.hasNext()){
+					List<Group> listgroup = pagergroupe.next();
+					List<Group> listmat = listgroup.subList(0, 0);
+					for(Group group : listgroup){
+						z=z+1;
+						if (group.getParentId()==id_room){
+							i=i+1;
+							System.out.println("Condition1");//OK
+							listmat.add(group);
+							System.out.println(listmat);
+							//appeler ce dont on a besoin
+							for(Group group2 : listmat){
+								//on recupere les matieres
+								Integer id= group2.getId();
+								System.out.println(id);
+								String nommat = group2.getName();
+								System.out.println(nommat);
+								app.insertmat(id, nommat);
+							}
+							
+							
+				}
+				
 						/*System.out.println(listidmat);
 						listnommat.add(group.getName());
-						System.out.println(listnommat);*/
-
-						/*for(Integer i : listidmat){
+						System.out.println(listnommat);
+						for(Integer i : listidmat){
 							Insert app2 = new Insert();
 							System.out.println("i :"+i);
 							app2.insertmat(i, listnommat.get(i));
@@ -133,15 +139,16 @@ public class auth extends maindatabase{
 									
 								}
 							}
-						}
-					}
+						}*/
+					}System.out.println(i);
+					System.out.println(z);
 					
 				}
 				
 			} catch (GitLabApiException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}*/
+			}
 			
 		}
 		//coucouc vincent : en fait non c'est un prank. kdsnï¿½fvkjz^nbjdtbvdfjslm

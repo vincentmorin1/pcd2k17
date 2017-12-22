@@ -78,7 +78,7 @@ public class Insert{
 	    }
 	    
 	    public void insertmat(int id,String nom){
-	    	String sql2 = "INSERT INTO project(id,nom) VALUES(?,?)";
+	    	String sql2 = "INSERT INTO matiere(id,nom) VALUES(?,?)";
 	    	
 	    	try(Connection conn = this.connect();
 	    			PreparedStatement pstmt2 = conn.prepareStatement(sql2)) {
