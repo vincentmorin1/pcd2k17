@@ -42,12 +42,12 @@ public class Devoir extends maindatabase{
 		}	
 		this.devApi.addGroup(name, name, desc, Boolean.FALSE, Boolean.TRUE,var,Boolean.FALSE,Boolean.FALSE,mats.getMatiere(nomMat).getId(),0);
 		devs.addDevoir(new GroupDevoir(devApi,mats.getMatiere(nomMat),name) );
-			/*Date d = Date.valueOf(debut);
+			Date d = Date.valueOf(debut);
 			Date f = Date.valueOf(fin);
 			System.out.println(d.toString());
 			createNewTabledev();
 			  Insert app = new Insert();
-			  app.insertdev(nomMat, name,d.toString(),f.toString(),liste);*/
+			  app.insertdev(devs.getDevoir(name).getId(), name,nomMat,d.toString(),f.toString(),liste);
 			  
 	}
 

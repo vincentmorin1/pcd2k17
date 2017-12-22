@@ -58,6 +58,7 @@ public class Insert{
 	    		pstmt2.setString(6,liste);
 	    		pstmt2.executeUpdate();
 	    	} catch (SQLException e) {
+	    		
 	    		//System.out.println(e.getMessage());
 	    	}
 	    }
