@@ -3,6 +3,8 @@ package eu.telecomnancy.pcd2k17;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -175,10 +177,7 @@ private MenuItem creation = new MenuItem();
 	  
 	  titre.setText(titree);
 	  matiere.setValue(matieree);
-	  debut.setValue(LocalDate.parse(debutee));
-	  fin.setValue(LocalDate.parse(finee));
 	  liste.setValue(listee);
-	  
 	  liste.setItems(list);
 	  matiere.setItems(matier);
 }
@@ -214,19 +213,14 @@ private MenuItem creation = new MenuItem();
 				  String nomMat = matiere.getValue();
 				  try {
 					  mat.creerMatiere(nomMat);
-				  } catch (GitLabApiException e) { }
+				  } catch (GitLabApiException e) {}
 				  
-				  if (!alea){
-					  dev.creerDevoir(devoir, desc.getText(),nomMat,privee.isSelected(),debut.getValue(),fin.getValue(),liste.getValue());
-				  } else {
-				  		dev.creerDevoirAlea(devoir, desc.getText(), nomMat,privee.isSelected(),debut.getValue(),fin.getValue(),liste.getValue());
-				  }
-				  
+				  dev.modifierDevoir(titree, devoir, desc.getText(),nomMat,privee.isSelected(),debut.getValue(),fin.getValue(),liste.getValue());
 				  Stage stage = new Stage();
 				  new ModifView(stage);
 			  } catch (GitLabApiException e) {
 				  Stage stage = new Stage();
-				  new NewPbModifView(stage);
+					new NewPbModifView(stage);
 			  }
 		  }
 	  }

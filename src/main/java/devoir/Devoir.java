@@ -54,22 +54,22 @@ public class Devoir extends maindatabase{
 			  
 	}
 	
-	public void modifierDevoir(String name, String desc, String nomMat,boolean visi,LocalDate debut,LocalDate fin,String liste) throws GitLabApiException {
+	public void modifierDevoir(String name, String newName, String desc, String nomMat,boolean visi,LocalDate debut,LocalDate fin,String liste) throws GitLabApiException {
 		Visibility var;
 		if(visi) {
 			var = Visibility.PRIVATE;
 		} else {
 			var = Visibility.PUBLIC;
 		}
+		this.devApi.updateGroup(devs.getDevoir(name).getId(),newName, newName, desc, Boolean.FALSE, Boolean.TRUE,var,Boolean.FALSE,Boolean.FALSE,mats.getMatiere(nomMat).getId(),0);
 		devs.deleteDevoir(devs.getDevoir(name));
-		this.devApi.updateGroup(devs.getDevoir(name).getId(),name, name, desc, Boolean.FALSE, Boolean.TRUE,var,Boolean.FALSE,Boolean.FALSE,mats.getMatiere(nomMat).getId(),0);
 		devs.updateDevoir(devApi, mats.getMatiere(nomMat), devApi.getGroups());
 			Date d = Date.valueOf(debut);
 			Date f = Date.valueOf(fin);
 			//System.out.println(d.toString());
 			createNewTabledev();
 			  Update app = new Update();
-			  app.updatedev(devs.getDevoir(name).getId(), name,nomMat,d.toString(),f.toString(),liste);
+			  app.updatedev(devs.getDevoir(newName).getId(), newName,nomMat,d.toString(),f.toString(),liste);
 			  
 	}
 	

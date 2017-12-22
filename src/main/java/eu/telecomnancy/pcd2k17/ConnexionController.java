@@ -84,7 +84,7 @@ public class ConnexionController extends maindatabase{
 							app.insertmat(id, s);
 							for(String z : devlist){
 								Integer id_dev = dev.getDevoirs().getDevoir(z).getId();
-								app2.insertdev(id_dev, s, z, "null", "null", "null");
+								app2.insertdev(id_dev, s, z, "2016-01-01", "2016-01-02", "Unknown");
 								List<Project> projs = dev.getProjects(z);
 								if (!projs.isEmpty()){
 								for(Project p : projs){
