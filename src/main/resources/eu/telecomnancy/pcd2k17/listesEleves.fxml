@@ -61,22 +61,27 @@
             <Line endX="100.0" layoutX="395.0" layoutY="14.0" startX="-100.0" strokeWidth="2.0" />
             <TableView fx:id="tableview" layoutX="32.0" layoutY="175.0" prefHeight="486.0" prefWidth="737.0">
               <columns>
-                  <TableColumn prefWidth="125.0" text="Id élève">
+                  <TableColumn prefWidth="64.0" text="Id élève">
                   	<cellValueFactory>
                   		<PropertyValueFactory property="tabId" />
                   	</cellValueFactory>
                   </TableColumn>
-                  <TableColumn fx:id="promo" prefWidth="135.0" text="Promo">
+                  <TableColumn fx:id="promo" prefWidth="101.0" text="Promo">
                   	<cellValueFactory>
                   		<PropertyValueFactory property="tabPromo" />
                   	</cellValueFactory>
                   </TableColumn>
-                <TableColumn fx:id="nom" prefWidth="359.0" text="Nom">
+                  <TableColumn fx:id="prenom" prefWidth="213.0" text="Prénom">
+                  		<cellValueFactory>
+                  		<PropertyValueFactory property="tabPrenom" />
+                  	</cellValueFactory>
+                  </TableColumn>
+                <TableColumn fx:id="nom" minWidth="0.0" prefWidth="217.0" text="Nom">
                 		<cellValueFactory>
                 			<PropertyValueFactory property="tabNom" />
                 		</cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="groupe" prefWidth="117.0" text="Groupe">
+                <TableColumn fx:id="groupe" prefWidth="141.0" text="Groupe">
                 		<cellValueFactory>
                 			<PropertyValueFactory property="tabGroupe" />
                 		</cellValueFactory>
