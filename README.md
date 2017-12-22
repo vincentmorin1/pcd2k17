@@ -18,8 +18,8 @@ Un clique sur l’onglet déjà affiché recharge une nouvelle Stage.
 	- 1 fenêtre de connexion : on se connecte via un token unique, que chacun peut récupérer sur gitlab. En cas d’erreur, une notification signale l’échec de la connexion. NB : implémentation d’un raccourci (touche entrée) pour se connecter. 
 	- 1 page d’accueil : affiche les onglets à gauche devoir, liste élèves, se déconnecter, quitter. L’onglet devoir propose de créer ou modifier un devoir.
 	- page créer devoir : permet de créer un devoir avec les différentes caractéristiques qui entrent en compte : titre, matière, description, liste d’élèves (1A,2A,3A,indifférent), date de début et de rendu (pb d’ordre des dates résolu, la date de rendu doit être après celle de début), visibilité (NB : de base sur privée), choix d’un préfixe commun (NB: de base sur non, si l’utilisateur clique sur oui, un TextField apparait pour noter le préfixe choisi), groupe aléatoire ou pas, et nombre d’élèves par groupe. Il suffit ensuite de cliquer sur créer. Si la création a échoué, un message apparaîtra en haut, soit pour le cas d’un problème de date (date de rendu avant celle de début, dates non remplies) soit pour un autre problème qui a déclencher la GitLabAPIException. Si tout se passe bien, l’utilisateur est ensuite redirigé vers la page de modification des devoirs où tous ces derniers sont répertoriés.
-	- page modifier devoir : affiche la liste des différents devoirs créés. RESTE A FAIRE : récupérer les devoirs créés sur gitlab pour les afficher et ensuite pouvoir les sélectionner pour les modifier
-	- liste élèves : RESTE A FAIRE : récupérer la liste des élèves pour l’afficher dans le tableau ; possibilité de trier selon la promo
+	- page modifier devoir : affiche la liste des différents devoirs créés. RESTE A FAIRE : afficher et ensuite pouvoir sélectionner les devoirs pour les modifier
+	- liste élèves : liste des élèves affich�es dans le tableau ; possibilit� de trier selon la colonne (decroissant/croissant/neutre)
 	- déconnexion : renvoi à la stage de connexion
 	- quitter: quitte l’application 
 IMPLEMENTATION POSSIBLE :
@@ -37,6 +37,8 @@ $$$$ API $$$$
 
 Lien entre l'interface, l'application et GitLab : Connexion, cr�ation de groupes(Room,Devoir,Mati�re).
 Lien entre application et GitLab : ajout/modif/suppression de groupes/devoirs/membres.
+
+Release push un peu tard, en effet nous avons tenu � impl�menter certaines fonctionnalit�s. Nous vous prions de nous en excuser.
 
 
 
