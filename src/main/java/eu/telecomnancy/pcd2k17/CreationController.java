@@ -91,6 +91,8 @@ private MenuItem creation = new MenuItem();
   @FXML 
   private ChoiceBox<String> liste;
   
+  private boolean alea;
+  
   @FXML
   public void handleClickAccueil(ActionEvent event) throws IOException{
 	  Stage primaryStage = (Stage) accueil.getScene().getWindow();
@@ -123,6 +125,16 @@ private MenuItem creation = new MenuItem();
 	  Stage stage = new Stage();
 	  new CreationView(stage);
 	  
+  }
+  
+  @FXML
+  public void handleClickRandom(ActionEvent event) throws IOException {
+	  if (aleatoire.isSelected()) {
+		  alea = true;
+	  }
+	  else {
+		  alea = false;
+	  }
   }
   
   @FXML
@@ -181,7 +193,13 @@ private MenuItem creation = new MenuItem();
 				  } catch (GitLabApiException e) {
 					  mat.creerMatiere(nomMat);
 				  }
-				  dev.creerDevoir(devoir, desc.getText(),nomMat,privee.isSelected(),debut.getValue(),fin.getValue(),liste.getValue());
+				  
+				  if (!alea){
+					  dev.creerDevoir(devoir, desc.getText(),nomMat,privee.isSelected(),debut.getValue(),fin.getValue(),liste.getValue());
+				  } else {
+				  		dev.creerDevoirAlea(devoir, desc.getText(), nomMat,privee.isSelected(),debut.getValue(),fin.getValue(),liste.getValue());
+				  }
+				  
 				  Stage stage = new Stage();
 				  new ModifView(stage);
 			  } catch (GitLabApiException e) {

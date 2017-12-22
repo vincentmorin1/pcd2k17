@@ -20,7 +20,6 @@ public class Devoir extends maindatabase{
 		devs = lab.getGroupApi();
 		user = lab.getUserApi();
 		mat = new Matiere(lab);
-		// TODO Auto-generated constructor stub
 	}
 	//création d'un nouveau devoir
 	
@@ -41,6 +40,17 @@ public class Devoir extends maindatabase{
 	}
 
 	public void creerDevoir(String name, String desc, String nomMat, boolean visi) throws GitLabApiException{
+		Visibility var;
+		if(visi) {
+			var = Visibility.PRIVATE;
+		} else {
+			var = Visibility.PUBLIC;
+		}
+			this.devs.addGroup(name, name, desc, Boolean.FALSE, Boolean.TRUE,var,Boolean.FALSE,Boolean.FALSE,mat.getMatiereId(nomMat),0);
+
+	}
+	
+	public void creerDevoirAlea(String name, String desc, String nomMat, boolean visi,LocalDate debut,LocalDate fin,String liste) throws GitLabApiException{
 		Visibility var;
 		if(visi) {
 			var = Visibility.PRIVATE;

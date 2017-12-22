@@ -33,7 +33,10 @@ IMPLEMENTATION POSSIBLE :
 	- possibilitÃ© de crÃ©er des groupes pa niveau (en fonction des notes de chacun)
 $$$$ API $$$$
 
+# Avancement Projet
 
+Lien entre l'interface, l'application et GitLab : Connexion, création de groupes(Room,Devoir,Matière).
+Lien entre application et GitLab : ajout/modif/suppression de groupes/devoirs/membres.
 
 
 
