@@ -53,11 +53,19 @@ Release push un peu tard, en effet nous avons tenu à implémenter certaines fon
 
 
 
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”		RELEASE_DAY_5 : finale
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+
+#### 	 AvancÃ©es de notre projet	####
+$$$$ Interface graphique $$$$
+
+
+$$$$ API $$$$
 
 
 
-
-
+$$$$ BDD $$$$
+La base de donnees est enfin fonctionnelle! Nous avons creer des classes permettant de recuperer les listes de devoirs, de projets et de matieres, ce qui nous permet de simplifier la recuperation de donnees de lgitlab plus facilement. En effet, nous pouvons a partir de la liste des noms de toutes les matieres recuperer les noms des matieres et leurs ids. Ainsi, nous inserons ces donnees pour toutes les matieres déjà crees dans la table matieres. Nous faisons de meme pour la liste des devoirs en la recuperant et ainsi, recuperer les donnees des devoirs telles que : id_dev, matiere,nom_dev,datedebut, datefin, liste concernee(1A,2A ou 3A). Avec ces donnees nous completons la table Devoirs, liee a la table matiere par la cle etrangere devoirs.matiere. Enfin, nous recuperons les noms de tous les projets deja crees par devoir et ensuite nous recuperons les autres informations : id_proj, nom_proj, devoir, owner, date de debut. De même, il y a une clef etrangere nom_proj qui permet de lier la table projets a la table devoirs. Chaque id de chaque table est une clef primaire. Avec ces trois ajouts de table, nous pouvons donc creer une base de donnees complete contenant les tables : users, matiere, devoirs, projets. Ensuite, les differents updates et ajouts de tables a realiser lors de la creation d'un projet par exemple, etaient deja traitees lors des precedentes release. Il manque cependant certaines informations, dificiles a recuperer comme les dates limites d'un projet, ou encore les nom et prenom des utilisateurs non referencees dans le csv.
 
 
 
