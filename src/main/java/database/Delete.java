@@ -39,6 +39,22 @@ public class Delete {
 	            System.out.println(e.getMessage());
 	        }
 	    }
+	    
+	    public void deletedev(int id) {
+	        String sql = "DELETE FROM devoir WHERE id = ?";
+	 
+	        try (Connection conn = this.connect();
+	                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+	 
+	            // set the corresponding param
+	            pstmt.setInt(1, id);
+	            // execute the delete statement
+	            pstmt.executeUpdate();
+	 
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+	    }
 	}
 	
 	
