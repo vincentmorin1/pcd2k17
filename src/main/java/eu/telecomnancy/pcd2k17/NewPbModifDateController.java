@@ -1,16 +1,6 @@
 package eu.telecomnancy.pcd2k17;
 
 import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ResourceBundle;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,11 +26,11 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.RadioButton;
 
-public class CreationController extends maindatabase{
+public class NewPbModifDateController extends maindatabase{
 	Devoir dev;
 	Matiere mat;
 	
-  final static Logger log = LogManager.getLogger(CreationController.class);
+  final static Logger log = LogManager.getLogger(NewPbModifDateController.class);
   
   ObservableList<String> list = FXCollections.observableArrayList("1A","2A","3A");
   ObservableList<String> matier = FXCollections.observableArrayList("TOP","POO","SD","CSHELL","RS","MOCI","AMIO","BDA","IA");
@@ -67,7 +57,7 @@ private MenuItem creation = new MenuItem();
   private Button quit = new Button();
   
   @FXML
-  private Button creer = new Button();
+  private Button modification = new Button();
   
   @FXML
   private ChoiceBox<String> matiere;
@@ -130,7 +120,7 @@ private MenuItem creation = new MenuItem();
   
   @FXML
   public void handleClickCreation(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) creer.getScene().getWindow();
+	  Stage primaryStage = (Stage) modification.getScene().getWindow();
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
@@ -150,7 +140,7 @@ private MenuItem creation = new MenuItem();
   
   @FXML
   public void handleClickModifier(ActionEvent event) throws IOException {
-	  Stage primaryStage = (Stage) creer.getScene().getWindow();
+	  Stage primaryStage = (Stage) modification.getScene().getWindow();
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
@@ -173,8 +163,8 @@ private MenuItem creation = new MenuItem();
 }
   
   @FXML
-  public void handleClickCreer(ActionEvent event) throws IOException{
-	  Stage primaryStage = (Stage) creer.getScene().getWindow();
+  public void handleClickModification(ActionEvent event) throws IOException{
+	  Stage primaryStage = (Stage) modification.getScene().getWindow();
 		primaryStage.close();
 	  log.debug(liste.getValue());
 	  log.debug(titre.getText());
@@ -221,7 +211,7 @@ private MenuItem creation = new MenuItem();
 	  }
 	  else {
 		  	Stage stage = new Stage();
-			new PbCreationDateView(stage);
+			new PbCreationView(stage);
 			//
 	  }
 	  
@@ -236,51 +226,6 @@ private MenuItem creation = new MenuItem();
   public void handleClickNon(ActionEvent event) throws IOException {
 	  pre.setText(null);
 	  pre.setVisible(false);
-  }
-  
-  private Connection connect() {
-      // SQLite connection string
-      String url = "jdbc:sqlite:src/main/java/database/eleves2.db";
-      Connection conn = null;
-      try {
-          conn = DriverManager.getConnection(url);
-          System.out.println("Connecté");
-      } catch (SQLException e) {
-          System.out.println(e.getMessage());
-      }
-      return conn;
-  }
-  //UTILISER POUR CREER DES GROUPES ALEATOIRES
-  
-  public void createRandomGroup(String promo, int nombre) {
-	  String sql;
-	  if (promo.equals("1A")) {
-		  sql = "SELECT nom FROM eleves2 WHERE classe IS '1A'";
-	  }else if (promo.equals("2A")) {
-		  sql = "SELECT nom FROM eleves2 WHERE classe IS '2A'";
-	  } else {
-		  sql = "SELECT nom FROM eleves2 WHERE classe IS '3A'";
-	  }
-	  int compteur =0;
-		try (Connection conn = connect();
-		     Statement stmt  = conn.createStatement();
-		     ResultSet rs    = stmt.executeQuery(sql);){
-			
-			List <String> listnom = new ArrayList<String>();
-			List <Integer> listgroup = new ArrayList<Integer>();
-		     // loop through the result set
-		     while (rs.next()) {
-		    	 	listnom.add(rs.getString("nom"));
-		    	 	compteur = compteur +1;
-		    	 }
-		     for (int i=0; i<=compteur;i++) {
-		    	 	listgroup.add((i/nombre)+1);
-		     }
-		     Collections.shuffle(listgroup);
-		 } catch (SQLException e) {
-		       System.out.println(e.getMessage());
-			
-		}
   }
   
 

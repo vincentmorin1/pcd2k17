@@ -19,6 +19,8 @@ public class Devoir extends maindatabase{
 	private GroupMatieres mats;
 	private GroupDevoirs devs;
 	private Set<String> ma;
+	private ProjectApi projectapi;
+	
 	
 	public Devoir(auth lab, Matiere mat) throws GitLabApiException{
 		devApi = lab.getGroupApi();
@@ -129,6 +131,12 @@ public class Devoir extends maindatabase{
 	
 	public GroupDevoirs getDevoirs() {
 		return devs;
+	}
+	
+	
+	public List<Project> getProjects(String name) throws GitLabApiException{
+		List<Project> projs = devs.getDevoir(name).getDevoir().getProjects();
+		return projs;
 	}
 	
 	/*public static void main(String args[]){

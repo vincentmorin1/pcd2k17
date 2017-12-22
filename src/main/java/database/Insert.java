@@ -63,15 +63,16 @@ public class Insert{
 	    	}
 	    }
 	    
-	    public void insertproj(int id,String titre,String owner,String datedeb){
-	    	String sql2 = "INSERT INTO project(id,titre,owner,datedeb) VALUES(?,?,?,?)";
+	    public void insertproj(int id,String nomproj,String devoir, String owner,String datedeb){
+	    	String sql2 = "INSERT INTO project(id,nomproj,devoir,owner,datedeb) VALUES(?,?,?,?,?)";
 	    	
 	    	try(Connection conn = this.connect();
 	    			PreparedStatement pstmt2 = conn.prepareStatement(sql2)) {
 	    		pstmt2.setInt(1,id);
-	    		pstmt2.setString(2,titre);
-	    		pstmt2.setString(3,owner);
-	    		pstmt2.setString(4,datedeb);
+	    		pstmt2.setString(2,nomproj);
+	    		pstmt2.setString(3,devoir);
+	    		pstmt2.setString(4,owner);
+	    		pstmt2.setString(5,datedeb);
 	    		pstmt2.executeUpdate();
 	    	} catch (SQLException e) {
 	    		//System.out.println(e.getMessage());
@@ -79,7 +80,7 @@ public class Insert{
 	    }
 	    
 	    public void insertmat(int id,String nom){
-	    	String sql2 = "INSERT INTO project(id,nom) VALUES(?,?)";
+	    	String sql2 = "INSERT INTO matiere(id,nom) VALUES(?,?)";
 	    	
 	    	try(Connection conn = this.connect();
 	    			PreparedStatement pstmt2 = conn.prepareStatement(sql2)) {
@@ -91,8 +92,5 @@ public class Insert{
 	    	}
 	    }
 	    
-	    
-	    /*insertmat(int id, String nom){
-}*/
 	}
 

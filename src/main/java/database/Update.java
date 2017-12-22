@@ -47,12 +47,36 @@ public class Update {
 	        } catch (SQLException e) {
 	            //System.out.println(e.getMessage());
 	        }
-	    }      
+	    }     
+	    
+	    public void updatedev(Integer id,String matiere, String titre,String datedebut, String datefin,String liste) {
+	        String sql = "UPDATE devoir SET matiere = ? , "
+	        		+ "titre = ? ,"
+	        		+ "datedebut = ? ,"
+	                + "datefin = ? ,"
+	                + "liste = ? "
+	                + "WHERE id = ?";
+	        try (Connection conn = this.connect();
+	                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+	 
+	            // set the corresponding param
+	            
+	            pstmt.setString(1,matiere);
+		        pstmt.setString(2, titre);
+	            pstmt.setString(3, datedebut);
+	            pstmt.setString(4, datefin);
+	            pstmt.setString(5, liste);
+	            pstmt.setInt(6, id);
+	            // update 
+	            pstmt.executeUpdate();
+	        } catch (SQLException e) {
+	            //System.out.println(e.getMessage());
+	        }
+	    }
 	        
 	        public static void main(String args[]){	     
-        		/*Update app = new Update();
-	        	app.update(3,"festor","oliv","festor.oli@telecomnancy.eu","18A","TRS");
-				*/
+        		Update app = new Update();
+	        	app.updatedev(1402,"POO","Projet","21/03/2017","26/03/2017","1A");
 	        }
 	    
 	}

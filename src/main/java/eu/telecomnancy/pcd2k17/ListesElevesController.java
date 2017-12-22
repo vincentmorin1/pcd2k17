@@ -72,8 +72,7 @@ public class ListesElevesController implements Initializable{
   private ArrayList<String> tabnom;
   
   @FXML
-  private ArrayList<String> tabemail;
-  
+  private ArrayList<String> tabprenom;
   @FXML
   private ArrayList<String> tabclasse;
  
@@ -82,6 +81,9 @@ public class ListesElevesController implements Initializable{
   
   @FXML
   private String idtableau = null;
+  
+  @FXML
+  private String prenomtableau = null;
   
   @FXML
   private String classetableau = null;
@@ -173,14 +175,6 @@ public class ListesElevesController implements Initializable{
 		this.tabnom = tabnom;
 	}
 
-	public ArrayList<String> getTabemail() {
-		return tabemail;
-	}
-
-	public void setTabemail(ArrayList<String> tabemail) {
-		this.tabemail = tabemail;
-	}
-
 	public ArrayList<String> getTabclasse() {
 		return tabclasse;
 	}
@@ -211,13 +205,22 @@ public void initialize(URL location, ResourceBundle resources) {
         		nomtableau = rs.getString("nom");
         		classetableau = rs.getString("classe");
         		approtableau = rs.getString("appro");
-        		Listeeleve.add(new RecupEleve(idtableau,classetableau,nomtableau,approtableau)); 
+        		prenomtableau = rs.getString("prenom");
+        		Listeeleve.add(new RecupEleve(idtableau,classetableau,prenomtableau,nomtableau,approtableau)); 
         }
     } catch (SQLException e) {
         System.out.println(e.getMessage());
     }
 	  tableview.getItems().addAll(Listeeleve);
 	
+}
+
+public ArrayList<String> getTabprenom() {
+	return tabprenom;
+}
+
+public void setTabprenom(ArrayList<String> tabprenom) {
+	this.tabprenom = tabprenom;
 }
 
 }
