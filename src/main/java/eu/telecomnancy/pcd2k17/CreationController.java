@@ -20,6 +20,7 @@ import Authentification.auth;
 import database.maindatabase;
 import devoir.Devoir;
 import devoir.Matiere;
+import devoir.Room;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -194,15 +195,15 @@ private MenuItem creation = new MenuItem();
 		  }
 		  else {
 			  try {
-				  dev = new Devoir(new auth());
-				  mat = new Matiere(new auth());
+				  auth lab = new auth();
+				  Room room = new Room(lab);
+				  mat = new Matiere(lab,room);
+				  dev = new Devoir(lab,mat);
 				  String devoir = titre.getText();
 				  String nomMat = matiere.getValue();
 				  try {
-					  mat.getMatiere(nomMat);
-				  } catch (GitLabApiException e) {
 					  mat.creerMatiere(nomMat);
-				  }
+				  } catch (GitLabApiException e) { }
 				  
 				  if (!alea){
 					  dev.creerDevoir(devoir, desc.getText(),nomMat,privee.isSelected(),debut.getValue(),fin.getValue(),liste.getValue());

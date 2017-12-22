@@ -172,11 +172,11 @@ public class ModifController implements Initializable{
           
           // loop through the result set
           while (rs.next()) {
-          		titretableau = rs.getString("title");
-          		matieretableau = rs.getString("matier");
-          		debuttableau = rs.getString("start");
-          		fintableau = rs.getString("end");
-          		listetableau = rs.getString("listee");
+          		titretableau = rs.getString("titre");
+          		matieretableau = rs.getString("matiere");
+          		debuttableau = rs.getString("datedeb");
+          		fintableau = rs.getString("datefin");
+          		listetableau = rs.getString("liste");
           		Listedevoir.add(new RecupDevoir(titretableau,matieretableau,debuttableau,fintableau,listetableau)); 
           }
       } catch (SQLException e) {

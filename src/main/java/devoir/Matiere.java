@@ -13,38 +13,29 @@ import org.gitlab4j.api.models.Visibility;
 import Authentification.auth;
 
 public class Matiere {
-	public GroupApi matiere;
-	public UserApi user;
-	public Room room;
+	private GroupApi matiere;
+	private UserApi user;
+	private GroupRoom room;
+	private GroupMatieres mats;
 	
-	public Matiere(auth lab) throws GitLabApiException{
+	public Matiere(auth lab, Room r) throws GitLabApiException{
 		matiere = lab.getGroupApi();
 		user = lab.getUserApi();
-		room = new Room(lab);
+		room = r.getRoom();
+		mats = new GroupMatieres();
+		mats.updateMatiere(matiere, room, matiere.getGroups());
 	}
 	//création d'un nouveau devoir
 	
 	public void creerMatiere(String name) throws GitLabApiException{
-			this.matiere.addGroup(name, name, "", Boolean.FALSE, Boolean.TRUE,Visibility.PUBLIC,Boolean.FALSE,Boolean.FALSE,room.getRoomId(),0);
+			matiere.addGroup(name, name, "", Boolean.FALSE, Boolean.TRUE,Visibility.PUBLIC,Boolean.FALSE,Boolean.FALSE,room.getId(),0);
+			mats.addMatiere(new GroupMatiere(matiere,room,name));
 	}
 	
 	public void supprMatiere(String name) throws GitLabApiException {
-		Group todel;
-			todel = matiere.getGroup("PCDpotes/"+name);
-			this.matiere.deleteGroup(todel);
-			System.out.println("Le devoir "+name+" n'existe pas !");
-	}
-	
-	public Integer getMatiereId(String name) throws GitLabApiException {
-		return matiere.getGroup(room.getRoomName()+"/"+name).getId();
-	}
-	
-	public String getFullPath(String matName) {
-		return room.getRoomName()+"/"+matName;
-	}
-	
-	public Group getMatiere(String name) throws GitLabApiException {
-		return matiere.getGroup(room.getRoomName()+"/"+name);
+			GroupMatiere todel = mats.getMatiere(name);
+			this.matiere.deleteGroup(todel.getMatiere());
+			mats.deleteMatiere(todel);
 	}
 		
 	public void ajouterMembre(String matName,String username, String niveau) throws GitLabApiException {
@@ -65,11 +56,15 @@ public class Matiere {
 		default:
 			var = AccessLevel.NONE;
 		}
-		matiere.addMember(matiere.getGroup(room.getRoomName()+"/"+matName).getId(), user.getUser(username).getId(), var);
+		matiere.addMember(mats.getMatiere(matName).getId(), user.getUser(username).getId(), var);
 	}
 	
 	public void retirerMembre(String matName, String username) throws GitLabApiException {
-		matiere.removeMember(matiere.getGroup(room.getRoomName()+"/"+matName).getId(),user.getUser(username).getId());
+		matiere.removeMember(mats.getMatiere(matName).getId(),user.getUser(username).getId());
+	}
+	
+	public GroupMatieres getMats(){
+		return mats;
 	}
 	
 	/*public static void main(String args[]) throws GitLabApiException {
