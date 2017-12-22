@@ -1,12 +1,15 @@
 package eu.telecomnancy.pcd2k17;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.gitlab4j.api.GitLabApiException;
 
 import Authentification.auth;
+import database.maindatabase;
 import devoir.Devoir;
 import devoir.Matiere;
 import devoir.Room;
@@ -22,10 +25,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.RadioButton;
 
-public class NewPbModifController{
+public class NewPbModifController extends maindatabase{
 	Devoir dev;
 	Matiere mat;
 	
@@ -36,7 +39,6 @@ public class NewPbModifController{
 
   @FXML
   private Button accueil = new Button();
-  private boolean alea;
   
   @FXML
   private SplitMenuButton devoir = new SplitMenuButton();
@@ -48,6 +50,9 @@ private MenuItem creation = new MenuItem();
   private MenuItem modifier = new MenuItem();
   
   @FXML
+  private Button listesEleves = new Button();
+  
+  @FXML
   private Button deco = new Button();
   
   @FXML
@@ -57,7 +62,13 @@ private MenuItem creation = new MenuItem();
   private Button modification = new Button();
   
   @FXML
+  private ChoiceBox<String> matiere;
+  
+  @FXML
   private TextField titre = new TextField();
+  
+  @FXML 
+  private TextField pre = new TextField();
   
   @FXML
   private TextField nb = new TextField();
@@ -66,28 +77,31 @@ private MenuItem creation = new MenuItem();
   private TextArea desc = new TextArea();
   
   @FXML
-  private RadioButton privee = new RadioButton();
-  
-  @FXML
-  private RadioButton publique = new RadioButton();
-  
-  @FXML
   private DatePicker debut = new DatePicker();
   
   @FXML 
   private DatePicker fin= new DatePicker();
   
   @FXML
-  private TextField pre = new TextField();
+  private ToggleButton aleatoire = new ToggleButton();
   
   @FXML
-  private ToggleButton aleatoire = new ToggleButton();
+  private RadioButton privee = new RadioButton();
+  
+  @FXML
+  private RadioButton publique = new RadioButton();
   
   @FXML 
   private ChoiceBox<String> liste;
   
   @FXML
-  private ChoiceBox<String> matiere;
+  private String titree;
+  private String matieree;
+  private String debutee;
+  private String finee;
+  private String listee;
+  
+  private boolean alea;
   
   @FXML
   public void handleClickAccueil(ActionEvent event) throws IOException{
@@ -114,21 +128,23 @@ private MenuItem creation = new MenuItem();
   }
   
   @FXML
-  public void handleClickListesEleves(ActionEvent event) throws IOException{
-	  Stage primaryStage = (Stage) modification.getScene().getWindow();
-		primaryStage.close();
-		
-		Stage stage = new Stage();
-		new ListesElevesView(stage);
-  }
-  
-  @FXML
   public void handleClickCreation(ActionEvent event) throws IOException {
 	  Stage primaryStage = (Stage) modification.getScene().getWindow();
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
-	  new CreationView(stage);
+	  new ModifView(stage);
+	  
+  }
+  
+  @FXML
+  public void handleClickRandom(ActionEvent event) throws IOException {
+	  if (aleatoire.isSelected()) {
+		  alea = true;
+	  }
+	  else {
+		  alea = false;
+	  }
   }
   
   @FXML
@@ -141,7 +157,28 @@ private MenuItem creation = new MenuItem();
   }
   
   @FXML
+  public void handleClickListesEleves(ActionEvent event) throws IOException {
+	  Stage primaryStage = (Stage) listesEleves.getScene().getWindow();
+	  primaryStage.hide();
+	  
+	  Stage stage = new Stage();
+	  new ListesElevesView(stage);
+  }
+  
+  @FXML
   public void initialize() {
+	  titree=ModifController.titretableau;
+	  matieree=ModifController.matieretableau;
+	  debutee=ModifController.debuttableau;
+	  finee=ModifController.fintableau;
+	  listee=ModifController.listetableau;
+	  
+	  titre.setText(titree);
+	  matiere.setValue(matieree);
+	  debut.setValue(LocalDate.parse(debutee));
+	  fin.setValue(LocalDate.parse(finee));
+	  liste.setValue(listee);
+	  
 	  liste.setItems(list);
 	  matiere.setItems(matier);
 }
@@ -158,54 +195,49 @@ private MenuItem creation = new MenuItem();
 	  log.debug(debut.getValue());
 	  log.debug(fin.getValue());
 	  log.debug(aleatoire.getText());
-	  log.debug(privee.isSelected());
-	  log.debug(publique.isSelected());
+	  log.debug(privee.getText());
+	  log.debug(publique.getText());
 	  log.debug(pre.getText());
 	  
-	  if (debut.getValue() != null && fin.getValue()!=null && titre.getText() != "" && matiere.getValue() != null) {
-		  	  if (debut.getValue().compareTo(fin.getValue()) > 0) {
-		  		  Stage stage = new Stage();
-		  		  new PbCreationDateView(stage);
-		  	  }
-		  	  else {
-		  		try {
-		  			auth lab = new auth();
-					  Room room = new Room(lab);
-					  mat = new Matiere(lab,room);
-					  dev = new Devoir(lab,mat);
-					  String devoir = titre.getText();
-					  String nomMat = matiere.getValue();
-					  try {
-						  mat.creerMatiere(nomMat);
-					  } catch (GitLabApiException e) { }
-					  
-					  if (!alea){
-						  dev.creerDevoir(devoir, desc.getText(),nomMat,privee.isSelected(),debut.getValue(),fin.getValue(),liste.getValue());
-					  } else {
-					  		dev.creerDevoirAlea(devoir, desc.getText(), nomMat,privee.isSelected(),debut.getValue(),fin.getValue(),liste.getValue());
-					  }					  Stage stage = new Stage();
-					  new ModifView(stage);
-				  } catch (GitLabApiException e) {
-					  Stage stage = new Stage();
-					  new PbCreationView(stage);
+	  if (debut.getValue() != null && fin.getValue() != null && titre.getText() != "" && matiere.getValue() != null) {
+		  if (debut.getValue().compareTo(fin.getValue()) > 0) {
+			  Stage stage = new Stage();
+			new NewPbModifDateView(stage);
+		  }
+		  else {
+			  try {
+				  auth lab = new auth();
+				  Room room = new Room(lab);
+				  mat = new Matiere(lab,room);
+				  dev = new Devoir(lab,mat);
+				  String devoir = titre.getText();
+				  String nomMat = matiere.getValue();
+				  try {
+					  mat.creerMatiere(nomMat);
+				  } catch (GitLabApiException e) { }
+				  
+				  if (!alea){
+					  dev.creerDevoir(devoir, desc.getText(),nomMat,privee.isSelected(),debut.getValue(),fin.getValue(),liste.getValue());
+				  } else {
+				  		dev.creerDevoirAlea(devoir, desc.getText(), nomMat,privee.isSelected(),debut.getValue(),fin.getValue(),liste.getValue());
 				  }
-		  	  }
+				  
+				  Stage stage = new Stage();
+				  new ModifView(stage);
+			  } catch (GitLabApiException e) {
+				  Stage stage = new Stage();
+				  new NewPbModifView(stage);
+			  }
+		  }
 	  }
 	  else {
-		  Stage stage = new Stage();
-  		  new PbCreationDateView(stage);
+		  	Stage stage = new Stage();
+			new NewPbModifView(stage);
+			//
 	  }
+	  
   }
   
-  @FXML
-  public void handleClickRandom(ActionEvent event) throws IOException {
-	  if (aleatoire.isSelected()) {
-		  alea = true;
-	  }
-	  else {
-		  alea = false;
-	  }
-  }
   @FXML
   public void handleClickOui(ActionEvent event) throws IOException {
 	  pre.setVisible(true);
@@ -216,5 +248,6 @@ private MenuItem creation = new MenuItem();
 	  pre.setText(null);
 	  pre.setVisible(false);
   }
+  
 
 }

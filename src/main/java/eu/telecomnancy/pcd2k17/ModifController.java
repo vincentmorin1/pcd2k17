@@ -12,7 +12,12 @@ import java.util.ResourceBundle;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.gitlab4j.api.GitLabApiException;
 
+import Authentification.auth;
+import devoir.Devoir;
+import devoir.Matiere;
+import devoir.Room;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,8 +26,10 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.MenuItem;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 
 public class ModifController implements Initializable{
 	
@@ -31,6 +38,8 @@ public class ModifController implements Initializable{
   ObservableList<RecupDevoir> Listedevoir = FXCollections.observableArrayList();
 
   
+  Devoir dev;
+	Matiere mat;
   @FXML
   private TableView<RecupDevoir> table;
   
@@ -56,6 +65,9 @@ public class ModifController implements Initializable{
   private Button creer = new Button();
   
   @FXML
+  private TextField titre = new TextField();
+  
+  @FXML
   private Button modif = new Button();
   
   @FXML
@@ -72,6 +84,9 @@ public class ModifController implements Initializable{
  
   @FXML
   private ArrayList<String> listee;
+  
+  @FXML
+  private ChoiceBox<String> matiere;
   
   @FXML
   public static String titretableau;
@@ -181,6 +196,23 @@ public class ModifController implements Initializable{
       }
       return conn;
   }
+  
+  @FXML
+  public void handleClickSupprimer(ActionEvent event) throws IOException {
+	  auth lab = new auth();
+	  Room room;
+	try {
+		room = new Room(lab);
+		  
+		  dev.supprDevoir(table.getSelectionModel().getSelectedItem().getTabTitle());
+		  
+		  Stage stage = new Stage();
+		  new ModifView(stage);
+	} catch (GitLabApiException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+  }
 
   
   @Override
@@ -203,8 +235,7 @@ public class ModifController implements Initializable{
       } catch (SQLException e) {
           System.out.println(e.getMessage());
       }
-      System.out.println(titretableau);
-      Listedevoir.add(new RecupDevoir("test","uy","2016-02-03","2016-02-04","phn"));
+      
   	  table.getItems().addAll(Listedevoir);
   	
   }

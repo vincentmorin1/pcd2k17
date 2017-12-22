@@ -8,6 +8,7 @@ import java.util.Set;
 import org.gitlab4j.api.*;
 import org.gitlab4j.api.models.*;
 import Authentification.auth;
+import database.Delete;
 import database.Insert;
 import database.maindatabase;
 
@@ -46,6 +47,7 @@ public class Devoir extends maindatabase{
 			Date f = Date.valueOf(fin);
 			System.out.println(d.toString());
 			createNewTabledev();
+			
 			  Insert app = new Insert();
 			  app.insertdev(devs.getDevoir(name).getId(), name,nomMat,d.toString(),f.toString(),liste);
 			  
@@ -76,6 +78,8 @@ public class Devoir extends maindatabase{
 	
 	public void supprDevoir(String name) throws GitLabApiException {
 			GroupDevoir todel = devs.getDevoir(name);
+			Delete app = new Delete();
+			  app.deletedev(devs.getDevoir(name).getId(), name,nomMat,d.toString(),f.toString(),liste);
 			this.devApi.deleteGroup(todel.getDevoir());
 			devs.deleteDevoir(todel);
 	}
