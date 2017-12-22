@@ -46,7 +46,7 @@ public class Insert{
 	    }
 	    
 	    public void insertdev(int id, String matiere,String titre,String datedeb,String datefin,String liste){
-	    	String sql2 = "INSERT INTO devoir(matiere,titre,datedeb,datefin,liste) VALUES(?,?,?,?,?)";
+	    	String sql2 = "INSERT INTO devoir(id,matiere,titre,datedeb,datefin,liste) VALUES(?,?,?,?,?,?)";
 	    	
 	    	try(Connection conn = this.connect();
 	    			PreparedStatement pstmt2 = conn.prepareStatement(sql2)) {
@@ -58,6 +58,7 @@ public class Insert{
 	    		pstmt2.setString(6,liste);
 	    		pstmt2.executeUpdate();
 	    	} catch (SQLException e) {
+	    		
 	    		//System.out.println(e.getMessage());
 	    	}
 	    }
