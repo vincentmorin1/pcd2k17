@@ -24,7 +24,7 @@ public class GroupDevoirs {
 	}
 	
 	public GroupDevoir getDevoir(String nameDev){
-		System.out.println(liste.toString());
+		//System.out.println(liste.toString());
 		return liste.get(nameDev);
 	}
 	

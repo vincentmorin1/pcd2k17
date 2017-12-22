@@ -71,7 +71,7 @@ public class auth extends maindatabase{
 						else
 							name = "test";
 						Integer id = user.getId();
-				        app.insert(id, username,"null","null", "null" ,"null"," null");
+				        app.insert(id, username,null,null,null,null,null);
 				       
 				        for (Eleve eleve : listefinale){
 				        	if (eleve.nom.toLowerCase().equals(name.toLowerCase())){
@@ -81,7 +81,7 @@ public class auth extends maindatabase{
 					}							
 				}	   
 			} catch (GitLabApiException e) {
-				System.out.println("erreur try auth");
+				//System.out.println("erreur try auth");
 			}
 		}
 			

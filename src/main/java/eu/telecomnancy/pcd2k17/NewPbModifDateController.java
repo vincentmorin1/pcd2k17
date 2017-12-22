@@ -187,7 +187,7 @@ private MenuItem creation = new MenuItem();
   public void handleClickModification(ActionEvent event) throws IOException{
 	  Stage primaryStage = (Stage) modification.getScene().getWindow();
 		primaryStage.close();
-	  log.debug(liste.getValue());
+	  /*log.debug(liste.getValue());
 	  log.debug(titre.getText());
 	  log.debug(matiere.getValue());
 	  log.debug(nb.getText());
@@ -197,7 +197,7 @@ private MenuItem creation = new MenuItem();
 	  log.debug(aleatoire.getText());
 	  log.debug(privee.getText());
 	  log.debug(publique.getText());
-	  log.debug(pre.getText());
+	  log.debug(pre.getText());*/
 	  
 	  if (debut.getValue() != null && fin.getValue() != null && titre.getText() != "" && matiere.getValue() != null) {
 		  if (debut.getValue().compareTo(fin.getValue()) > 0) {

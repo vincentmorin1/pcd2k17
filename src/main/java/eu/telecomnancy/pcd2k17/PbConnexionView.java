@@ -26,7 +26,7 @@ public class PbConnexionView {
 		Parent root = loader.load();
 		
 		stage.setOnCloseRequest(event -> {
-		 log.debug("terminating application.");
+		 //log.debug("terminating application.");
 		 Platform.exit();
 		});
 		stage.setScene(new Scene(root, 600, 400));

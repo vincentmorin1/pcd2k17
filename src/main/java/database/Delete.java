@@ -18,7 +18,7 @@ public class Delete {
 	        try {
 	            conn = DriverManager.getConnection(url);
 	        } catch (SQLException e) {
-	            System.out.println(e.getMessage());
+	            //System.out.println(e.getMessage());
 	        }
 	        return conn;
 	    }
@@ -26,6 +26,22 @@ public class Delete {
 	
 	    public void delete(int id) {
 	        String sql = "DELETE FROM eleves2 WHERE id = ?";
+	 
+	        try (Connection conn = this.connect();
+	                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+	 
+	            // set the corresponding param
+	            pstmt.setInt(1, id);
+	            // execute the delete statement
+	            pstmt.executeUpdate();
+	 
+	        } catch (SQLException e) {
+	            //System.out.println(e.getMessage());
+	        }
+	    }
+	    
+	    public void deletedev(int id) {
+	        String sql = "DELETE FROM devoir WHERE id = ?";
 	 
 	        try (Connection conn = this.connect();
 	                PreparedStatement pstmt = conn.prepareStatement(sql)) {

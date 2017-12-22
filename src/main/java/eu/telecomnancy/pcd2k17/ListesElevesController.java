@@ -152,9 +152,9 @@ public class ListesElevesController implements Initializable{
       Connection conn = null;
       try {
           conn = DriverManager.getConnection(url);
-          System.out.println("Connecté");
+          //System.out.println("Connecté");
       } catch (SQLException e) {
-          System.out.println(e.getMessage());
+          //System.out.println(e.getMessage());
       }
       return conn;
   }
@@ -209,7 +209,7 @@ public void initialize(URL location, ResourceBundle resources) {
         		Listeeleve.add(new RecupEleve(idtableau,classetableau,prenomtableau,nomtableau,approtableau)); 
         }
     } catch (SQLException e) {
-        System.out.println(e.getMessage());
+        //System.out.println(e.getMessage());
     }
 	  tableview.getItems().addAll(Listeeleve);
 	

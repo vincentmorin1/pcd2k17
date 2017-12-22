@@ -28,7 +28,7 @@ public class PbConnexionController{
   
 @FXML
   public void handleClickConnexion(ActionEvent event) throws IOException {
-    log.debug(token.getText());
+    //log.debug(token.getText());
 	Stage primaryStage = (Stage) connexion.getScene().getWindow();
 	primaryStage.close();
 	
@@ -43,7 +43,7 @@ public class PbConnexionController{
                writer.close();
            }
        } catch (Exception e) {
-           System.out.println("Ca marche pas");
+           //System.out.println("Ca marche pas");
        }
        
        try { //test token

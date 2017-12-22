@@ -10,6 +10,7 @@ import org.gitlab4j.api.models.*;
 import Authentification.auth;
 import database.Delete;
 import database.Insert;
+import database.Update;
 import database.maindatabase;
 
 
@@ -45,14 +46,33 @@ public class Devoir extends maindatabase{
 		devs.addDevoir(new GroupDevoir(devApi,mats.getMatiere(nomMat),name) );
 			Date d = Date.valueOf(debut);
 			Date f = Date.valueOf(fin);
-			System.out.println(d.toString());
+			//System.out.println(d.toString());
 			createNewTabledev();
 			
 			  Insert app = new Insert();
 			  app.insertdev(devs.getDevoir(name).getId(), name,nomMat,d.toString(),f.toString(),liste);
 			  
 	}
-
+	
+	public void modifierDevoir(String name, String desc, String nomMat,boolean visi,LocalDate debut,LocalDate fin,String liste) throws GitLabApiException {
+		Visibility var;
+		if(visi) {
+			var = Visibility.PRIVATE;
+		} else {
+			var = Visibility.PUBLIC;
+		}
+		devs.deleteDevoir(devs.getDevoir(name));
+		this.devApi.updateGroup(devs.getDevoir(name).getId(),name, name, desc, Boolean.FALSE, Boolean.TRUE,var,Boolean.FALSE,Boolean.FALSE,mats.getMatiere(nomMat).getId(),0);
+		devs.updateDevoir(devApi, mats.getMatiere(nomMat), devApi.getGroups());
+			Date d = Date.valueOf(debut);
+			Date f = Date.valueOf(fin);
+			//System.out.println(d.toString());
+			createNewTabledev();
+			  Update app = new Update();
+			  app.updatedev(devs.getDevoir(name).getId(), name,nomMat,d.toString(),f.toString(),liste);
+			  
+	}
+	
 	public void creerDevoir(String name, String desc, String nomMat, boolean visi) throws GitLabApiException{
 		Visibility var;
 		if(visi) {
