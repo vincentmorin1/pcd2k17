@@ -12,38 +12,32 @@ import org.gitlab4j.api.models.User;
 import Authentification.auth;
 
 public class Room {
-	public GroupApi room;
-	public UserApi user;
-	private String roomName = "PCDpotes";
+	private GroupApi roomApi;
+	private UserApi user;
+	private GroupRoom room;
+	private String roomName = "PCDpotes"; 
 	
 	public Room(auth lab) throws GitLabApiException{
-		room = lab.getGroupApi();
+		roomApi = lab.getGroupApi();
 		user = lab.getUserApi();
+		try{
+			roomApi.addGroup(roomName, roomName);
+		} catch (GitLabApiException e) {}
+		room = new GroupRoom(roomApi,roomName);
 	}
 	//création d'un nouveau devoir
 	
 	public void creerRoom(String name) throws GitLabApiException{
-			this.room.addGroup(name, name);
+			this.roomApi.addGroup(name, name);
 	}
 	
-	public void supprRoom(String name) throws GitLabApiException {
-		Group todel;
-			todel = room.getGroup(name);
-			this.room.deleteGroup(todel);
-			System.out.println("Le devoir "+name+" n'existe pas !");
+	public void supprRoom() throws GitLabApiException {
+			this.roomApi.deleteGroup(room.getRoom());
 	}
 	
 	public void testCo() throws GitLabApiException {
-		room.addGroup("vfrvfrgtb","vfrvfrgtb");
-		room.deleteGroup(room.getGroup("vfrvfrgtb"));
-	}
-	
-	public Integer getRoomId() throws GitLabApiException {
-		return room.getGroup(roomName).getId();
-	}
-	
-	public Group getRoom() throws GitLabApiException {
-		return room.getGroup(roomName);
+		roomApi.addGroup("vfrvfrgtb","vfrvfrgtb");
+		roomApi.deleteGroup(roomApi.getGroup("vfrvfrgtb"));
 	}
 		
 	public void ajouterMembre(String username, String niveau) throws GitLabApiException {
@@ -64,21 +58,14 @@ public class Room {
 		default:
 			var = AccessLevel.NONE;
 		}
-		room.addMember(room.getGroup(roomName).getId(), user.getUser(username).getId(), var);
+		roomApi.addMember(room.getId(), user.getUser(username).getId(), var);
 	}
 	
 	public void retirerMembre(String username) throws GitLabApiException {
-		room.removeMember(room.getGroup(roomName).getId(),user.getUser(username).getId());
+		roomApi.removeMember(room.getId(),user.getUser(username).getId());
 	}
 	
-	/*public static void main(String args[]) throws GitLabApiException {
-		Room room = new Room(new auth());
-		room.ajouterMembre("Vincent.Morin","Developer");
-		room.ajouterMembre("Cedric.Bell","Developer");
-		room.ajouterMembre("Eliot.Godard","Developer");
-	}*/
-	
-	public String getRoomName() {
-		return this.roomName;
+	public GroupRoom getRoom(){
+		return room;
 	}
 }
