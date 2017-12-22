@@ -74,19 +74,28 @@ public class ModifController implements Initializable{
   private ArrayList<String> listee;
   
   @FXML
-  private String titretableau = null;
+  public static String titretableau;
   
   @FXML
-  private String matieretableau = null;
+  public static String matieretableau;
   
   @FXML
-  private String debuttableau = null;
+  public static String debuttableau;
   
   @FXML
-  private String fintableau = null;
+  public static String fintableau;
   
   @FXML
-  private String listetableau = null;
+  public static String listetableau;
+  
+  
+  public static void ModifControl (String titretableau, String matieretableau, String debuttableau, String fintableau, String listetableau) {
+	  ModifController.titretableau = titretableau;
+	  ModifController.matieretableau = matieretableau;
+	  ModifController.debuttableau = debuttableau;
+	  ModifController.fintableau = fintableau;
+	  ModifController.listetableau = listetableau;
+  }
   
   @FXML
   public void handleClickAccueil(ActionEvent event) throws IOException{
@@ -141,11 +150,23 @@ public class ModifController implements Initializable{
   
   @FXML
   public void handleClickModif(ActionEvent event) throws IOException {
+	  
+	  RecupDevoir e = table.getSelectionModel().getSelectedItem();
+	  
+	  titretableau = e.getTabTitle();
+	  matieretableau = e.getTabMatier();
+	  debuttableau = e.getTabStart();
+	  fintableau = e.getTabEnd();
+	  listetableau = e.getTabListee();
+	  
+	  
+	  
+	  
 	  Stage primaryStage = (Stage) modif.getScene().getWindow();
 	  primaryStage.hide();
 	  
 	  Stage stage = new Stage();
-	  new PbModifView(stage);
+	  new NewModifView(stage);
   }
   
   private Connection connect() {
@@ -182,7 +203,8 @@ public class ModifController implements Initializable{
       } catch (SQLException e) {
           System.out.println(e.getMessage());
       }
-      
+      System.out.println(titretableau);
+      Listedevoir.add(new RecupDevoir("test","uy","2016-02-03","2016-02-04","phn"));
   	  table.getItems().addAll(Listedevoir);
   	
   }
