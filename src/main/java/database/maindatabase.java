@@ -80,9 +80,11 @@ public class maindatabase{
 	    	String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/src/main/java/database/eleves2.db";
 	    	
 	    	String sql2 = "CREATE TABLE IF NOT EXISTS projet (\n"
-	        		+"id integer,\n"
+	        		+"id integer PRIMARY KEY,\n"
+	        		+"nomproj text,\n"
 	        		+"devoir text,\n"
-	        		+"projet text\n"
+	        		+"owner text,\n"
+	        		+"datedebut text\n"
 	        		+");";
 	    	
 	    	try (Connection conn = DriverManager.getConnection(url);

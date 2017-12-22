@@ -2,11 +2,14 @@ package eu.telecomnancy.pcd2k17;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.gitlab4j.api.GitLabApiException;
+import org.gitlab4j.api.models.Owner;
+import org.gitlab4j.api.models.Project;
 
 import Authentification.auth;
 import database.Insert;
@@ -65,10 +68,12 @@ public class ConnexionController extends maindatabase{
 			System.out.println("on est la");
 			Insert app = new Insert();
 			Insert app2 = new Insert();
+			Insert app3= new Insert();
 			Matiere mat = new Matiere(lab,room);
 			Devoir dev = new Devoir(lab,mat);
 			Set<String> matList = mat.getMats().getListeMat();	
 			Set<String> devlist = dev.getDevoirs().getListDev();
+			List<Project> projs = dev.getProjects();
 			createNewTableProject();
 			createNewTabledev();
 			createNewTableMatiere();
@@ -80,8 +85,14 @@ public class ConnexionController extends maindatabase{
 							app.insertmat(id, s);
 							for(String z : devlist){
 								Integer id_dev = dev.getDevoirs().getDevoir(z).getId();
-								app2.insertdev(1, "a", "b", "c","d","e");
 								app2.insertdev(id_dev, s, z, "null", "null", "null");
+								for(Project p : projs){
+									Integer id_proj = p.getId();
+									String name = p.getName();
+									String owner = p.getOwner().toString();
+									String datedeb = p.getCreatedAt().toString();
+									app3.insertproj(id_proj,name, z,owner,datedeb );
+								}
 							}
 						
 						

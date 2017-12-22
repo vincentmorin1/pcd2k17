@@ -57,21 +57,21 @@ public class Insert{
 	    		pstmt2.setString(5,datefin);
 	    		pstmt2.setString(6,liste);
 	    		pstmt2.executeUpdate();
-	    		System.out.println("ca se passe bien");
 	    	} catch (SQLException e) {
 	    		//System.out.println(e.getMessage());
 	    	}
 	    }
 	    
-	    public void insertproj(int id,String titre,String owner,String datedeb){
-	    	String sql2 = "INSERT INTO project(id,titre,owner,datedeb) VALUES(?,?,?,?)";
+	    public void insertproj(int id,String nomproj,String devoir, String owner,String datedeb){
+	    	String sql2 = "INSERT INTO project(id,nomproj,devoir,owner,datedeb) VALUES(?,?,?,?,?)";
 	    	
 	    	try(Connection conn = this.connect();
 	    			PreparedStatement pstmt2 = conn.prepareStatement(sql2)) {
 	    		pstmt2.setInt(1,id);
-	    		pstmt2.setString(2,titre);
-	    		pstmt2.setString(3,owner);
-	    		pstmt2.setString(4,datedeb);
+	    		pstmt2.setString(2,nomproj);
+	    		pstmt2.setString(3,devoir);
+	    		pstmt2.setString(4,owner);
+	    		pstmt2.setString(5,datedeb);
 	    		pstmt2.executeUpdate();
 	    	} catch (SQLException e) {
 	    		//System.out.println(e.getMessage());
