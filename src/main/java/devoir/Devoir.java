@@ -55,6 +55,17 @@ public class Devoir extends maindatabase{
 
 	}
 	
+	public void creerDevoirAlea(String name, String desc, String nomMat, boolean visi,LocalDate debut,LocalDate fin,String liste) throws GitLabApiException{
+		Visibility var;
+		if(visi) {
+			var = Visibility.PRIVATE;
+		} else {
+			var = Visibility.PUBLIC;
+		}
+			this.devs.addGroup(name, name, desc, Boolean.FALSE, Boolean.TRUE,var,Boolean.FALSE,Boolean.FALSE,mat.getMatiereId(nomMat),0);
+
+	}
+	
 	public void supprDevoir(String matName, String name) throws GitLabApiException {
 		Group todel;
 			todel = devs.getGroup(mat.getFullPath(matName)+"/"+name);

@@ -1,42 +1,39 @@
 package eu.telecomnancy.pcd2k17;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import devoir.Devoir;
-import eleve.Eleves;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.control.SplitMenuButton;
+import javafx.scene.control.TableView;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
+import javafx.fxml.Initializable;
 
-public class ModifController{
+public class ModifController implements Initializable{
 	
   final static Logger log = LogManager.getLogger(ModifController.class);
   
-  ObservableList<String> list = FXCollections.observableArrayList("1A","2A","3A");
-  ObservableList<String> group = FXCollections.observableArrayList("1","2","3","4","5");
-  
-  ObservableList<String> titr = FXCollections.observableArrayList();
-  ObservableList<String> matie = FXCollections.observableArrayList();
-  ObservableList<DatePicker> star = FXCollections.observableArrayList();
-  ObservableList<DatePicker> ends = FXCollections.observableArrayList();
-  ObservableList<String> proms = FXCollections.observableArrayList();
-  ObservableList<Integer> grpe = FXCollections.observableArrayList();
+  ObservableList<RecupDevoir> Listedevoir = FXCollections.observableArrayList();
 
+  
+  @FXML
+  private TableView<RecupDevoir> table;
+  
   @FXML
   private Button accueil = new Button();
   
@@ -59,55 +56,37 @@ public class ModifController{
   private Button creer = new Button();
   
   @FXML
-  private TextField matiere = new TextField();
-  
-  @FXML
-  private TextField titre = new TextField();
-  
-  @FXML
-  private TextField nb = new TextField();
-  
-  @FXML
-  private TextArea desc = new TextArea();
-  
-  @FXML
-  private DatePicker debut = new DatePicker();
-  
-  @FXML 
-  private DatePicker fin = new DatePicker();
-  
-  @FXML
-  private ToggleButton aleatoire = new ToggleButton();
-  
-  @FXML
   private Button modif = new Button();
   
-  @FXML 
-  private ChoiceBox<String> liste;
+  @FXML
+  private ArrayList<String> title;
   
   @FXML
-  private ChoiceBox<String> groupe;
+  private ArrayList<String> matier;
   
   @FXML
-  private TreeTableView<Devoir> tableau = new TreeTableView<Devoir>();
+  private ArrayList<String> start;
   
   @FXML
-  private TreeTableColumn<Devoir,String> title = new TreeTableColumn<Devoir,String>();
+  private ArrayList<String> end;
+ 
+  @FXML
+  private ArrayList<String> listee;
   
   @FXML
-  private TreeTableColumn<Devoir,String> matier = new TreeTableColumn<Devoir,String>();
+  private String titretableau = null;
   
   @FXML
-  private TreeTableColumn<Devoir,DatePicker> start = new TreeTableColumn<Devoir,DatePicker>();
+  private String matieretableau = null;
   
   @FXML
-  private TreeTableColumn<Devoir,DatePicker> end = new TreeTableColumn<Devoir,DatePicker>();
+  private String debuttableau = null;
   
   @FXML
-  private TreeTableColumn<Devoir,String> prom = new TreeTableColumn<Devoir,String>();
+  private String fintableau = null;
   
   @FXML
-  private TreeTableColumn<Devoir,Integer> grp = new TreeTableColumn<Devoir,Integer>();
+  private String listetableau = null;
   
   @FXML
   public void handleClickAccueil(ActionEvent event) throws IOException{
@@ -169,10 +148,84 @@ public class ModifController{
 	  new PbModifView(stage);
   }
   
-  @FXML
-  public void initialize() {
-	  
-}
+  private Connection connect() {
+      // SQLite connection string
+      String url = "jdbc:sqlite:src/main/java/database/eleves2.db";
+      Connection conn = null;
+      try {
+          conn = DriverManager.getConnection(url);
+          System.out.println("Connecté");
+      } catch (SQLException e) {
+          System.out.println(e.getMessage());
+      }
+      return conn;
+  }
+
   
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+  	String sql = "SELECT * FROM devoir";
+      
+      try (Connection conn = connect();
+           Statement stmt  = conn.createStatement();
+           ResultSet rs    = stmt.executeQuery(sql)){
+          
+          // loop through the result set
+          while (rs.next()) {
+          		titretableau = rs.getString("title");
+          		matieretableau = rs.getString("matier");
+          		debuttableau = rs.getString("start");
+          		fintableau = rs.getString("end");
+          		listetableau = rs.getString("listee");
+          		Listedevoir.add(new RecupDevoir(titretableau,matieretableau,debuttableau,fintableau,listetableau)); 
+          }
+      } catch (SQLException e) {
+          System.out.println(e.getMessage());
+      }
+      
+  	  table.getItems().addAll(Listedevoir);
+  	
+  }
+
+public ArrayList<String> getTitle() {
+	return title;
+}
+
+public void setTitle(ArrayList<String> title) {
+	this.title = title;
+}
+
+public ArrayList<String> getMatier() {
+	return matier;
+}
+
+public void setMatier(ArrayList<String> matier) {
+	this.matier = matier;
+}
+
+public ArrayList<String> getStart() {
+	return start;
+}
+
+public void setStart(ArrayList<String> start) {
+	this.start = start;
+}
+
+public ArrayList<String> getEnd() {
+	return end;
+}
+
+public void setEnd(ArrayList<String> end) {
+	this.end = end;
+}
+
+public ArrayList<String> getListee() {
+	return listee;
+}
+
+public void setListee(ArrayList<String> listee) {
+	this.listee = listee;
+}
+ 
 
 }
