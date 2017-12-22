@@ -57,10 +57,11 @@ public class maindatabase{
 	    	String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/src/main/java/database/eleves2.db";
 	    	
 	    	String sql2 = "CREATE TABLE IF NOT EXISTS devoir (\n"
-	        		+"matiere text,\n"
+	        		+"id integer PRIMARY KEY,\n"
+	    			+"matiere text,\n"
 	        		+"titre text,\n"
-	        		+"datedeb text(8),\n"
-	        		+"datefin text(8),\n"
+	        		+"datedeb text,\n"
+	        		+"datefin text,\n"
 	        		+"liste text\n"
 	        		+");";
 	    	
@@ -78,10 +79,12 @@ public class maindatabase{
 	    public static void createNewTableProject(){
 	    	String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/src/main/java/database/eleves2.db";
 	    	
-	    	String sql2 = "CREATE TABLE IF NOT EXISTS projet (\n"
-	        		+"id integer,\n"
+	    	String sql2 = "CREATE TABLE IF NOT EXISTS project (\n"
+	        		+"id integer PRIMARY KEY,\n"
+	        		+"nomproj text,\n"
 	        		+"devoir text,\n"
-	        		+"projet text\n"
+	        		+"owner text,\n"
+	        		+"datedeb text\n"
 	        		+");";
 	    	
 	    	try (Connection conn = DriverManager.getConnection(url);
@@ -98,7 +101,7 @@ public class maindatabase{
 	    	String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/src/main/java/database/eleves2.db";
 	    	
 	    	String sql2 = "CREATE TABLE IF NOT EXISTS matiere (\n"
-	        		+"id integer,\n"
+	        		+"id integer PRIMARY KEY,\n"
 	        		+"nom text\n"
 	        		+");";
 	    	
