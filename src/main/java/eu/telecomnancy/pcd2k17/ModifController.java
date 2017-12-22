@@ -196,25 +196,7 @@ public class ModifController implements Initializable{
       }
       return conn;
   }
-  
-  @FXML
-  public void handleClickSupprimer(ActionEvent event) throws IOException {
-	  auth lab = new auth();
-	  Room room;
-	try {
-		room = new Room(lab);
-		  
-		  dev.supprDevoir(table.getSelectionModel().getSelectedItem().getTabTitle());
-		  
-		  Stage stage = new Stage();
-		  new ModifView(stage);
-	} catch (GitLabApiException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-  }
-
-  
+ 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
   	String sql = "SELECT * FROM devoir";
@@ -235,12 +217,6 @@ public class ModifController implements Initializable{
       } catch (SQLException e) {
           //System.out.println(e.getMessage());
       }
-<<<<<<< HEAD
-      
-=======
-      //System.out.println(titretableau);
-      Listedevoir.add(new RecupDevoir("test","uy","2016-02-03","2016-02-04","phn"));
->>>>>>> a64061f528818eee819138ebc9285b3b3db2a66b
   	  table.getItems().addAll(Listedevoir);
   	
   }

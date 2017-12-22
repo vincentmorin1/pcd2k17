@@ -99,7 +99,7 @@ public class Devoir extends maindatabase{
 	public void supprDevoir(String name) throws GitLabApiException {
 			GroupDevoir todel = devs.getDevoir(name);
 			Delete app = new Delete();
-			  app.deletedev(devs.getDevoir(name).getId(), name,nomMat,d.toString(),f.toString(),liste);
+			  app.deletedev(devs.getDevoir(name).getId());
 			this.devApi.deleteGroup(todel.getDevoir());
 			devs.deleteDevoir(todel);
 	}

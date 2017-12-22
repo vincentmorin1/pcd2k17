@@ -99,11 +99,6 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <Button fx:id="supprimer" layoutX="266.0" layoutY="623.0" mnemonicParsing="false" onAction="#handleClickSupprimer" text="Supprimer">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Button>
          </children>
       </AnchorPane>
   </items>

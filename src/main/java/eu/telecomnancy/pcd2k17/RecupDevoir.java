@@ -19,11 +19,11 @@ public class RecupDevoir {
 	
 	public RecupDevoir(String tabTitle, String tabMatier, String tabStart, String tabEnd, String tabListee) {
 	
-		this.tabEnd = new String(tabEnd);
-		this.tabStart = new String(tabStart);
-		this.tabListee = new String(tabListee);
-		this.tabMatier = new String(tabMatier);
-		this.tabTitle = new String(tabTitle);
+		this.tabEnd = tabEnd;
+		this.tabStart = tabStart;
+		this.tabListee = tabListee;
+		this.tabMatier = tabMatier;
+		this.tabTitle = tabTitle;
 		
 	}
 
