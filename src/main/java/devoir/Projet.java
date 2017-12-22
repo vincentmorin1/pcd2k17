@@ -84,12 +84,13 @@ public class Projet {
 	public void retirerMembre(String matName, String devName, String projName, String username) throws GitLabApiException {
 		proj.removeMember(proj.getProject(devs.getDevoirs().getDevoir(devName).getFullPath(),projName).getId(),user.getUser(username).getId());
 	}
-	/*public static void main(String args[]) throws GitLabApiException {
+	public static void main(String args[]) throws GitLabApiException {
 		auth lab = new auth();
-		Projet proj = new Projet(lab);
-		ProjectApi pro = lab.getProjectApi();
-		UserApi user = lab.getUserApi();
-		//proj.ajouterMembre("TOP","choco", "figue", "Victor.Schwien", "Master");
-	}*/
+		Room room = new Room(lab);
+		Matiere mat = new Matiere(lab, room);
+		Devoir dev = new Devoir(lab, mat);
+		Projet proj = new Projet(lab, dev);
+		proj.creerProjet("Allo","choco");
+	}
 	
 }
