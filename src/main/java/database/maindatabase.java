@@ -84,7 +84,7 @@ public class maindatabase{
 	        		+"nomproj text,\n"
 	        		+"devoir text,\n"
 	        		+"owner text,\n"
-	        		+"datedebut text\n"
+	        		+"datedeb text\n"
 	        		+");";
 	    	
 	    	try (Connection conn = DriverManager.getConnection(url);

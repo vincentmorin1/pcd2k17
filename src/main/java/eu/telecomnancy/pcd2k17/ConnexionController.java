@@ -88,14 +88,11 @@ public class ConnexionController extends maindatabase{
 								List<Project> projs = dev.getProjects(z);
 								if (!projs.isEmpty()){
 								for(Project p : projs){
-									System.out.println("coucou");
 									Integer id_proj = p.getId();
 									String name = p.getName();
 									Integer ownerId = p.getCreatorId();
 									String owner = lab.getUserApi().getUser(ownerId).getName();
 									String datedeb = p.getCreatedAt().toString();
-									System.out.println("on est là");
-									app3.insertproj(1, "a", "b", "c", "d");
 									app3.insertproj(id_proj,name, z,owner,datedeb );
 								}}
 							}
