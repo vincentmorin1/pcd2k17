@@ -2,6 +2,7 @@ package devoir;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import org.gitlab4j.api.GitLabApiException;
 import org.gitlab4j.api.GroupApi;
@@ -38,5 +39,9 @@ public class GroupDevoirs {
 	
 	public HashMap<String,GroupDevoir> getListe(){
 		return liste;
+	}
+	
+	public Set<String> getListDev(){
+		return liste.keySet();
 	}
 }

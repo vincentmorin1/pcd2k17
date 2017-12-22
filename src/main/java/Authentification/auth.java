@@ -7,6 +7,7 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,6 +30,7 @@ import database.maindatabase;
 
 import eleve.Eleve;
 import eleve.Eleves;
+import devoir.Devoir;
 import devoir.Matiere;
 import devoir.Room;
 
@@ -81,76 +83,10 @@ public class auth extends maindatabase{
 			} catch (GitLabApiException e) {
 				System.out.println("erreur try auth");
 			}
-			try {
-				System.out.println("on est la");
-				Insert app = new Insert();
-				int i = 0;
-				int z= 0;
-				GroupApi groups =this.auth.getGroupApi();
-				Pager<Group> pagergroupe = groups.getGroups(60);				
-				createNewTableProject();
-				createNewTabledev();
-				createNewTableMatiere();
-				int id_room = groups.getGroup("PCDpotes").getId();
-				while(pagergroupe.hasNext()){
-					List<Group> listgroup = pagergroupe.next();
-					List<Group> listmat = listgroup.subList(0, 0);
-					for(Group group : listgroup){
-						z=z+1;
-						if (group.getParentId()==id_room){
-							i=i+1;
-							System.out.println("Condition1");//OK
-							listmat.add(group);
-							System.out.println(listmat);
-							//appeler ce dont on a besoin
-							for(Group group2 : listmat){
-								//on recupere les matieres
-								Integer id= group2.getId();
-								System.out.println(id);
-								String nommat = group2.getName();
-								System.out.println(nommat);
-								app.insertmat(id, nommat);
-							}
-							
-							
-				}
-				
-						/*System.out.println(listidmat);
-						listnommat.add(group.getName());
-						System.out.println(listnommat);
-						for(Integer i : listidmat){
-							Insert app2 = new Insert();
-							System.out.println("i :"+i);
-							app2.insertmat(i, listnommat.get(i));
-							if (group.getId()==i){
-								System.out.println("Condition2");
-								String titre = group.getName();
-								Integer id = group.getId();	
-								Group matiere =groups.getGroup(group.getParentId());
-								List<Project> pagerproject = groups.getProjects(60);				
-								for (Project project : pagerproject){
-									Integer idproject = project.getId();
-									String name = project.getName();
-									Owner owner = project.getOwner();
-									Date datedeb = project.getCreatedAt();
-									Insert app = new Insert();
-									app.insertdev(id, matiere.toString(), titre, "unknown", "unknown", "unknown");//ajouter iddevoir
-									app.insertproj(idproject,name, owner.toString(), datedeb.toString());
-									
-								}
-							}
-						}*/
-					}System.out.println(i);
-					System.out.println(z);
-					
-				}
-				
-			} catch (GitLabApiException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
 		}
+			
+			
+			
 		//coucouc vincent : en fait non c'est un prank. kdsn�fvkjz^nbjdtbvdfjslm
 	private String Readfunction() {
 		    try {
