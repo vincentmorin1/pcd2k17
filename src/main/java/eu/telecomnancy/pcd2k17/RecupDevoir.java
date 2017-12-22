@@ -10,20 +10,20 @@ public class RecupDevoir {
 	private String tabListee;
 	
 	public RecupDevoir () {
-		this.tabTitle = null;
-		this.tabMatier = null;
-		this.tabEnd = null;
-		this.tabStart = null;
-		this.tabListee = null;
+		this.tabTitle = "";
+		this.tabMatier = "";
+		this.tabEnd = "2016-01-01";
+		this.tabStart = "2016-01-02";
+		this.tabListee = "";
 	}
 	
 	public RecupDevoir(String tabTitle, String tabMatier, String tabStart, String tabEnd, String tabListee) {
 	
-		this.tabEnd = new String(tabEnd);
-		this.tabStart = new String(tabStart);
-		this.tabListee = new String(tabListee);
-		this.tabMatier = new String(tabMatier);
-		this.tabTitle = new String(tabTitle);
+		this.tabEnd = tabEnd;
+		this.tabStart = tabStart;
+		this.tabListee = tabListee;
+		this.tabMatier = tabMatier;
+		this.tabTitle = tabTitle;
 		
 	}
 
