@@ -49,10 +49,10 @@ public class Update {
 	        }
 	    }     
 	    
-	    public void updatedev(Integer id,String matiere, String titre,String datedebut, String datefin,String liste) {
+	    public void updatedev(Integer id,String matiere, String titre,String datedeb, String datefin,String liste) {
 	        String sql = "UPDATE devoir SET matiere = ? , "
 	        		+ "titre = ? ,"
-	        		+ "datedebut = ? ,"
+	        		+ "datedeb = ? ,"
 	                + "datefin = ? ,"
 	                + "liste = ? "
 	                + "WHERE id = ?";
@@ -63,7 +63,7 @@ public class Update {
 	            
 	            pstmt.setString(1,matiere);
 		        pstmt.setString(2, titre);
-	            pstmt.setString(3, datedebut);
+	            pstmt.setString(3, datedeb);
 	            pstmt.setString(4, datefin);
 	            pstmt.setString(5, liste);
 	            pstmt.setInt(6, id);
