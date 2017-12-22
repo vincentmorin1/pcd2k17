@@ -69,6 +69,11 @@ La base de donnees est enfin fonctionnelle! Nous avons creer des classes permett
 
 
 
+# Avancement Projet
+Base de donnees fonctionnelle, lien entre Gitlab et base de donnees locale.
+
+
+
 â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”		CodingWeek 2017 - Sample project	â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 
 
