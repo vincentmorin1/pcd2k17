@@ -114,8 +114,8 @@ public class Devoir extends maindatabase{
 	}
 	
 	
-	public List<Project> getProjects() throws GitLabApiException{
-		List<Project> projs = projectapi.getOwnedProjects();
+	public List<Project> getProjects(String name) throws GitLabApiException{
+		List<Project> projs = devs.getDevoir(name).getDevoir().getProjects();
 		return projs;
 	}
 	

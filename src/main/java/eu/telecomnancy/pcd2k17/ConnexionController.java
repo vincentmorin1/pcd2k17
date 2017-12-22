@@ -73,7 +73,6 @@ public class ConnexionController extends maindatabase{
 			Devoir dev = new Devoir(lab,mat);
 			Set<String> matList = mat.getMats().getListeMat();	
 			Set<String> devlist = dev.getDevoirs().getListDev();
-			List<Project> projs = dev.getProjects();
 			createNewTableProject();
 			createNewTabledev();
 			createNewTableMatiere();
@@ -86,46 +85,23 @@ public class ConnexionController extends maindatabase{
 							for(String z : devlist){
 								Integer id_dev = dev.getDevoirs().getDevoir(z).getId();
 								app2.insertdev(id_dev, s, z, "null", "null", "null");
+								List<Project> projs = dev.getProjects(z);
+								if (!projs.isEmpty()){
 								for(Project p : projs){
+									System.out.println("coucou");
 									Integer id_proj = p.getId();
 									String name = p.getName();
-									String owner = p.getOwner().toString();
+									Integer ownerId = p.getCreatorId();
+									String owner = lab.getUserApi().getUser(ownerId).getName();
 									String datedeb = p.getCreatedAt().toString();
+									System.out.println("on est là");
+									app3.insertproj(1, "a", "b", "c", "d");
 									app3.insertproj(id_proj,name, z,owner,datedeb );
-								}
+								}}
 							}
 						
 						
-			}
-			
-					/*System.out.println(listidmat);
-					listnommat.add(group.getName());
-					System.out.println(listnommat);
-					for(Integer i : listidmat){
-						Insert app2 = new Insert();
-						System.out.println("i :"+i);
-						app2.insertmat(i, listnommat.get(i));
-						if (group.getId()==i){
-							System.out.println("Condition2");
-							String titre = group.getName();
-							Integer id = group.getId();	
-							Group matiere =groups.getGroup(group.getParentId());
-							List<Project> pagerproject = groups.getProjects(60);				
-							for (Project project : pagerproject){
-								Integer idproject = project.getId();
-								String name = project.getName();
-								Owner owner = project.getOwner();
-								Date datedeb = project.getCreatedAt();
-								Insert app = new Insert();
-								app.insertdev(id, matiere.toString(), titre, "unknown", "unknown", "unknown");//ajouter iddevoir
-								app.insertproj(idproject,name, owner.toString(), datedeb.toString());
-								
-							}
-						}
-					}*/
-				
-			
-			
+			}			
 		} catch (GitLabApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
